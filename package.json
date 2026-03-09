@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "enrich": "node scripts/enrich-wikidata.js",
+    "enrich:dry": "node scripts/enrich-wikidata.js --dry-run",
+    "enrich:clean": "node scripts/clean-wikidata.js"
   },
   "repository": {
     "type": "git",

@@ -10,12 +10,32 @@
     "summary": "Movable type printing press democratizes knowledge. Within 50 years, 20 million books exist in Europe.",
     "body": "Johannes Gutenberg's movable type printing press makes books affordable for the first time in history. Before Gutenberg, a single book cost a year's wages; within 50 years, 20 million volumes exist in Europe. The press enables the Reformation, the Scientific Revolution, and mass literacy. It is the original information technology revolution.",
     "sources": [
-      { "type": "wikipedia", "label": "Printing press", "url": "https://en.wikipedia.org/wiki/Printing_press" },
-      { "type": "wikipedia", "label": "Johannes Gutenberg", "url": "https://en.wikipedia.org/wiki/Johannes_Gutenberg" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q159354" }
+      {
+        "type": "wikipedia",
+        "label": "Printing press",
+        "url": "https://en.wikipedia.org/wiki/Printing_press"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Johannes Gutenberg",
+        "url": "https://en.wikipedia.org/wiki/Johannes_Gutenberg"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q159354"
+      }
     ],
-    "tags": ["printing", "information", "technology", "renaissance"],
-    "related": ["culture-001", "science-002"]
+    "tags": [
+      "printing",
+      "information",
+      "technology",
+      "renaissance"
+    ],
+    "related": [
+      "culture-001",
+      "science-002"
+    ]
   },
   {
     "id": "science-002",
@@ -28,11 +48,26 @@
     "summary": "Heliocentric model published. Earth removed from the center of the cosmos. The scientific method is born.",
     "body": "Nicolaus Copernicus publishes De revolutionibus orbium coelestium, placing the Sun — not Earth — at the center of the cosmos. Published as he lay dying, the book ignites a revolution in thought that leads through Galileo, Kepler, and Newton to modern science. The Copernican Revolution demonstrates that human intuition can be profoundly wrong, and that mathematical models can reveal hidden truths about nature.",
     "sources": [
-      { "type": "wikipedia", "label": "Copernican Revolution", "url": "https://en.wikipedia.org/wiki/Copernican_Revolution" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q83203" }
+      {
+        "type": "wikipedia",
+        "label": "Copernican Revolution",
+        "url": "https://en.wikipedia.org/wiki/Copernican_Revolution"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q83203"
+      }
     ],
-    "tags": ["astronomy", "science", "copernicus"],
-    "related": ["science-001", "science-003"]
+    "tags": [
+      "astronomy",
+      "science",
+      "copernicus"
+    ],
+    "related": [
+      "science-001",
+      "science-003"
+    ]
   },
   {
     "id": "science-003",
@@ -45,11 +80,27 @@
     "summary": "Laws of motion and universal gravitation published. Classical mechanics is complete.",
     "body": "Isaac Newton publishes Philosophiae Naturalis Principia Mathematica, unifying terrestrial and celestial mechanics under three laws of motion and the law of universal gravitation. For the first time, a single mathematical framework explains falling apples, orbiting planets, and ocean tides. The Principia is arguably the most influential scientific work ever published.",
     "sources": [
-      { "type": "wikipedia", "label": "Principia Mathematica (Newton)", "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q428" }
+      {
+        "type": "wikipedia",
+        "label": "Principia Mathematica (Newton)",
+        "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q428"
+      }
     ],
-    "tags": ["physics", "mathematics", "newton", "gravity"],
-    "related": ["science-002", "science-004"]
+    "tags": [
+      "physics",
+      "mathematics",
+      "newton",
+      "gravity"
+    ],
+    "related": [
+      "science-002",
+      "science-004"
+    ]
   },
   {
     "id": "science-004",
@@ -62,11 +113,27 @@
     "summary": "Darwin's On the Origin of Species. Natural selection explains the diversity of all life from a common ancestor.",
     "body": "Charles Darwin publishes On the Origin of Species, presenting the theory of evolution by natural selection. All life shares a common ancestor; species change over time through variation and differential survival. The book unifies biology as physics was unified by Newton, but also triggers fierce cultural and religious opposition that persists to this day.",
     "sources": [
-      { "type": "wikipedia", "label": "On the Origin of Species", "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q22686" }
+      {
+        "type": "wikipedia",
+        "label": "On the Origin of Species",
+        "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q22686"
+      }
     ],
-    "tags": ["biology", "evolution", "darwin", "science"],
-    "related": ["life-003", "science-003"]
+    "tags": [
+      "biology",
+      "evolution",
+      "darwin",
+      "science"
+    ],
+    "related": [
+      "life-003",
+      "science-003"
+    ]
   },
   {
     "id": "science-005",
@@ -79,12 +146,32 @@
     "summary": "Special relativity published. E=mc2. Space and time are not absolute.",
     "body": "Albert Einstein publishes four papers that transform physics: special relativity (space and time are relative), the photoelectric effect (light is quantized), Brownian motion (atoms are real), and mass-energy equivalence (E=mc2). A 26-year-old patent clerk rewrites our understanding of the universe in a single 'miracle year.'",
     "sources": [
-      { "type": "wikipedia", "label": "Annus Mirabilis papers", "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers" },
-      { "type": "wikipedia", "label": "Special relativity", "url": "https://en.wikipedia.org/wiki/Special_relativity" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q3711325" }
+      {
+        "type": "wikipedia",
+        "label": "Annus Mirabilis papers",
+        "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Special relativity",
+        "url": "https://en.wikipedia.org/wiki/Special_relativity"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q3711325"
+      }
     ],
-    "tags": ["physics", "einstein", "relativity", "spacetime"],
-    "related": ["science-003", "cosmos-001"]
+    "tags": [
+      "physics",
+      "einstein",
+      "relativity",
+      "spacetime"
+    ],
+    "related": [
+      "science-003",
+      "cosmos-001"
+    ]
   },
   {
     "id": "science-006",
@@ -97,11 +184,27 @@
     "summary": "Watson, Crick, and Franklin reveal the molecular structure of DNA. The code of life is decoded.",
     "body": "James Watson and Francis Crick, building on Rosalind Franklin's crucial X-ray crystallography data (Photo 51), determine that DNA has a double helix structure with complementary base pairs. This structure immediately suggests how genetic information is copied and transmitted. The discovery launches molecular biology and eventually leads to genetic engineering, genomics, and personalized medicine.",
     "sources": [
-      { "type": "wikipedia", "label": "Molecular structure of nucleic acids", "url": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q209" }
+      {
+        "type": "wikipedia",
+        "label": "Molecular structure of nucleic acids",
+        "url": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q209"
+      }
     ],
-    "tags": ["biology", "genetics", "dna", "medicine"],
-    "related": ["herstory-014", "science-004"]
+    "tags": [
+      "biology",
+      "genetics",
+      "dna",
+      "medicine"
+    ],
+    "related": [
+      "herstory-014",
+      "science-004"
+    ]
   },
   {
     "id": "science-007",
@@ -116,12 +219,38 @@
     "summary": "Apollo 11. Armstrong and Aldrin walk on the Moon. 600 million watch live.",
     "body": "Neil Armstrong and Buzz Aldrin land on the Moon while Michael Collins orbits above. Armstrong's 'one small step' is witnessed live by 600 million people — the largest shared human experience to date. The Apollo program represents the peak of the Space Race and demonstrates what focused human ingenuity and political will can achieve.",
     "sources": [
-      { "type": "wikipedia", "label": "Apollo 11", "url": "https://en.wikipedia.org/wiki/Apollo_11" },
-      { "type": "primary", "label": "NASA: Apollo 11", "url": "https://www.nasa.gov/mission_pages/apollo/apollo11.html" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q43653" }
+      {
+        "type": "wikipedia",
+        "label": "Apollo 11",
+        "url": "https://en.wikipedia.org/wiki/Apollo_11"
+      },
+      {
+        "type": "primary",
+        "label": "NASA: Apollo 11",
+        "url": "https://www.nasa.gov/mission_pages/apollo/apollo11.html"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q43653"
+      }
     ],
-    "tags": ["space", "nasa", "moon", "exploration"],
-    "related": ["herstory-017", "science-005"]
+    "tags": [
+      "space",
+      "nasa",
+      "moon",
+      "exploration"
+    ],
+    "related": [
+      "herstory-017",
+      "science-005"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
+      "wdDescription": "first Moon landing and fifth crewed flight of the United States Apollo program",
+      "country": "United States",
+      "partOf": "Apollo space program"
+    }
   },
   {
     "id": "science-008",
@@ -134,12 +263,36 @@
     "summary": "Tim Berners-Lee publishes the first website from CERN. Within 30 years, 5 billion humans are connected.",
     "body": "Tim Berners-Lee publishes the first website from CERN, combining hypertext, TCP/IP networking, and domain names into a system anyone can use. The World Wide Web transforms communication, commerce, education, and politics. Within 30 years, over 5 billion people are connected. The web is the most significant communication technology since Gutenberg's press.",
     "sources": [
-      { "type": "wikipedia", "label": "World Wide Web", "url": "https://en.wikipedia.org/wiki/World_Wide_Web" },
-      { "type": "primary", "label": "First website (CERN)", "url": "http://info.cern.ch/hypertext/WWW/TheProject.html" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q466" }
+      {
+        "type": "wikipedia",
+        "label": "World Wide Web",
+        "url": "https://en.wikipedia.org/wiki/World_Wide_Web"
+      },
+      {
+        "type": "primary",
+        "label": "First website (CERN)",
+        "url": "http://info.cern.ch/hypertext/WWW/TheProject.html"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q466"
+      }
     ],
-    "tags": ["internet", "technology", "information", "web"],
-    "related": ["science-001", "science-009"]
+    "tags": [
+      "internet",
+      "technology",
+      "information",
+      "web"
+    ],
+    "related": [
+      "science-001",
+      "science-009"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alcal%C3%A1%20de%20Henares%20%28RPS%2008-04-2017%29%20Calle%20WWW%2C%20indicador.png",
+      "wdDescription": "global system of interlinked hypertext documents accessed via the Internet"
+    }
   },
   {
     "id": "science-009",
@@ -154,11 +307,30 @@
     "summary": "The smartphone era begins. Within a decade, 3 billion humans carry supercomputers in their pockets.",
     "body": "Steve Jobs announces the iPhone, combining a phone, music player, and internet device into a single touchscreen object. The smartphone revolution that follows puts more computing power in every pocket than existed in the entire world in 1969. Mobile internet access reshapes commerce, social interaction, politics, and daily life for billions of people.",
     "sources": [
-      { "type": "wikipedia", "label": "iPhone", "url": "https://en.wikipedia.org/wiki/IPhone" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q2766" }
+      {
+        "type": "wikipedia",
+        "label": "iPhone",
+        "url": "https://en.wikipedia.org/wiki/IPhone"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q2766"
+      }
     ],
-    "tags": ["mobile", "technology", "connectivity", "apple"],
-    "related": ["science-008"]
+    "tags": [
+      "mobile",
+      "technology",
+      "connectivity",
+      "apple"
+    ],
+    "related": [
+      "science-008"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/IPhone%2017%20Pro%20Vector.svg",
+      "wdDescription": "line of smartphones developed and marketed by Apple Inc."
+    }
   },
   {
     "id": "science-010",
@@ -171,12 +343,31 @@
     "summary": "DeepMind's AI predicts the 3D structure of every known protein — solving a 50-year grand challenge.",
     "body": "DeepMind's AlphaFold2 predicts the 3D structure of virtually every known protein — over 200 million structures — solving a 50-year grand challenge in biology. The breakthrough accelerates drug discovery, enzyme engineering, and our understanding of disease. It demonstrates AI's potential to solve scientific problems that have resisted human efforts for decades.",
     "sources": [
-      { "type": "wikipedia", "label": "AlphaFold", "url": "https://en.wikipedia.org/wiki/AlphaFold" },
-      { "type": "academic", "label": "Nature: AlphaFold protein structure database", "url": "https://www.nature.com/articles/s41586-021-03819-2" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q65163879" }
+      {
+        "type": "wikipedia",
+        "label": "AlphaFold",
+        "url": "https://en.wikipedia.org/wiki/AlphaFold"
+      },
+      {
+        "type": "academic",
+        "label": "Nature: AlphaFold protein structure database",
+        "url": "https://www.nature.com/articles/s41586-021-03819-2"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q65163879"
+      }
     ],
-    "tags": ["ai", "biology", "medicine", "proteins"],
-    "related": ["science-011"]
+    "tags": [
+      "ai",
+      "biology",
+      "medicine",
+      "proteins"
+    ],
+    "related": [
+      "science-011"
+    ]
   },
   {
     "id": "science-011",
@@ -189,11 +380,27 @@
     "summary": "GPT-4, Claude, Gemini demonstrate human-level reasoning. Cognitive automation begins in earnest.",
     "body": "Large language models achieve human-level performance on professional exams, creative writing, and complex reasoning tasks. GPT-4, Claude, and Gemini demonstrate capabilities that were thought to be decades away. The technology raises profound questions about consciousness, creativity, employment, and what it means to be human in an age of artificial intelligence.",
     "sources": [
-      { "type": "wikipedia", "label": "Large language model", "url": "https://en.wikipedia.org/wiki/Large_language_model" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q115331286" }
+      {
+        "type": "wikipedia",
+        "label": "Large language model",
+        "url": "https://en.wikipedia.org/wiki/Large_language_model"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q115331286"
+      }
     ],
-    "tags": ["ai", "technology", "intelligence", "automation"],
-    "related": ["science-010", "science-012"]
+    "tags": [
+      "ai",
+      "technology",
+      "intelligence",
+      "automation"
+    ],
+    "related": [
+      "science-010",
+      "science-012"
+    ]
   },
   {
     "id": "science-012",
@@ -206,9 +413,20 @@
     "summary": "AI systems achieve autonomous planning, multi-step reasoning, and tool use. Knowledge work transforms.",
     "body": "AI systems evolve from conversational assistants to autonomous agents capable of planning, multi-step reasoning, tool use, and code generation. Knowledge work begins its most significant transformation since the personal computer. The question shifts from 'Can AI do this?' to 'What should AI be allowed to do?'",
     "sources": [
-      { "type": "wikipedia", "label": "Artificial general intelligence", "url": "https://en.wikipedia.org/wiki/Artificial_general_intelligence" }
+      {
+        "type": "wikipedia",
+        "label": "Artificial general intelligence",
+        "url": "https://en.wikipedia.org/wiki/Artificial_general_intelligence"
+      }
     ],
-    "tags": ["ai", "agents", "automation", "future"],
-    "related": ["science-011"]
+    "tags": [
+      "ai",
+      "agents",
+      "automation",
+      "future"
+    ],
+    "related": [
+      "science-011"
+    ]
   }
 ]

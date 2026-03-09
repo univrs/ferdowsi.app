@@ -451,6 +451,19 @@ function EventModal({ ev, onClose }) {
           {ev.title}
         </h2>
         <div style={{ height:2, background:`linear-gradient(90deg, ${layerColor.accent}55, transparent)`, marginBottom:24, borderRadius:1 }} />
+        {ev.wikidata?.image && (
+          <div style={{ marginBottom:20, borderRadius:10, overflow:"hidden", border:`1px solid ${t.border}`, maxHeight:260 }}>
+            <img src={ev.wikidata.image} alt={ev.title}
+              style={{ width:"100%", height:260, objectFit:"cover", display:"block" }}
+              onError={e => { e.target.style.display = "none"; }}
+            />
+          </div>
+        )}
+        {ev.wikidata?.wdDescription && (
+          <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:12, color: t.textMuted, marginBottom:14, fontStyle:"italic" }}>
+            {ev.wikidata.wdDescription}
+          </div>
+        )}
         <p style={{ fontFamily:"'Lora', serif", fontSize:17, color: t.text, lineHeight:2, marginBottom:16, opacity:0.85 }}>
           {ev.body || ev.desc}
         </p>

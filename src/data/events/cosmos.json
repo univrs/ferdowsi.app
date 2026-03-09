@@ -10,12 +10,34 @@
     "summary": "All matter, energy, space and time emerge from a singularity. The universe ignites from infinite density and temperature.",
     "body": "All matter, energy, space and time emerge from a singularity. The universe ignites from infinite density and temperature, expanding outward in the first fraction of a second. Within minutes, the lightest elements form. Within 380,000 years, the cosmic microwave background radiates — the oldest light we can see.",
     "sources": [
-      { "type": "wikipedia", "label": "Big Bang", "url": "https://en.wikipedia.org/wiki/Big_Bang" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q830" },
-      { "type": "academic", "label": "NASA: Universe 101", "url": "https://map.gsfc.nasa.gov/universe/" }
+      {
+        "type": "wikipedia",
+        "label": "Big Bang",
+        "url": "https://en.wikipedia.org/wiki/Big_Bang"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q830"
+      },
+      {
+        "type": "academic",
+        "label": "NASA: Universe 101",
+        "url": "https://map.gsfc.nasa.gov/universe/"
+      }
     ],
-    "tags": ["cosmology", "origin", "physics"],
-    "related": ["cosmos-002"]
+    "tags": [
+      "cosmology",
+      "origin",
+      "physics"
+    ],
+    "related": [
+      "cosmos-002"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cow%20female%20black%20white.jpg",
+      "wdDescription": "large, domesticated, cloven-hooved herbivores"
+    }
   },
   {
     "id": "cosmos-002",
@@ -28,11 +50,31 @@
     "summary": "Population III stars form from primordial hydrogen and helium. Nuclear fusion begins forging heavy elements.",
     "body": "Population III stars form from primordial hydrogen and helium. Nuclear fusion begins forging the heavy elements that will eventually build planets, oceans, and living organisms. These first stars are massive and short-lived, seeding the cosmos with carbon, oxygen, and iron through supernovae.",
     "sources": [
-      { "type": "wikipedia", "label": "Population III star", "url": "https://en.wikipedia.org/wiki/Population_III_star" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q830106" }
+      {
+        "type": "wikipedia",
+        "label": "Population III star",
+        "url": "https://en.wikipedia.org/wiki/Population_III_star"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q830106"
+      }
     ],
-    "tags": ["astronomy", "stellar", "fusion"],
-    "related": ["cosmos-001", "cosmos-003"]
+    "tags": [
+      "astronomy",
+      "stellar",
+      "fusion"
+    ],
+    "related": [
+      "cosmos-001",
+      "cosmos-003"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GeoNames%20screenshot.png",
+      "wdDescription": "geographical database available and accessible through various web services, operated by Unxos GmbH",
+      "country": "Switzerland"
+    }
   },
   {
     "id": "cosmos-003",
@@ -45,11 +87,30 @@
     "summary": "Our galaxy takes shape through galactic mergers and star formation over billions of years.",
     "body": "Our galaxy takes shape over billions of years through galactic mergers and star formation. A spiral disk of 200-400 billion stars emerges in the cosmic web. The Milky Way continues to absorb smaller galaxies and will eventually merge with Andromeda.",
     "sources": [
-      { "type": "wikipedia", "label": "Milky Way", "url": "https://en.wikipedia.org/wiki/Milky_Way" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q321" }
+      {
+        "type": "wikipedia",
+        "label": "Milky Way",
+        "url": "https://en.wikipedia.org/wiki/Milky_Way"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q321"
+      }
     ],
-    "tags": ["galaxy", "astronomy"],
-    "related": ["cosmos-002", "cosmos-004"]
+    "tags": [
+      "galaxy",
+      "astronomy"
+    ],
+    "related": [
+      "cosmos-002",
+      "cosmos-004"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Artist%E2%80%99s%20impression%20of%20the%20Milky%20Way.jpg",
+      "wdDescription": "galaxy containing our Solar System",
+      "partOf": "Local Group"
+    }
   },
   {
     "id": "cosmos-004",
@@ -62,11 +123,35 @@
     "summary": "Gravitational collapse of a molecular cloud forms our Sun and protoplanetary disk.",
     "body": "Gravitational collapse of a molecular cloud forms our Sun and a protoplanetary disk. The inner planets, including proto-Earth, coalesce from rocky material within 100 million years. Jupiter and Saturn form from gas in the outer disk, shaping the architecture of our solar system.",
     "sources": [
-      { "type": "wikipedia", "label": "Formation of the Solar System", "url": "https://en.wikipedia.org/wiki/Formation_and_evolution_of_the_Solar_System" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q544" },
-      { "type": "academic", "label": "NASA: Solar System Exploration", "url": "https://solarsystem.nasa.gov/solar-system/our-solar-system/overview/" }
+      {
+        "type": "wikipedia",
+        "label": "Formation of the Solar System",
+        "url": "https://en.wikipedia.org/wiki/Formation_and_evolution_of_the_Solar_System"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q544"
+      },
+      {
+        "type": "academic",
+        "label": "NASA: Solar System Exploration",
+        "url": "https://solarsystem.nasa.gov/solar-system/our-solar-system/overview/"
+      }
     ],
-    "tags": ["solar", "planets", "formation"],
-    "related": ["cosmos-003", "earth-001"]
+    "tags": [
+      "solar",
+      "planets",
+      "formation"
+    ],
+    "related": [
+      "cosmos-003",
+      "earth-001"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Solar%20System%20true%20color.jpg",
+      "wdDescription": "the Sun, its planets and their moons",
+      "partOf": "Milky Way"
+    }
   }
 ]

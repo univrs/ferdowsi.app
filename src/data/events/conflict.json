@@ -10,12 +10,32 @@
     "summary": "Cleisthenes establishes demokratia in Athens. Citizens vote directly on laws and policy.",
     "body": "Cleisthenes reforms Athens's political system, establishing demokratia — rule by the people. Male citizens vote directly on laws, war, and policy in the Assembly. Juries of hundreds decide court cases. It is the first experiment in self-governance, though it excludes women, slaves, and foreigners. The idea that ordinary people can govern themselves becomes one of history's most powerful — and contested — legacies.",
     "sources": [
-      { "type": "wikipedia", "label": "Athenian democracy", "url": "https://en.wikipedia.org/wiki/Athenian_democracy" },
-      { "type": "wikipedia", "label": "Cleisthenes", "url": "https://en.wikipedia.org/wiki/Cleisthenes" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q188935" }
+      {
+        "type": "wikipedia",
+        "label": "Athenian democracy",
+        "url": "https://en.wikipedia.org/wiki/Athenian_democracy"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Cleisthenes",
+        "url": "https://en.wikipedia.org/wiki/Cleisthenes"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q188935"
+      }
     ],
-    "tags": ["democracy", "greece", "politics", "governance"],
-    "related": ["philosophy-001", "conflict-005"]
+    "tags": [
+      "democracy",
+      "greece",
+      "politics",
+      "governance"
+    ],
+    "related": [
+      "philosophy-001",
+      "conflict-005"
+    ]
   },
   {
     "id": "conflict-002",
@@ -28,12 +48,34 @@
     "summary": "Qin Shi Huang creates the first Chinese empire. Standardized writing, currency, laws, and weights.",
     "body": "After conquering six rival kingdoms, Qin Shi Huang declares himself the First Emperor of China. He standardizes writing, currency, weights, measures, and axle widths across the empire. He connects existing walls into the Great Wall and builds a massive tomb guarded by the Terracotta Army. His brutal but effective unification sets the template for Chinese governance for 2,000 years.",
     "sources": [
-      { "type": "wikipedia", "label": "Qin dynasty", "url": "https://en.wikipedia.org/wiki/Qin_dynasty" },
-      { "type": "wikipedia", "label": "Qin Shi Huang", "url": "https://en.wikipedia.org/wiki/Qin_Shi_Huang" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q7192" }
+      {
+        "type": "wikipedia",
+        "label": "Qin dynasty",
+        "url": "https://en.wikipedia.org/wiki/Qin_dynasty"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Qin Shi Huang",
+        "url": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q7192"
+      }
     ],
-    "tags": ["china", "empire", "unification"],
-    "related": ["conflict-001"]
+    "tags": [
+      "china",
+      "empire",
+      "unification"
+    ],
+    "related": [
+      "conflict-001"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Qinshihuang.jpg",
+      "wdDescription": "first emperor of Qin Dynasty"
+    }
   },
   {
     "id": "conflict-003",
@@ -48,11 +90,25 @@
     "summary": "Julius Caesar falls in the Roman Senate on the Ides of March. The Republic collapses. The Empire rises.",
     "body": "On March 15, 44 BCE, Julius Caesar is stabbed 23 times by a group of senators led by Brutus and Cassius. The conspirators seek to restore the Roman Republic, but their act triggers civil wars that destroy it. Caesar's adopted heir Octavian becomes Augustus, the first Roman Emperor. The Republic's death demonstrates how political violence can produce the opposite of its intended result.",
     "sources": [
-      { "type": "wikipedia", "label": "Assassination of Julius Caesar", "url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q36477" }
+      {
+        "type": "wikipedia",
+        "label": "Assassination of Julius Caesar",
+        "url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q36477"
+      }
     ],
-    "tags": ["rome", "republic", "politics"],
-    "related": ["conflict-004"]
+    "tags": [
+      "rome",
+      "republic",
+      "politics"
+    ],
+    "related": [
+      "conflict-004"
+    ]
   },
   {
     "id": "conflict-004",
@@ -65,11 +121,35 @@
     "summary": "Romulus Augustulus is deposed. The Western Roman Empire formally ends. Medieval Europe begins.",
     "body": "The Germanic chieftain Odoacer deposes the last Western Roman Emperor, the teenager Romulus Augustulus. The Western Roman Empire, which has been disintegrating for decades, formally ends. But Roman law, Latin, Christianity, and imperial administrative structures persist, forming the foundation of medieval European civilization. The Eastern Roman Empire (Byzantium) continues for another 977 years.",
     "sources": [
-      { "type": "wikipedia", "label": "Fall of the Western Roman Empire", "url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q42834" }
+      {
+        "type": "wikipedia",
+        "label": "Fall of the Western Roman Empire",
+        "url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q42834"
+      }
     ],
-    "tags": ["rome", "medieval", "collapse"],
-    "related": ["conflict-003", "conflict-005"]
+    "tags": [
+      "rome",
+      "medieval",
+      "collapse"
+    ],
+    "related": [
+      "conflict-003",
+      "conflict-005"
+    ],
+    "wikidata": {
+      "coords": {
+        "lon": 12.482777777,
+        "lat": 41.893055555
+      },
+      "wdDescription": "independently administered western provinces of the Roman Empire",
+      "country": "Roman Empire",
+      "partOf": "Roman Empire"
+    }
   },
   {
     "id": "conflict-005",
@@ -84,11 +164,30 @@
     "summary": "Battle of Hastings. William the Conqueror permanently reshapes English law, language, and aristocracy.",
     "body": "William, Duke of Normandy, defeats King Harold II at the Battle of Hastings and conquers England. The Norman Conquest replaces the Anglo-Saxon ruling class entirely, introduces feudalism, transforms English law with the Domesday Book census, and infuses the English language with thousands of French and Latin words. Modern English is a direct product of this collision of cultures.",
     "sources": [
-      { "type": "wikipedia", "label": "Norman Conquest", "url": "https://en.wikipedia.org/wiki/Norman_Conquest" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q46083" }
+      {
+        "type": "wikipedia",
+        "label": "Norman Conquest",
+        "url": "https://en.wikipedia.org/wiki/Norman_Conquest"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q46083"
+      }
     ],
-    "tags": ["england", "medieval", "conquest"],
-    "related": ["conflict-006"]
+    "tags": [
+      "england",
+      "medieval",
+      "conquest"
+    ],
+    "related": [
+      "conflict-006"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle-Mars-Le-Tour-large.jpg",
+      "wdDescription": "1870–1871 military conflict of the Second French Empire versus Prussia and its allies",
+      "partOf": "unification of Germany"
+    }
   },
   {
     "id": "conflict-006",
@@ -103,12 +202,32 @@
     "summary": "King John forced to sign the Great Charter limiting royal power. Seeds of constitutional law are planted.",
     "body": "Rebellious English barons force King John to seal Magna Carta at Runnymede. The charter establishes that the king is not above the law, guarantees trial by jury, and limits arbitrary taxation. Though initially a feudal document protecting baronial privileges, its principles of habeas corpus and due process become the foundation of constitutional law worldwide.",
     "sources": [
-      { "type": "wikipedia", "label": "Magna Carta", "url": "https://en.wikipedia.org/wiki/Magna_Carta" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q102093" },
-      { "type": "primary", "label": "British Library: Magna Carta", "url": "https://www.bl.uk/magna-carta" }
+      {
+        "type": "wikipedia",
+        "label": "Magna Carta",
+        "url": "https://en.wikipedia.org/wiki/Magna_Carta"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q102093"
+      },
+      {
+        "type": "primary",
+        "label": "British Library: Magna Carta",
+        "url": "https://www.bl.uk/magna-carta"
+      }
     ],
-    "tags": ["law", "rights", "england", "constitution"],
-    "related": ["conflict-005", "conflict-007"]
+    "tags": [
+      "law",
+      "rights",
+      "england",
+      "constitution"
+    ],
+    "related": [
+      "conflict-005",
+      "conflict-007"
+    ]
   },
   {
     "id": "conflict-007",
@@ -123,12 +242,37 @@
     "summary": "Declaration of Independence. Enlightenment ideals codified as the basis of government.",
     "body": "The Declaration of Independence asserts that 'all men are created equal' with 'unalienable Rights' to 'Life, Liberty and the pursuit of Happiness.' The American Revolution translates Enlightenment philosophy into a functioning republic — imperfect (slavery, exclusion of women) but revolutionary. The Constitution and Bill of Rights become templates for democratic movements worldwide.",
     "sources": [
-      { "type": "wikipedia", "label": "American Revolution", "url": "https://en.wikipedia.org/wiki/American_Revolution" },
-      { "type": "primary", "label": "Declaration of Independence", "url": "https://www.archives.gov/founding-docs/declaration-transcript" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q192769" }
+      {
+        "type": "wikipedia",
+        "label": "American Revolution",
+        "url": "https://en.wikipedia.org/wiki/American_Revolution"
+      },
+      {
+        "type": "primary",
+        "label": "Declaration of Independence",
+        "url": "https://www.archives.gov/founding-docs/declaration-transcript"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q192769"
+      }
     ],
-    "tags": ["revolution", "democracy", "america", "enlightenment"],
-    "related": ["conflict-006", "conflict-008"]
+    "tags": [
+      "revolution",
+      "democracy",
+      "america",
+      "enlightenment"
+    ],
+    "related": [
+      "conflict-006",
+      "conflict-008"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20Independence%20%281819%29%2C%20by%20John%20Trumbull.jpg",
+      "wdDescription": "revolution establishing the United States of America",
+      "country": "United States"
+    }
   },
   {
     "id": "conflict-008",
@@ -143,11 +287,32 @@
     "summary": "Liberte, Egalite, Fraternite. Modern concepts of nationalism, citizenship, and human rights are born.",
     "body": "The storming of the Bastille on July 14 ignites a revolution that overthrows the French monarchy and feudal system. The Declaration of the Rights of Man and of the Citizen establishes that sovereignty resides in the nation, not the king. Modern concepts of nationalism, citizenship, human rights, and secular governance are born — along with the Terror that demonstrates revolution's capacity for self-destruction.",
     "sources": [
-      { "type": "wikipedia", "label": "French Revolution", "url": "https://en.wikipedia.org/wiki/French_Revolution" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q6534" }
+      {
+        "type": "wikipedia",
+        "label": "French Revolution",
+        "url": "https://en.wikipedia.org/wiki/French_Revolution"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q6534"
+      }
     ],
-    "tags": ["revolution", "france", "democracy", "rights"],
-    "related": ["conflict-007", "conflict-009"]
+    "tags": [
+      "revolution",
+      "france",
+      "democracy",
+      "rights"
+    ],
+    "related": [
+      "conflict-007",
+      "conflict-009"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
+      "wdDescription": "revolution in France from 1789 to 1799",
+      "country": "France"
+    }
   },
   {
     "id": "conflict-009",
@@ -160,11 +325,30 @@
     "summary": "Industrial warfare kills 20 million. Four empires dissolve. The map of the modern world is drawn.",
     "body": "The assassination of Archduke Franz Ferdinand triggers a chain reaction of alliances that engulfs Europe in industrial warfare. Machine guns, poison gas, tanks, and aircraft transform combat. 20 million die. The Ottoman, Austro-Hungarian, German, and Russian empires dissolve. The map of the Middle East, Europe, and Asia is redrawn by the victors — sowing the seeds of the next century's conflicts.",
     "sources": [
-      { "type": "wikipedia", "label": "World War I", "url": "https://en.wikipedia.org/wiki/World_War_I" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q361" }
+      {
+        "type": "wikipedia",
+        "label": "World War I",
+        "url": "https://en.wikipedia.org/wiki/World_War_I"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q361"
+      }
     ],
-    "tags": ["war", "global", "industrial", "empire"],
-    "related": ["conflict-010"]
+    "tags": [
+      "war",
+      "global",
+      "industrial",
+      "empire"
+    ],
+    "related": [
+      "conflict-010"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
+      "wdDescription": "global war originating in Europe, 1914–1918"
+    }
   },
   {
     "id": "conflict-010",
@@ -177,11 +361,33 @@
     "summary": "The Bolsheviks seize power. The Soviet Union forms. Communism reshapes the 20th century.",
     "body": "In October 1917, the Bolsheviks seize power in Petrograd, overthrowing the provisional government that had replaced the Tsar. Vladimir Lenin establishes the world's first communist state. The Soviet Union becomes a superpower that reshapes global politics for 74 years, inspiring revolutions on every continent while imposing totalitarian control at home.",
     "sources": [
-      { "type": "wikipedia", "label": "Russian Revolution", "url": "https://en.wikipedia.org/wiki/Russian_Revolution" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q8729" }
+      {
+        "type": "wikipedia",
+        "label": "Russian Revolution",
+        "url": "https://en.wikipedia.org/wiki/Russian_Revolution"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q8729"
+      }
     ],
-    "tags": ["communism", "revolution", "russia", "ideology"],
-    "related": ["conflict-009", "conflict-011"]
+    "tags": [
+      "communism",
+      "revolution",
+      "russia",
+      "ideology"
+    ],
+    "related": [
+      "conflict-009",
+      "conflict-011"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Revoluci%C3%B3n-marzo-rusia--russianbolshevik00rossuoft.png",
+      "wdDescription": "1917-1922 political change in Russia",
+      "country": "Russian Empire",
+      "partOf": "revolutions of 1917–1923"
+    }
   },
   {
     "id": "conflict-011",
@@ -194,12 +400,36 @@
     "summary": "Deadliest conflict in history. 70-85 million dead. The Holocaust. Atomic bombs. A new world order.",
     "body": "Nazi Germany's invasion of Poland triggers the deadliest conflict in human history. 70-85 million people die, including 6 million Jews murdered in the Holocaust. The war ends with atomic bombs destroying Hiroshima and Nagasaki. The United Nations, the Cold War, decolonization, and the modern international order all emerge from the wreckage.",
     "sources": [
-      { "type": "wikipedia", "label": "World War II", "url": "https://en.wikipedia.org/wiki/World_War_II" },
-      { "type": "wikipedia", "label": "The Holocaust", "url": "https://en.wikipedia.org/wiki/The_Holocaust" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q362" }
+      {
+        "type": "wikipedia",
+        "label": "World War II",
+        "url": "https://en.wikipedia.org/wiki/World_War_II"
+      },
+      {
+        "type": "wikipedia",
+        "label": "The Holocaust",
+        "url": "https://en.wikipedia.org/wiki/The_Holocaust"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q362"
+      }
     ],
-    "tags": ["war", "holocaust", "nuclear", "global"],
-    "related": ["conflict-009", "conflict-012"]
+    "tags": [
+      "war",
+      "holocaust",
+      "nuclear",
+      "global"
+    ],
+    "related": [
+      "conflict-009",
+      "conflict-012"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infobox%20collage%20for%20WWII.PNG",
+      "wdDescription": "1939–1945 global conflict"
+    }
   },
   {
     "id": "conflict-012",
@@ -214,11 +444,32 @@
     "summary": "The Cold War ends. Germany reunifies. The Soviet bloc collapses.",
     "body": "On November 9, 1989, East Germany opens its borders and citizens begin dismantling the Berlin Wall with hammers and bare hands. Within two years, Germany reunifies, the Soviet Union dissolves, and the Cold War that defined global politics for 44 years ends. Francis Fukuyama declares 'the end of history.' The 21st century will prove otherwise.",
     "sources": [
-      { "type": "wikipedia", "label": "Fall of the Berlin Wall", "url": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q154668" }
+      {
+        "type": "wikipedia",
+        "label": "Fall of the Berlin Wall",
+        "url": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q154668"
+      }
     ],
-    "tags": ["coldwar", "germany", "communism", "freedom"],
-    "related": ["conflict-010", "conflict-013"]
+    "tags": [
+      "coldwar",
+      "germany",
+      "communism",
+      "freedom"
+    ],
+    "related": [
+      "conflict-010",
+      "conflict-013"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Patricio%20Romano.svg",
+      "wdDescription": "name given to members of the old-established upper class in ancient Rome",
+      "partOf": "patricians and plebeians"
+    }
   },
   {
     "id": "conflict-013",
@@ -233,10 +484,31 @@
     "summary": "Al-Qaeda attacks kill 2,977 people. The War on Terror begins. Surveillance states expand.",
     "body": "Al-Qaeda hijackers crash four airliners, destroying the World Trade Center and damaging the Pentagon. 2,977 people die. The attacks trigger the War on Terror, invasions of Afghanistan and Iraq, and a global expansion of surveillance and security infrastructure. The post-Cold War optimism of the 1990s gives way to a new era of fear, conflict, and eroding civil liberties.",
     "sources": [
-      { "type": "wikipedia", "label": "September 11 attacks", "url": "https://en.wikipedia.org/wiki/September_11_attacks" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q10806" }
+      {
+        "type": "wikipedia",
+        "label": "September 11 attacks",
+        "url": "https://en.wikipedia.org/wiki/September_11_attacks"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q10806"
+      }
     ],
-    "tags": ["terrorism", "usa", "geopolitics", "security"],
-    "related": ["conflict-012"]
+    "tags": [
+      "terrorism",
+      "usa",
+      "geopolitics",
+      "security"
+    ],
+    "related": [
+      "conflict-012"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/North%20face%20south%20tower%20after%20plane%20strike%209-11.jpg",
+      "wdDescription": "2001 attacks in the United States",
+      "country": "United States",
+      "partOf": "terrorism in the United States"
+    }
   }
 ]

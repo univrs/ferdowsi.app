@@ -10,12 +10,36 @@
     "summary": "Self-replicating molecules appear in hydrothermal vents or tidal pools. The biosphere begins.",
     "body": "Self-replicating RNA molecules appear — possibly in deep-sea hydrothermal vents, warm tidal pools, or ice sheets. The boundary between chemistry and biology is crossed. The exact mechanism remains one of science's deepest mysteries, but isotopic evidence from Greenland rocks suggests life was present by 3.7 billion years ago.",
     "sources": [
-      { "type": "wikipedia", "label": "Abiogenesis", "url": "https://en.wikipedia.org/wiki/Abiogenesis" },
-      { "type": "wikipedia", "label": "Earliest known life forms", "url": "https://en.wikipedia.org/wiki/Earliest_known_life_forms" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q189588" }
+      {
+        "type": "wikipedia",
+        "label": "Abiogenesis",
+        "url": "https://en.wikipedia.org/wiki/Abiogenesis"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Earliest known life forms",
+        "url": "https://en.wikipedia.org/wiki/Earliest_known_life_forms"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q189588"
+      }
     ],
-    "tags": ["biology", "RNA", "origin", "evolution"],
-    "related": ["earth-001", "life-002"]
+    "tags": [
+      "biology",
+      "RNA",
+      "origin",
+      "evolution"
+    ],
+    "related": [
+      "earth-001",
+      "life-002"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Adenocarcinoma%20of%20the%20stomach.jpg",
+      "wdDescription": "gastrointestinal system cancer that is located in the stomach"
+    }
   },
   {
     "id": "life-002",
@@ -28,12 +52,35 @@
     "summary": "An archaeon engulfs a bacterium, which becomes the mitochondrion. Complex cells with nuclei emerge.",
     "body": "A momentous endosymbiotic event: an archaeon engulfs a bacterium, which becomes the mitochondrion — the powerhouse of the cell. Complex cells with nuclei (eukaryotes) emerge, enabling multicellular organisms, sexual reproduction, and eventually all plants, fungi, and animals.",
     "sources": [
-      { "type": "wikipedia", "label": "Eukaryote", "url": "https://en.wikipedia.org/wiki/Eukaryote" },
-      { "type": "wikipedia", "label": "Endosymbiotic theory", "url": "https://en.wikipedia.org/wiki/Endosymbiotic_theory" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q19088" }
+      {
+        "type": "wikipedia",
+        "label": "Eukaryote",
+        "url": "https://en.wikipedia.org/wiki/Eukaryote"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Endosymbiotic theory",
+        "url": "https://en.wikipedia.org/wiki/Endosymbiotic_theory"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q19088"
+      }
     ],
-    "tags": ["evolution", "cells", "biology"],
-    "related": ["life-001", "life-003"]
+    "tags": [
+      "evolution",
+      "cells",
+      "biology"
+    ],
+    "related": [
+      "life-001",
+      "life-003"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Eukaryota%20diversity%202.jpg",
+      "wdDescription": "taxonomic group whose members have a cell nucleus enclosed within a nuclear envelope"
+    }
   },
   {
     "id": "life-003",
@@ -46,12 +93,36 @@
     "summary": "In ~25 million years, nearly all major animal body plans appear suddenly in the fossil record.",
     "body": "In a geologically brief ~25 million years, nearly all major animal phyla appear in the fossil record. Eyes, limbs, nervous systems, shells, and predation emerge. The trigger remains debated — rising oxygen, new ecological niches, or genetic innovation. The Cambrian Explosion marks the dawn of visible animal life.",
     "sources": [
-      { "type": "wikipedia", "label": "Cambrian explosion", "url": "https://en.wikipedia.org/wiki/Cambrian_explosion" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q82658" },
-      { "type": "museum", "label": "Smithsonian: Burgess Shale", "url": "https://naturalhistory.si.edu/education/teaching-resources/life-science/burgess-shale" }
+      {
+        "type": "wikipedia",
+        "label": "Cambrian explosion",
+        "url": "https://en.wikipedia.org/wiki/Cambrian_explosion"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q82658"
+      },
+      {
+        "type": "museum",
+        "label": "Smithsonian: Burgess Shale",
+        "url": "https://naturalhistory.si.edu/education/teaching-resources/life-science/burgess-shale"
+      }
     ],
-    "tags": ["evolution", "diversity", "paleontology"],
-    "related": ["life-002", "life-004"]
+    "tags": [
+      "evolution",
+      "diversity",
+      "paleontology"
+    ],
+    "related": [
+      "life-002",
+      "life-004"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gypse%20Caresse.jpg",
+      "wdDescription": "mineral, calcium sulfate with bounded water",
+      "partOf": "bofutsushosan"
+    }
   },
   {
     "id": "life-004",
@@ -64,12 +135,35 @@
     "summary": "Fish with primitive limbs pioneer the transition to land. Tetrapods adapt to terrestrial life.",
     "body": "Fish with primitive limbs (Tiktaalik and relatives) pioneer the transition from water to land. Over millions of years, tetrapods develop lungs, weight-bearing limbs, and waterproof skin. Forests of giant ferns and early trees spread across continents, transforming atmospheric chemistry.",
     "sources": [
-      { "type": "wikipedia", "label": "Tiktaalik", "url": "https://en.wikipedia.org/wiki/Tiktaalik" },
-      { "type": "wikipedia", "label": "Tetrapod", "url": "https://en.wikipedia.org/wiki/Tetrapod" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q188631" }
+      {
+        "type": "wikipedia",
+        "label": "Tiktaalik",
+        "url": "https://en.wikipedia.org/wiki/Tiktaalik"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Tetrapod",
+        "url": "https://en.wikipedia.org/wiki/Tetrapod"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q188631"
+      }
     ],
-    "tags": ["evolution", "tetrapods", "transition"],
-    "related": ["life-003", "life-005"]
+    "tags": [
+      "evolution",
+      "tetrapods",
+      "transition"
+    ],
+    "related": [
+      "life-003",
+      "life-005"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VulcanizationMold1941.jpg",
+      "wdDescription": "chemical process for converting natural rubber or related polymers into more durable materials"
+    }
   },
   {
     "id": "life-005",
@@ -82,11 +176,33 @@
     "summary": "The lineage leading to humans diverges from our last common ancestor with chimpanzees.",
     "body": "The lineage leading to humans diverges from our last common ancestor with chimpanzees somewhere between 6-8 million years ago. Bipedalism emerges on the African savanna as forests recede due to climate change. The exact species at the split point (Sahelanthropus? Orrorin?) remains debated.",
     "sources": [
-      { "type": "wikipedia", "label": "Chimpanzee-human last common ancestor", "url": "https://en.wikipedia.org/wiki/Chimpanzee%E2%80%93human_last_common_ancestor" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q471379" }
+      {
+        "type": "wikipedia",
+        "label": "Chimpanzee-human last common ancestor",
+        "url": "https://en.wikipedia.org/wiki/Chimpanzee%E2%80%93human_last_common_ancestor"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q471379"
+      }
     ],
-    "tags": ["evolution", "hominid", "africa"],
-    "related": ["life-006"]
+    "tags": [
+      "evolution",
+      "hominid",
+      "africa"
+    ],
+    "related": [
+      "life-006"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edvard%20Munch%2C%201893%2C%20The%20Scream%2C%20oil%2C%20tempera%20and%20pastel%20on%20cardboard%2C%2091%20x%2073%20cm%2C%20National%20Gallery%20of%20Norway.jpg",
+      "coords": {
+        "lon": 10.7375,
+        "lat": 59.916111111
+      },
+      "wdDescription": "group of paintings by Edvard Munch"
+    }
   },
   {
     "id": "life-006",
@@ -99,12 +215,39 @@
     "summary": "Anatomically modern humans appear in Africa. A new kind of mind enters the world.",
     "body": "Anatomically modern humans appear in Morocco (Jebel Irhoud) and East Africa. Brain architecture enables recursive language, abstract thought, symbolic culture, and cumulative technological innovation — capacities no prior species possessed. From a small African population, Homo sapiens will colonize every continent and reshape the planet.",
     "sources": [
-      { "type": "wikipedia", "label": "Homo sapiens", "url": "https://en.wikipedia.org/wiki/Homo_sapiens" },
-      { "type": "wikipedia", "label": "Jebel Irhoud", "url": "https://en.wikipedia.org/wiki/Jebel_Irhoud" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q15978631" },
-      { "type": "academic", "label": "Nature: Oldest Homo sapiens fossils", "url": "https://www.nature.com/articles/nature22336" }
+      {
+        "type": "wikipedia",
+        "label": "Homo sapiens",
+        "url": "https://en.wikipedia.org/wiki/Homo_sapiens"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Jebel Irhoud",
+        "url": "https://en.wikipedia.org/wiki/Jebel_Irhoud"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q15978631"
+      },
+      {
+        "type": "academic",
+        "label": "Nature: Oldest Homo sapiens fossils",
+        "url": "https://www.nature.com/articles/nature22336"
+      }
     ],
-    "tags": ["human", "evolution", "cognition"],
-    "related": ["life-005", "society-001"]
+    "tags": [
+      "human",
+      "evolution",
+      "cognition"
+    ],
+    "related": [
+      "life-005",
+      "society-001"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Human.svg",
+      "wdDescription": "species of mammal"
+    }
   }
 ]

@@ -47,6 +47,7 @@ export const EVENTS_FLAT = ALL_EVENTS.map((ev, idx) => ({
   confidence: ev.confidence,
   month: ev.month,
   day: ev.day,
+  wikidata: ev.wikidata || null,
 }));
 
 // Full enriched events for components that support the rich format

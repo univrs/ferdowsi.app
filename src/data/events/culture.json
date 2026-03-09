@@ -10,12 +10,35 @@
     "summary": "Cuneiform script emerges in Sumer for accounting. Within centuries, it records laws, literature, and astronomy.",
     "body": "Cuneiform script emerges in Sumer, initially as a system for tracking grain surpluses and debts on clay tablets. Within centuries, writing evolves to record laws (Code of Ur-Nammu), literature (Epic of Gilgamesh), and astronomical observations. The invention of writing marks the boundary between prehistory and history — the moment human knowledge becomes cumulative across generations.",
     "sources": [
-      { "type": "wikipedia", "label": "Cuneiform", "url": "https://en.wikipedia.org/wiki/Cuneiform" },
-      { "type": "wikipedia", "label": "History of writing", "url": "https://en.wikipedia.org/wiki/History_of_writing" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q8196" }
+      {
+        "type": "wikipedia",
+        "label": "Cuneiform",
+        "url": "https://en.wikipedia.org/wiki/Cuneiform"
+      },
+      {
+        "type": "wikipedia",
+        "label": "History of writing",
+        "url": "https://en.wikipedia.org/wiki/History_of_writing"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q8196"
+      }
     ],
-    "tags": ["writing", "communication", "information"],
-    "related": ["society-004", "herstory-002"]
+    "tags": [
+      "writing",
+      "communication",
+      "information"
+    ],
+    "related": [
+      "society-004",
+      "herstory-002"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arabic-script.png",
+      "wdDescription": "alphabet specifically codified for writing the Arabic language"
+    }
   },
   {
     "id": "culture-002",
@@ -28,11 +51,36 @@
     "summary": "The Giza complex is completed by Pharaoh Khufu. It remains the tallest human structure for 3,800 years.",
     "body": "The Great Pyramid of Giza is completed for Pharaoh Khufu, standing 146 meters tall. Built from 2.3 million limestone blocks averaging 2.5 tons each, it remains the tallest human-made structure for 3,800 years. The precision of its construction — aligned to true north within 3/60th of a degree — demonstrates engineering sophistication that still amazes modern architects.",
     "sources": [
-      { "type": "wikipedia", "label": "Great Pyramid of Giza", "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q37200" }
+      {
+        "type": "wikipedia",
+        "label": "Great Pyramid of Giza",
+        "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q37200"
+      }
     ],
-    "tags": ["egypt", "architecture", "engineering"],
-    "related": ["herstory-001", "culture-001"]
+    "tags": [
+      "egypt",
+      "architecture",
+      "engineering"
+    ],
+    "related": [
+      "herstory-001",
+      "culture-001"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg",
+      "coords": {
+        "lon": 31.13422,
+        "lat": 29.97915
+      },
+      "wdDescription": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
+      "country": "Egypt",
+      "partOf": "Giza pyramid complex"
+    }
   },
   {
     "id": "culture-003",
@@ -45,11 +93,34 @@
     "summary": "Alexander the Great dies at 32, having conquered from Greece to India. Hellenistic culture spreads.",
     "body": "Alexander the Great dies in Babylon at 32, having created an empire stretching from Greece to India. His conquests spread Greek language, philosophy, art, and science across three continents. The Hellenistic period that follows sees the blending of Greek, Persian, Egyptian, and Indian cultures — producing breakthroughs in mathematics, astronomy, and medicine at places like the Library of Alexandria.",
     "sources": [
-      { "type": "wikipedia", "label": "Alexander the Great", "url": "https://en.wikipedia.org/wiki/Alexander_the_Great" },
-      { "type": "wikipedia", "label": "Hellenistic period", "url": "https://en.wikipedia.org/wiki/Hellenistic_period" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q8409" }
+      {
+        "type": "wikipedia",
+        "label": "Alexander the Great",
+        "url": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Hellenistic period",
+        "url": "https://en.wikipedia.org/wiki/Hellenistic_period"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q8409"
+      }
     ],
-    "tags": ["greece", "empire", "hellenistic"],
-    "related": ["philosophy-001", "conflict-001"]
+    "tags": [
+      "greece",
+      "empire",
+      "hellenistic"
+    ],
+    "related": [
+      "philosophy-001",
+      "conflict-001"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20the%20Great%20mosaic%20%28cropped%29.jpg",
+      "wdDescription": "king of Macedonia and conqueror of Achaemenid Persia (356–323 BC)"
+    }
   }
 ]

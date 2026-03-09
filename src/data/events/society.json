@@ -10,12 +10,36 @@
     "summary": "Something ignites in the human mind — symbolic language, art, religion, and long-distance trade appear suddenly.",
     "body": "Sometime between 70,000 and 30,000 years ago, Homo sapiens undergo a dramatic cognitive leap — possibly driven by a genetic mutation affecting brain wiring. Symbolic language, figurative art, religious ritual, and long-distance trade networks appear suddenly in the archaeological record. Humans begin to cooperate in large groups united by shared myths, enabling them to outcompete every other species.",
     "sources": [
-      { "type": "wikipedia", "label": "Behavioral modernity", "url": "https://en.wikipedia.org/wiki/Behavioral_modernity" },
-      { "type": "book", "label": "Yuval Noah Harari, Sapiens", "url": "https://en.wikipedia.org/wiki/Sapiens:_A_Brief_History_of_Humankind" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q484954" }
+      {
+        "type": "wikipedia",
+        "label": "Behavioral modernity",
+        "url": "https://en.wikipedia.org/wiki/Behavioral_modernity"
+      },
+      {
+        "type": "book",
+        "label": "Yuval Noah Harari, Sapiens",
+        "url": "https://en.wikipedia.org/wiki/Sapiens:_A_Brief_History_of_Humankind"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q484954"
+      }
     ],
-    "tags": ["cognition", "language", "consciousness"],
-    "related": ["life-006", "society-002"]
+    "tags": [
+      "cognition",
+      "language",
+      "consciousness"
+    ],
+    "related": [
+      "life-006",
+      "society-002"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Punishment%20sisyph.jpg",
+      "wdDescription": "mental attitude wherein an undesired outcome is anticipated",
+      "partOf": "theory of emotion"
+    }
   },
   {
     "id": "society-002",
@@ -28,12 +52,31 @@
     "summary": "Maritime technology allows humans to cross open water and populate Australia. Aboriginal culture begins.",
     "body": "Using rafts or simple boats, humans cross at least 90 kilometers of open water to reach the Australian continent. This is the first known ocean crossing by any species. Aboriginal Australians establish the oldest continuous civilization on Earth, developing sophisticated land management, navigation systems encoded in songlines, and a rich cosmology that persists to the present day.",
     "sources": [
-      { "type": "wikipedia", "label": "Early human migrations", "url": "https://en.wikipedia.org/wiki/Early_human_migrations" },
-      { "type": "wikipedia", "label": "Aboriginal Australians", "url": "https://en.wikipedia.org/wiki/Aboriginal_Australians" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q28473" }
+      {
+        "type": "wikipedia",
+        "label": "Early human migrations",
+        "url": "https://en.wikipedia.org/wiki/Early_human_migrations"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Aboriginal Australians",
+        "url": "https://en.wikipedia.org/wiki/Aboriginal_Australians"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q28473"
+      }
     ],
-    "tags": ["migration", "australia", "maritime"],
-    "related": ["society-001", "indigenous-001"]
+    "tags": [
+      "migration",
+      "australia",
+      "maritime"
+    ],
+    "related": [
+      "society-001",
+      "indigenous-001"
+    ]
   },
   {
     "id": "society-003",
@@ -46,11 +89,26 @@
     "summary": "Humans begin cultivating crops. The Neolithic revolution transforms nomadic bands into settled civilizations.",
     "body": "In the Fertile Crescent, humans begin cultivating wheat, barley, and lentils and domesticating sheep, goats, and cattle. Independently, rice is domesticated in China, maize in Mexico, and yams in West Africa. Agriculture enables population density 10-100x greater than foraging, but brings hierarchy, disease, malnutrition, and environmental degradation. The tradeoff that launched civilization.",
     "sources": [
-      { "type": "wikipedia", "label": "Neolithic Revolution", "url": "https://en.wikipedia.org/wiki/Neolithic_Revolution" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q131255" }
+      {
+        "type": "wikipedia",
+        "label": "Neolithic Revolution",
+        "url": "https://en.wikipedia.org/wiki/Neolithic_Revolution"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q131255"
+      }
     ],
-    "tags": ["agriculture", "civilization", "neolithic"],
-    "related": ["earth-005", "society-004"]
+    "tags": [
+      "agriculture",
+      "civilization",
+      "neolithic"
+    ],
+    "related": [
+      "earth-005",
+      "society-004"
+    ]
   },
   {
     "id": "society-004",
@@ -63,12 +121,31 @@
     "summary": "Uruk in Mesopotamia grows to 50,000 inhabitants. Specialized labor, markets, and bureaucracy emerge.",
     "body": "Uruk in southern Mesopotamia grows to 50,000 inhabitants — the first city in human history. Specialized labor, markets, temples, administrative bureaucracy, and social hierarchy emerge. Writing develops to track grain surpluses and debts. The city-state becomes the basic unit of civilization, a pattern that persists for 5,000 years.",
     "sources": [
-      { "type": "wikipedia", "label": "Uruk", "url": "https://en.wikipedia.org/wiki/Uruk" },
-      { "type": "wikipedia", "label": "Cradle of civilization", "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q7053" }
+      {
+        "type": "wikipedia",
+        "label": "Uruk",
+        "url": "https://en.wikipedia.org/wiki/Uruk"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Cradle of civilization",
+        "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q7053"
+      }
     ],
-    "tags": ["urban", "mesopotamia", "sumer"],
-    "related": ["society-003", "culture-001"]
+    "tags": [
+      "urban",
+      "mesopotamia",
+      "sumer"
+    ],
+    "related": [
+      "society-003",
+      "culture-001"
+    ]
   },
   {
     "id": "society-005",
@@ -81,12 +158,31 @@
     "summary": "Mysterious simultaneous collapse of Mycenaean Greece, Hittite Empire, Ugarit, and Egypt. Trade networks shatter.",
     "body": "Within a few decades around 1200 BCE, nearly every major civilization in the Eastern Mediterranean collapses simultaneously. Mycenaean Greece, the Hittite Empire, Ugarit, and the Egyptian New Kingdom all fall or severely decline. Trade networks shatter. Writing systems are lost. The cause remains one of history's great mysteries — drought, invasion by 'Sea Peoples,' earthquake storms, or cascading systems failure.",
     "sources": [
-      { "type": "wikipedia", "label": "Late Bronze Age collapse", "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse" },
-      { "type": "book", "label": "Eric Cline, 1177 B.C.", "url": "https://en.wikipedia.org/wiki/1177_B.C.:_The_Year_Civilization_Collapsed" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q622427" }
+      {
+        "type": "wikipedia",
+        "label": "Late Bronze Age collapse",
+        "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse"
+      },
+      {
+        "type": "book",
+        "label": "Eric Cline, 1177 B.C.",
+        "url": "https://en.wikipedia.org/wiki/1177_B.C.:_The_Year_Civilization_Collapsed"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q622427"
+      }
     ],
-    "tags": ["collapse", "bronze age", "crisis"],
-    "related": ["society-004", "conflict-001"]
+    "tags": [
+      "collapse",
+      "bronze age",
+      "crisis"
+    ],
+    "related": [
+      "society-004",
+      "conflict-001"
+    ]
   },
   {
     "id": "society-006",
@@ -99,12 +195,30 @@
     "summary": "The Julian calendar reform anchors the Western chronological system. Approximate birth of Jesus of Nazareth.",
     "body": "The year 1 CE marks the conventional start of the Common Era, anchored to the approximate birth year of Jesus of Nazareth as calculated (with known errors) by the monk Dionysius Exiguus in 525 CE. The Julian calendar reform under Caesar had already standardized timekeeping across the Roman world. This date becomes the pivot point of the Western chronological system used globally today.",
     "sources": [
-      { "type": "wikipedia", "label": "Common Era", "url": "https://en.wikipedia.org/wiki/Common_Era" },
-      { "type": "wikipedia", "label": "Anno Domini", "url": "https://en.wikipedia.org/wiki/Anno_Domini" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q21199" }
+      {
+        "type": "wikipedia",
+        "label": "Common Era",
+        "url": "https://en.wikipedia.org/wiki/Common_Era"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Anno Domini",
+        "url": "https://en.wikipedia.org/wiki/Anno_Domini"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q21199"
+      }
     ],
-    "tags": ["christianity", "calendar", "rome"],
-    "related": ["conflict-004"]
+    "tags": [
+      "christianity",
+      "calendar",
+      "rome"
+    ],
+    "related": [
+      "conflict-004"
+    ]
   },
   {
     "id": "society-007",
@@ -117,12 +231,40 @@
     "summary": "After Muhammad's death, Islam expands from Arabia across Persia, Egypt, North Africa, and Spain within a century.",
     "body": "After the Prophet Muhammad's death in 632 CE, Islam expands with extraordinary speed. Within a century, the Islamic caliphate stretches from Spain to Central Asia — the largest empire the world has yet seen. Arabic becomes the lingua franca of science, philosophy, and trade. The Islamic Golden Age preserves and advances Greek, Persian, and Indian knowledge while Europe enters its medieval period.",
     "sources": [
-      { "type": "wikipedia", "label": "Early Muslim conquests", "url": "https://en.wikipedia.org/wiki/Early_Muslim_conquests" },
-      { "type": "wikipedia", "label": "Islamic Golden Age", "url": "https://en.wikipedia.org/wiki/Islamic_Golden_Age" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q8575586" }
+      {
+        "type": "wikipedia",
+        "label": "Early Muslim conquests",
+        "url": "https://en.wikipedia.org/wiki/Early_Muslim_conquests"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Islamic Golden Age",
+        "url": "https://en.wikipedia.org/wiki/Islamic_Golden_Age"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q8575586"
+      }
     ],
-    "tags": ["islam", "religion", "expansion", "arabic"],
-    "related": ["herstory-006", "philosophy-003"]
+    "tags": [
+      "islam",
+      "religion",
+      "expansion",
+      "arabic"
+    ],
+    "related": [
+      "herstory-006",
+      "philosophy-003"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Umayyad750ADloc.svg",
+      "coords": {
+        "lon": 44.366111111,
+        "lat": 33.315277777
+      },
+      "wdDescription": "second Islamic caliphate (661–750 CE)"
+    }
   },
   {
     "id": "society-008",
@@ -135,11 +277,31 @@
     "summary": "Bubonic plague kills 30-60% of Europe's population in 5 years. Labor becomes scarce; serfs gain power.",
     "body": "The bubonic plague arrives in Europe via Genoese trading ships from the Black Sea. In five years, it kills 30-60% of Europe's population — an estimated 25-50 million people. The shortage of labor gives surviving peasants unprecedented bargaining power, accelerating the end of feudalism. The psychological trauma reshapes European art, religion, and philosophy for generations.",
     "sources": [
-      { "type": "wikipedia", "label": "Black Death", "url": "https://en.wikipedia.org/wiki/Black_Death" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q42005" }
+      {
+        "type": "wikipedia",
+        "label": "Black Death",
+        "url": "https://en.wikipedia.org/wiki/Black_Death"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q42005"
+      }
     ],
-    "tags": ["plague", "pandemic", "medieval", "death"],
-    "related": ["society-009"]
+    "tags": [
+      "plague",
+      "pandemic",
+      "medieval",
+      "death"
+    ],
+    "related": [
+      "society-009"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Doutielt3.jpg",
+      "wdDescription": "1346–1353 pandemic in Eurasia and North Africa",
+      "country": "Russia"
+    }
   },
   {
     "id": "society-009",
@@ -152,12 +314,36 @@
     "summary": "Columbus reaches the Americas. Two biospheres that evolved separately for 20,000 years collide.",
     "body": "Christopher Columbus's arrival in the Caribbean initiates the Columbian Exchange — the transfer of plants, animals, diseases, people, and ideas between the Eastern and Western hemispheres. Potatoes and maize transform European diets; horses transform the Americas. But European diseases devastate indigenous populations, killing an estimated 90% within 150 years. The modern globalized world begins here.",
     "sources": [
-      { "type": "wikipedia", "label": "Columbian exchange", "url": "https://en.wikipedia.org/wiki/Columbian_exchange" },
-      { "type": "wikipedia", "label": "Voyages of Christopher Columbus", "url": "https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q767253" }
+      {
+        "type": "wikipedia",
+        "label": "Columbian exchange",
+        "url": "https://en.wikipedia.org/wiki/Columbian_exchange"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Voyages of Christopher Columbus",
+        "url": "https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q767253"
+      }
     ],
-    "tags": ["exploration", "americas", "colonialism", "exchange"],
-    "related": ["indigenous-004", "society-008"]
+    "tags": [
+      "exploration",
+      "americas",
+      "colonialism",
+      "exchange"
+    ],
+    "related": [
+      "indigenous-004",
+      "society-008"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20World%20Domesticated%20plants.JPG",
+      "wdDescription": "biological exchange across Atlantic Ocean"
+    }
   },
   {
     "id": "society-010",
@@ -170,11 +356,31 @@
     "summary": "Global financial collapse after the stock market crash. 25% unemployment in the US.",
     "body": "The Wall Street crash of October 1929 triggers the worst economic downturn in modern history. US unemployment reaches 25%. Global trade falls by 65%. Banks fail by the thousands. The crisis discredits laissez-faire capitalism and fuels the rise of fascism in Europe, the New Deal in America, and Keynesian economics worldwide.",
     "sources": [
-      { "type": "wikipedia", "label": "Great Depression", "url": "https://en.wikipedia.org/wiki/Great_Depression" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q8698" }
+      {
+        "type": "wikipedia",
+        "label": "Great Depression",
+        "url": "https://en.wikipedia.org/wiki/Great_Depression"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q8698"
+      }
     ],
-    "tags": ["economy", "depression", "finance", "capitalism"],
-    "related": ["conflict-008"]
+    "tags": [
+      "economy",
+      "depression",
+      "finance",
+      "capitalism"
+    ],
+    "related": [
+      "conflict-008"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg",
+      "wdDescription": "worldwide economic depression (1929–1939)",
+      "country": "Hungary"
+    }
   },
   {
     "id": "society-011",
@@ -187,11 +393,26 @@
     "summary": "Near-collapse of global banking. Inequality reshapes politics worldwide.",
     "body": "The collapse of Lehman Brothers triggers a global financial crisis that nearly destroys the world banking system. Governments bail out banks with trillions of dollars while millions lose homes and jobs. The resulting inequality and austerity fuel populist movements worldwide, from Occupy Wall Street to Brexit to the rise of authoritarian nationalism.",
     "sources": [
-      { "type": "wikipedia", "label": "Financial crisis of 2007-2008", "url": "https://en.wikipedia.org/wiki/Financial_crisis_of_2007%E2%80%932008" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q188698" }
+      {
+        "type": "wikipedia",
+        "label": "Financial crisis of 2007-2008",
+        "url": "https://en.wikipedia.org/wiki/Financial_crisis_of_2007%E2%80%932008"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q188698"
+      }
     ],
-    "tags": ["economy", "finance", "capitalism", "inequality"],
-    "related": ["society-010"]
+    "tags": [
+      "economy",
+      "finance",
+      "capitalism",
+      "inequality"
+    ],
+    "related": [
+      "society-010"
+    ]
   },
   {
     "id": "society-012",
@@ -204,10 +425,30 @@
     "summary": "The first pandemic of the hyper-connected age. 7+ million dead. Remote work, mRNA vaccines, mass inequality exposed.",
     "body": "SARS-CoV-2 spreads globally within weeks, killing over 7 million people and infecting hundreds of millions. Lockdowns transform work, education, and social life. mRNA vaccine technology, developed in record time, saves millions of lives. The pandemic exposes deep inequalities in healthcare, wealth, and technology access across and within nations.",
     "sources": [
-      { "type": "wikipedia", "label": "COVID-19 pandemic", "url": "https://en.wikipedia.org/wiki/COVID-19_pandemic" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q81068910" }
+      {
+        "type": "wikipedia",
+        "label": "COVID-19 pandemic",
+        "url": "https://en.wikipedia.org/wiki/COVID-19_pandemic"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q81068910"
+      }
     ],
-    "tags": ["pandemic", "biology", "society", "technology"],
-    "related": ["science-010"]
+    "tags": [
+      "pandemic",
+      "biology",
+      "society",
+      "technology"
+    ],
+    "related": [
+      "science-010"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg",
+      "wdDescription": "pandemic caused by SARS-CoV-2 (2019–2023)",
+      "country": "Canada"
+    }
   }
 ]
