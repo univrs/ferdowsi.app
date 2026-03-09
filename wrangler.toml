@@ -1,0 +1,11 @@
+# wrangler.toml
+name = "ferdowsi-app"
+compatibility_date = "2024-01-01"
+
+# Cloudflare Pages configuration
+[site]
+bucket = "./dist"
+
+# Environment-specific settings
+[env.production]
+name = "ferdowsi-app"
