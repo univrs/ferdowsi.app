@@ -1,3 +1,9 @@
+# Claude 
+CLAUDE.md
+.claude/
+.claude-flow/
+.flows/
+
 # Logs
 logs
 *.log
