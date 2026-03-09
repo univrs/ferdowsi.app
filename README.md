@@ -1,11 +1,11 @@
-# GODDESSVIEW — Architectural Blueprint
+# Simurgh's View — Architectural Blueprint
 ### A <3D Living Chronicle of Time: From Big Bang to Present
 
 ---
 
 ## Vision Statement
 
-Goddess's View is a real-time, AI-augmented, multi-dimensional visual timeline spanning the entirety of known time — from the Big Bang (~13.8B BCE) to the present second. It renders human and cosmic history as an infinitely navigable 3D space, with layered dimensions (science, politics, culture, conflict, philosophy, biology) that reveal increasing nuance as users zoom in from cosmological scales to individual days. Live open data feeds from Wikipedia, academic APIs, and AI agents continuously enrich the timeline, while a multi-user SaaS model with local-first architecture allows collaborative exploration and personal curation.
+Simurgh - Goddess' View is a real-time, AI-augmented, multi-dimensional visual timeline spanning the entirety of known time — from the Big Bang (~13.8B BCE) to the present second. It renders human and cosmic history as an infinitely navigable 3D space, with layered dimensions (science, politics, culture, conflict, philosophy, biology) that reveal increasing nuance as users zoom in from cosmological scales to individual days. Live open data feeds from Wikipedia, academic APIs, and AI agents continuously enrich the timeline, while a multi-user SaaS model with local-first architecture allows collaborative exploration and personal curation.
 
 ---
 
@@ -381,4 +381,4 @@ MONTH 9-12  Phase 5: True 3D
 
 ---
 
-*Goddess' <3DView — Because human herstory deserves to be seen whole.*
+*Simurgh's <3DView — Because human herstory deserves to be seen whole.*
