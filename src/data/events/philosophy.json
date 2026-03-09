@@ -1,0 +1,20 @@
+[
+  {
+    "id": "philosophy-001",
+    "year": -600,
+    "precision": "century",
+    "layer": "philosophy",
+    "importance": 5,
+    "confidence": "established",
+    "title": "The Axial Age",
+    "summary": "Buddha, Confucius, Zoroaster, Hebrew prophets, and Greek pre-Socratics all emerge simultaneously.",
+    "body": "In a remarkable convergence, the world's foundational philosophical and religious traditions emerge nearly simultaneously across three continents. Buddha in India, Confucius and Laozi in China, Zoroaster in Persia, the Hebrew prophets in Israel, and the Greek pre-Socratics all develop systems of thought that still shape human civilization. Karl Jaspers called this period the 'Axial Age' — the axis around which all subsequent thought revolves.",
+    "sources": [
+      { "type": "wikipedia", "label": "Axial Age", "url": "https://en.wikipedia.org/wiki/Axial_Age" },
+      { "type": "book", "label": "Karl Jaspers, The Origin and Goal of History", "url": "https://en.wikipedia.org/wiki/The_Origin_and_Goal_of_History" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q210652" }
+    ],
+    "tags": ["philosophy", "religion", "consciousness", "axial"],
+    "related": ["society-004", "culture-003"]
+  }
+]

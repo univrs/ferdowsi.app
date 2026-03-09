@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext } from "react";
 import { createPortal } from "react-dom";
+import { EVENTS_FLAT, LAYERS, EPOCHS } from "../data/index.js";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // THEME — Gaia earth tones, dark & light
@@ -90,115 +91,11 @@ function useTheme() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// DATA
+// DATA — imported from src/data/index.js
+// EPOCHS, LAYERS imported at top; EVENTS below
 // ═══════════════════════════════════════════════════════════════════════════════
-const EPOCHS = {
-  COSMIC:       { label:"COSMIC",        sub:"13.8 Billion Years",  start:-13_800_000_000, end:2026, colorKey:"cosmos" },
-  GEOLOGICAL:   { label:"GEOLOGICAL",    sub:"500 Million Years",   start:-500_000_000,    end:2026, colorKey:"earth" },
-  DEEP_HUMAN:   { label:"DEEP HUMAN",    sub:"70,000 Years",        start:-70_000,         end:2026, colorKey:"society" },
-  HISTORICAL:   { label:"HISTORICAL",    sub:"5,000 Years",         start:-5_000,          end:2026, colorKey:"science" },
-  MODERN:       { label:"MODERN",        sub:"600 Years",           start:1400,            end:2026, colorKey:"culture" },
-  CONTEMPORARY: { label:"CONTEMPORARY",  sub:"200 Years",           start:1800,            end:2026, colorKey:"life" },
-};
 
-const LAYERS = [
-  { id:"herstory",   label:"HERSTORY & WOMEN" },
-  { id:"indigenous", label:"INDIGENOUS WISDOM" },
-  { id:"cosmos",     label:"COSMOS & PHYSICS" },
-  { id:"earth",      label:"EARTH & CLIMATE" },
-  { id:"life",       label:"LIFE & BIOLOGY" },
-  { id:"society",    label:"HUMAN & SOCIETY" },
-  { id:"conflict",   label:"WAR & POLITICS" },
-  { id:"science",    label:"SCIENCE & TECH" },
-  { id:"culture",    label:"ARTS & CULTURE" },
-  { id:"philosophy", label:"PHILOSOPHY & IDEAS" },
-];
-
-const EVENTS = [
-  {id:1,  year:-13_800_000_000, layer:"cosmos",     imp:5, title:"The Big Bang",               desc:"All matter, energy, space and time emerge from a singularity. The universe ignites from infinite density and temperature, expanding outward in the first fraction of a second.",                          tags:["cosmology","origin","physics"]},
-  {id:2,  year:-13_500_000_000, layer:"cosmos",     imp:4, title:"First Stars Ignite",          desc:"Population III stars form from primordial hydrogen and helium. Nuclear fusion begins forging the heavy elements that will eventually build planets, oceans, and living organisms.",                     tags:["astronomy","stellar","fusion"]},
-  {id:3,  year:-10_000_000_000, layer:"cosmos",     imp:3, title:"Milky Way Forms",             desc:"Our galaxy takes shape over billions of years through galactic mergers and star formation. A spiral disk of 400 billion stars emerges in the cosmic web.",                                              tags:["galaxy","astronomy"]},
-  {id:4,  year:-4_600_000_000,  layer:"cosmos",     imp:5, title:"Solar System Forms",          desc:"Gravitational collapse of a molecular cloud forms our Sun and a protoplanetary disk. The inner planets, including proto-Earth, coalesce from rocky material within 100 million years.",                tags:["solar","planets","formation"]},
-  {id:5,  year:-4_500_000_000,  layer:"earth",      imp:5, title:"Earth & Moon Form",           desc:"Proto-Earth completes accretion. A Mars-sized body (Theia) collides and ejects material that coalesces into the Moon. Earth's rotation stabilizes. Magnetic field forms.",                           tags:["earth","moon","geology"]},
-  {id:6,  year:-3_800_000_000,  layer:"life",       imp:5, title:"First Life Emerges",          desc:"Self-replicating RNA molecules appear in hydrothermal vents or tidal pools. The boundary between chemistry and biology is crossed. The biosphere begins its 3.8 billion year journey.",              tags:["biology","RNA","origin","evolution"]},
-  {id:7,  year:-2_400_000_000,  layer:"earth",      imp:4, title:"Great Oxidation Event",       desc:"Cyanobacteria flood the atmosphere with oxygen through photosynthesis, poisoning the anaerobic world and triggering a mass extinction. This catastrophe becomes the foundation of complex life.",      tags:["atmosphere","oxygen","extinction"]},
-  {id:8,  year:-1_500_000_000,  layer:"life",       imp:4, title:"Eukaryotic Cells Appear",     desc:"A momentous endosymbiotic event: an archaeon engulfs a bacterium, which becomes the mitochondrion. Complex cells with nuclei emerge, enabling multicellular organisms.",                             tags:["evolution","cells","biology"]},
-  {id:9,  year:-541_000_000,    layer:"life",       imp:5, title:"Cambrian Explosion",          desc:"In ~25 million years, nearly all major animal body plans appear suddenly in the fossil record. Eyes, limbs, nervous systems, and predation emerge.",             tags:["evolution","diversity","paleontology"]},
-  {id:10, year:-375_000_000,    layer:"life",       imp:4, title:"Life Colonizes Land",         desc:"Fish with primitive limbs (Tiktaalik) pioneer the transition to land. Over millions of years, tetrapods adapt to terrestrial environments.",                       tags:["evolution","tetrapods","transition"]},
-  {id:11, year:-250_000_000,    layer:"earth",      imp:4, title:"Great Permian Extinction",    desc:"The Great Dying — 96% of marine species and 70% of land vertebrates vanish. Volcanic eruptions in Siberia trigger runaway greenhouse effect.",                      tags:["extinction","geology","volcanic"]},
-  {id:12, year:-66_000_000,     layer:"earth",      imp:5, title:"Chicxulub Impact",            desc:"A 10km asteroid strikes the Yucatan Peninsula with the force of a billion nuclear bombs. Non-avian dinosaurs go extinct. Mammals inherit a cooling, recovering Earth.",                               tags:["asteroid","extinction","cretaceous"]},
-  {id:13, year:-7_000_000,      layer:"life",       imp:4, title:"Hominid Split",               desc:"The lineage leading to humans diverges from our last common ancestor with chimpanzees. Bipedalism emerges on the African savanna as forests recede.",                                                 tags:["evolution","hominid","africa"]},
-  {id:14, year:-300_000,        layer:"life",       imp:5, title:"Homo Sapiens Emerge",         desc:"Anatomically modern humans appear in Morocco and East Africa. Brain architecture enables recursive language, abstract thought, and cumulative culture.",               tags:["human","evolution","cognition"]},
-  {id:15, year:-70_000,         layer:"society",    imp:5, title:"Cognitive Revolution",        desc:"Something ignites in the human mind — possibly a genetic mutation in brain wiring. Symbolic language, art, religion, and long-distance trade appear suddenly.",         tags:["cognition","language","consciousness"]},
-  {id:16, year:-45_000,         layer:"society",    imp:3, title:"Humans Reach Australia",      desc:"Maritime technology allows humans to cross open water and populate Australia. Aboriginal culture — the oldest continuous civilization — begins.",                      tags:["migration","australia","maritime"]},
-  {id:17, year:-12_000,         layer:"earth",      imp:3, title:"Last Ice Age Ends",           desc:"Glaciers retreat. Sea levels rise 120 meters. Modern continental coastlines emerge. Climate stabilizes into the Holocene.",                    tags:["climate","ice age","holocene"]},
-  {id:18, year:-10_000,         layer:"society",    imp:5, title:"Agricultural Revolution",     desc:"Humans in the Fertile Crescent begin cultivating wheat, barley, and lentils. Independently, rice in China, maize in Mexico, yams in West Africa.",               tags:["agriculture","civilization","neolithic"]},
-  {id:19, year:-5_000,          layer:"society",    imp:4, title:"First Cities Rise",           desc:"Uruk in Mesopotamia grows to 50,000 inhabitants. Specialized labor, markets, temples, and administrative bureaucracy emerge.",                     tags:["urban","mesopotamia","sumer"]},
-  {id:20, year:-3_200,          layer:"culture",    imp:5, title:"Writing Invented",            desc:"Cuneiform script emerges in Sumer for accounting. Within centuries, it records laws, literature, and astronomy.",                tags:["writing","communication","information"]},
-  {id:21, year:-2_560,          layer:"culture",    imp:3, title:"Great Pyramid Built",         desc:"The Giza complex is completed by Pharaoh Khufu. It remains the tallest human structure for 3,800 years.",        tags:["egypt","architecture","engineering"]},
-  {id:22, year:-1_200,          layer:"society",    imp:4, title:"Bronze Age Collapse",         desc:"Mysterious simultaneous collapse of Mycenean Greece, Hittite Empire, Ugarit, and Egypt. Trade networks shatter. Writing systems are lost.",            tags:["collapse","bronze age","crisis"]},
-  {id:23, year:-600,            layer:"philosophy", imp:5, title:"The Axial Age",               desc:"Buddha in India, Confucius in China, Zoroaster in Persia, Hebrew prophets, and Greek pre-Socratics all emerge simultaneously.",         tags:["philosophy","religion","consciousness","axial"]},
-  {id:24, year:-508,            layer:"conflict",   imp:4, title:"Athenian Democracy",          desc:"Cleisthenes establishes demokratia in Athens. Citizens vote directly on laws and policy. The first experiment in self-governance.",                       tags:["democracy","greece","politics","governance"]},
-  {id:25, year:-323,            layer:"culture",    imp:3, title:"Death of Alexander",          desc:"Alexander the Great dies at 32, having conquered from Greece to India. Hellenistic culture spreads Greek thought across three continents.",       tags:["greece","empire","hellenistic"]},
-  {id:26, year:-221,            layer:"conflict",   imp:4, title:"Qin Unifies China",           desc:"Qin Shi Huang creates the first Chinese empire. Standardized writing, currency, laws, and weights. The Great Wall begins.",             tags:["china","empire","unification"]},
-  {id:27, year:-44,             layer:"conflict",   imp:3, title:"Caesar Assassinated",         desc:"Julius Caesar falls in the Roman Senate on the Ides of March. The Republic collapses. The Empire rises.",          tags:["rome","republic","politics"]},
-  {id:28, year:1,               layer:"society",    imp:3, title:"Common Era Begins",           desc:"The Julian calendar reform anchors the Western chronological system. Approximate birth of Jesus of Nazareth.",               tags:["christianity","calendar","rome"]},
-  {id:29, year:476,             layer:"conflict",   imp:3, title:"Fall of Western Rome",        desc:"Romulus Augustulus is deposed. The Western Roman Empire formally ends. Medieval Europe begins.",                         tags:["rome","medieval","collapse"]},
-  {id:30, year:632,             layer:"society",    imp:5, title:"Islam Spreads",               desc:"After Muhammad's death, Islam expands from Arabia across Persia, Egypt, North Africa, and Spain within a century.", tags:["islam","religion","expansion","arabic"]},
-  {id:31, year:1066,            layer:"conflict",   imp:3, title:"Norman Conquest",             desc:"Battle of Hastings. William the Conqueror permanently reshapes English law, language, and aristocracy.",                  tags:["england","medieval","conquest"]},
-  {id:32, year:1215,            layer:"conflict",   imp:4, title:"Magna Carta",                 desc:"King John forced to sign the Great Charter limiting royal power. Seeds of habeas corpus and constitutional law are planted.",                        tags:["law","rights","england","constitution"]},
-  {id:33, year:1347,            layer:"society",    imp:5, title:"The Black Death",             desc:"Bubonic plague kills 30-60% of Europe's population in 5 years. Labor becomes scarce; serfs gain power. Modernity accelerates.",                   tags:["plague","pandemic","medieval","death"]},
-  {id:34, year:1440,            layer:"science",    imp:5, title:"Gutenberg Press",             desc:"Movable type printing press democratizes knowledge. Within 50 years, 20 million books exist in Europe.",    tags:["printing","information","technology","renaissance"]},
-  {id:35, year:1492,            layer:"society",    imp:5, title:"Columbian Exchange",          desc:"Columbus reaches the Americas. Two biospheres that evolved separately for 20,000 years collide.",   tags:["exploration","americas","colonialism","exchange"]},
-  {id:36, year:1543,            layer:"science",    imp:5, title:"Copernican Revolution",       desc:"Heliocentric model published. Earth removed from the center of the cosmos. The scientific method is born.",                                    tags:["astronomy","science","copernicus"]},
-  {id:37, year:1687,            layer:"science",    imp:5, title:"Newton's Principia",          desc:"Laws of motion and universal gravitation published. Classical mechanics — the first unified theory of physics — is complete.",    tags:["physics","mathematics","newton","gravity"]},
-  {id:38, year:1776,            layer:"conflict",   imp:4, title:"American Revolution",         desc:"Declaration of Independence. Enlightenment ideals codified as the basis of government.",         tags:["revolution","democracy","america","enlightenment"]},
-  {id:39, year:1789,            layer:"conflict",   imp:5, title:"French Revolution",           desc:"Liberte, Egalite, Fraternite. Modern concepts of nationalism, citizenship, human rights, and secular governance are born.",                   tags:["revolution","france","democracy","rights"]},
-  {id:40, year:1859,            layer:"science",    imp:5, title:"Theory of Evolution",         desc:"Darwin's On the Origin of Species. Natural selection explains the diversity of all life from a common ancestor.", tags:["biology","evolution","darwin","science"]},
-  {id:41, year:1905,            layer:"science",    imp:5, title:"Einstein's Relativity",       desc:"Special relativity published. E=mc2. Space and time are not absolute — they depend on the observer's frame of reference.",                 tags:["physics","einstein","relativity","spacetime"]},
-  {id:42, year:1914,            layer:"conflict",   imp:5, title:"World War I",                 desc:"Industrial warfare kills 20 million. Four empires dissolve. The map of the Middle East, Europe, and Asia is redrawn.",        tags:["war","global","industrial","empire"]},
-  {id:43, year:1917,            layer:"conflict",   imp:5, title:"Russian Revolution",          desc:"The Bolsheviks seize power. The Soviet Union forms. Communism reshapes the 20th century.",                          tags:["communism","revolution","russia","ideology"]},
-  {id:44, year:1929,            layer:"society",    imp:4, title:"Great Depression",            desc:"Global financial collapse after the stock market crash. 25% unemployment in the US.",                    tags:["economy","depression","finance","capitalism"]},
-  {id:45, year:1939,            layer:"conflict",   imp:5, title:"World War II",                desc:"Deadliest conflict in history. 70-85 million dead. The Holocaust. Atomic bombs. A new world order.",                               tags:["war","holocaust","nuclear","global"]},
-  {id:46, year:1953,            layer:"science",    imp:5, title:"DNA Double Helix",            desc:"Watson, Crick, and Franklin reveal the molecular structure of DNA. The code of life is decoded.", tags:["biology","genetics","dna","medicine"]},
-  {id:47, year:1969,            layer:"science",    imp:5, title:"Moon Landing",                desc:"Apollo 11. Armstrong and Aldrin walk on the Moon. 600 million watch live.",             tags:["space","nasa","moon","exploration"]},
-  {id:48, year:1989,            layer:"conflict",   imp:5, title:"Berlin Wall Falls",           desc:"The Cold War ends. Germany reunifies. The Soviet bloc collapses.",                          tags:["coldwar","germany","communism","freedom"]},
-  {id:49, year:1991,            layer:"science",    imp:5, title:"World Wide Web",              desc:"Tim Berners-Lee publishes the first website from CERN. Within 30 years, 5 billion humans are connected.",                     tags:["internet","technology","information","web"]},
-  {id:50, year:2001,            layer:"conflict",   imp:4, title:"September 11",                desc:"Al-Qaeda attacks kill 2,977 people. The War on Terror begins. Surveillance states expand.",                    tags:["terrorism","usa","geopolitics","security"]},
-  {id:51, year:2007,            layer:"science",    imp:5, title:"iPhone Era Begins",           desc:"The smartphone era begins. Within a decade, 3 billion humans carry supercomputers in their pockets.",                                   tags:["mobile","technology","connectivity","apple"]},
-  {id:52, year:2008,            layer:"society",    imp:4, title:"Global Financial Crisis",     desc:"Near-collapse of global banking. Inequality reshapes politics worldwide.",                             tags:["economy","finance","capitalism","inequality"]},
-  {id:53, year:2015,            layer:"earth",      imp:4, title:"Paris Climate Accord",        desc:"196 nations agree to limit global warming to 1.5C. Implementation remains deeply insufficient.",                    tags:["climate","environment","global","governance"]},
-  {id:54, year:2020,            layer:"society",    imp:5, title:"COVID-19 Pandemic",           desc:"The first pandemic of the hyper-connected age. 7+ million dead. Remote work, mRNA vaccines, mass inequality exposed.",                                   tags:["pandemic","biology","society","technology"]},
-  {id:55, year:2022,            layer:"science",    imp:4, title:"AlphaFold Solves Proteins",   desc:"DeepMind's AI predicts the 3D structure of every known protein — solving a 50-year grand challenge.",                          tags:["ai","biology","medicine","proteins"]},
-  {id:56, year:2023,            layer:"science",    imp:5, title:"AI Language Revolution",      desc:"GPT-4, Claude, Gemini demonstrate human-level reasoning. Cognitive automation begins in earnest.",              tags:["ai","technology","intelligence","automation"]},
-  {id:57, year:2024,            layer:"science",    imp:5, title:"AI Agents & Autonomy",        desc:"AI systems achieve autonomous planning, multi-step reasoning, and tool use. Knowledge work transforms.",                           tags:["ai","agents","automation","future"]},
-  // HERSTORY
-  {id:101, year:-3500,      layer:"herstory",   imp:4, title:"First Female Pharaohs",           desc:"Queens Neithhotep and Merneith rule ancient Egypt independently. Their names were erased from later king lists.", tags:["egypt","women","leadership","erased"]},
-  {id:102, year:-2300,      layer:"herstory",   imp:5, title:"Enheduanna — First Named Author",  desc:"High priestess of Ur writes the Hymns to Inanna — the first signed literary works in human history. Predating Homer by 1,500 years.", tags:["writing","poetry","women","mesopotamia","erased"]},
-  {id:103, year:-1500,      layer:"herstory",   imp:4, title:"Hatshepsut Rules Egypt",           desc:"One of history's most successful pharaohs reigns for 20+ years. Her stepson later smashed her statues and chiseled out her name.", tags:["egypt","pharaoh","women","erased","power"]},
-  {id:104, year:-500,       layer:"herstory",   imp:3, title:"Artemisia Commands Fleet",  desc:"Queen of Halicarnassus commands her own warships at Salamis — the only commander Xerxes commended for courage.", tags:["war","women","greece","military","leadership"]},
-  {id:105, year:-350,       layer:"herstory",   imp:4, title:"Agnodice — First Female Doctor",   desc:"Athenian woman disguises herself as a man to study medicine. Becomes Athens' most popular physician. Saved by revolting patients.", tags:["medicine","women","greece","rights","courage"]},
-  {id:106, year:624,        layer:"herstory",   imp:4, title:"Khadijah bint Khuwaylid",          desc:"Muhammad's first wife and first Muslim. A successful merchant who funded the early Islamic movement.", tags:["islam","women","business","faith","leadership"]},
-  {id:107, year:1030,       layer:"herstory",   imp:3, title:"Murasaki Shikibu's Tale of Genji", desc:"Japanese noblewoman writes what many scholars call the world's first novel.", tags:["literature","women","japan","first","novel"]},
-  {id:108, year:1098,       layer:"herstory",   imp:4, title:"Hildegard von Bingen",  desc:"Abbess, composer of 77 works, herbalist, visionary, theologian. Her music was 'lost' for 600 years.", tags:["science","music","women","medieval","genius"]},
-  {id:109, year:1405,       layer:"herstory",   imp:3, title:"Christine de Pizan", desc:"First known woman in Europe to earn her living by writing. Refuted claims of women's inferiority 600 years before feminism.", tags:["literature","women","feminism","france","writing"]},
-  {id:110, year:1843,       layer:"herstory",   imp:5, title:"Ada Lovelace — First Programmer",  desc:"Writes the first algorithm for a machine. Envisions computers composing music. 100 years before the first computer.", tags:["computing","women","programming","first","technology"]},
-  {id:111, year:1848,       layer:"herstory",   imp:5, title:"Seneca Falls Convention",          desc:"'All men and women are created equal.' The formal birth of the women's rights movement.", tags:["feminism","rights","usa","suffrage","equality"]},
-  {id:112, year:1898,       layer:"herstory",   imp:5, title:"Marie Curie — First Nobel",        desc:"First woman Nobel laureate. First person to win two Nobels. The French Academy refused her due to sex.", tags:["science","women","physics","chemistry","first","erased"]},
-  {id:113, year:1920,       layer:"herstory",   imp:5, title:"Women's Suffrage — USA",           desc:"19th Amendment ratified after 72 years of struggle. New Zealand was first in 1893.", tags:["suffrage","rights","usa","democracy","equality"]},
-  {id:114, year:1950,       layer:"herstory",   imp:5, title:"Rosalind Franklin's Photo 51",     desc:"Her X-ray crystallography reveals DNA's structure. Watson and Crick used her data without credit.", tags:["science","women","dna","erased","injustice","biology"]},
-  {id:115, year:1963,       layer:"herstory",   imp:4, title:"Friedan's Feminine Mystique", desc:"Documents 'the problem that has no name.' The book that launched second-wave feminism.", tags:["feminism","usa","rights","equality","liberation"]},
-  {id:116, year:1963,       layer:"herstory",   imp:4, title:"Tereshkova in Space",    desc:"First woman in space, orbiting Earth 48 times. USSR then grounded all female cosmonauts for 19 years.", tags:["space","women","soviet","first","courage"]},
-  {id:117, year:1976,       layer:"herstory",   imp:5, title:"Katherine Johnson at NASA", desc:"Manually verified orbital mechanics for Glenn's flight. Glenn personally requested she check the computers.", tags:["computing","women","nasa","mathematics","erased"]},
-  {id:118, year:2017,       layer:"herstory",   imp:4, title:"#MeToo Goes Global",               desc:"Tarana Burke's movement explodes worldwide. Most significant shift in workplace power since suffrage.", tags:["feminism","justice","global","movement","equality"]},
-  {id:119, year:2020,       layer:"herstory",   imp:4, title:"First Female VP — USA",       desc:"Kamala Harris becomes the first woman VP — also first Black and South Asian American in the role.", tags:["politics","women","usa","first","equality"]},
-  // INDIGENOUS
-  {id:201, year:-40000,     layer:"indigenous", imp:5, title:"Aboriginal Songlines",             desc:"Australia's First Peoples develop navigational cosmology encoded in song. The oldest continuous knowledge system on Earth.", tags:["indigenous","australia","navigation","wisdom","cosmology"]},
-  {id:202, year:-12000,     layer:"indigenous", imp:4, title:"First Nations Land Management",    desc:"Indigenous peoples practice sophisticated land management — controlled burns, aquaculture, food forests.", tags:["indigenous","ecology","americas","science","erased"]},
-  {id:203, year:-3000,      layer:"indigenous", imp:4, title:"Polynesian Navigation",            desc:"Pacific Islanders navigate 10 million square miles of open ocean using stars, waves, and birds.", tags:["indigenous","navigation","pacific","ocean","genius"]},
-  {id:204, year:1492,       layer:"indigenous", imp:5, title:"Indigenous Genocide Begins",       desc:"Columbus's arrival begins systematic destruction. 90% of indigenous populations die within 150 years.", tags:["genocide","indigenous","colonialism","americas","catastrophe"]},
-  {id:205, year:1830,       layer:"indigenous", imp:4, title:"Trail of Tears",                   desc:"Indian Removal Act forces 60,000+ Native Americans from ancestral lands. 15,000 die on forced marches.", tags:["indigenous","genocide","usa","removal","catastrophe"]},
-];
+const EVENTS = EVENTS_FLAT;
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // UTILITIES
@@ -485,10 +382,32 @@ function EventNode({ ev, xPct, onClick, selected, onHover, breathPhase }) {
 // ═══════════════════════════════════════════════════════════════════════════════
 // EVENT MODAL
 // ═══════════════════════════════════════════════════════════════════════════════
+function formatPreciseDate(ev) {
+  const a = Math.abs(ev.year);
+  const suffix = ev.year < 0 ? " BCE" : ev.year > 0 ? " CE" : "";
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  if (ev.day && ev.month) return `${months[ev.month - 1]} ${ev.day}, ${a}${suffix}`;
+  if (ev.month) return `${months[ev.month - 1]} ${a}${suffix}`;
+  return formatYear(ev.year);
+}
+
+const CONFIDENCE_BADGE = {
+  established: { label:"Established", color:"#6a9a5a" },
+  debated:     { label:"Debated",     color:"#c4aa4a" },
+  legendary:   { label:"Legendary",   color:"#9a7aba" },
+  approximate: { label:"Approximate", color:"#8a8a8a" },
+};
+
+const SOURCE_ICONS = {
+  wikipedia: "W", wikidata: "WD", academic: "A", primary: "P",
+  museum: "M", news: "N", book: "B",
+};
+
 function EventModal({ ev, onClose }) {
   const { t, lc } = useTheme();
   const layerColor = lc[ev.layer] || { color:"#9a8a7a", accent:"#6a5a4a" };
   const layerLabel = LAYERS.find(l => l.id === ev.layer)?.label || "";
+  const badge = CONFIDENCE_BADGE[ev.confidence] || null;
 
   useEffect(() => {
     const h = (e) => { if (e.key === "Escape") onClose(); };
@@ -504,29 +423,66 @@ function EventModal({ ev, onClose }) {
       animation:"fadeIn 0.2s ease-out",
     }}>
       <div onClick={e => e.stopPropagation()} style={{
-        width:620, maxWidth:"92vw",
+        width:660, maxWidth:"92vw", maxHeight:"88vh", overflowY:"auto",
         background: t.cardBg,
         border:`1px solid ${layerColor.accent}44`, borderTop:`3px solid ${layerColor.accent}`,
         borderRadius:16, padding:"40px 44px",
         boxShadow:`0 40px 120px rgba(0,0,0,0.5), 0 0 60px ${layerColor.accent}10`,
       }}>
-        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:28 }}>
-          <span style={{
-            fontFamily:"'Share Tech Mono', monospace", fontSize:13, fontWeight:700, color: layerColor.color,
-            background:`${layerColor.accent}15`, border:`1px solid ${layerColor.accent}33`,
-            padding:"6px 16px", borderRadius:6, letterSpacing:2, textTransform:"uppercase",
-          }}>{layerLabel}</span>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:28, flexWrap:"wrap", gap:8 }}>
+          <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+            <span style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:13, fontWeight:700, color: layerColor.color,
+              background:`${layerColor.accent}15`, border:`1px solid ${layerColor.accent}33`,
+              padding:"6px 16px", borderRadius:6, letterSpacing:2, textTransform:"uppercase",
+            }}>{layerLabel}</span>
+            {badge && <span style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: badge.color,
+              background:`${badge.color}18`, border:`1px solid ${badge.color}33`,
+              padding:"4px 10px", borderRadius:4, letterSpacing:1,
+            }}>{badge.label}</span>}
+          </div>
           <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:14, fontWeight:600, color: t.textMuted, letterSpacing:1 }}>
-            {formatYear(ev.year)}
+            {formatPreciseDate(ev)}
+            {ev.precision && <span style={{ fontSize:11, opacity:0.6, marginLeft:6 }}>({ev.precision})</span>}
           </span>
         </div>
         <h2 style={{ fontFamily:"'Cinzel', serif", fontSize:30, fontWeight:900, color: t.text, marginBottom:20, lineHeight:1.3 }}>
           {ev.title}
         </h2>
         <div style={{ height:2, background:`linear-gradient(90deg, ${layerColor.accent}55, transparent)`, marginBottom:24, borderRadius:1 }} />
-        <p style={{ fontFamily:"'Lora', serif", fontSize:18, color: t.text, lineHeight:2, marginBottom:32, opacity:0.85 }}>
-          {ev.desc}
+        <p style={{ fontFamily:"'Lora', serif", fontSize:17, color: t.text, lineHeight:2, marginBottom:16, opacity:0.85 }}>
+          {ev.body || ev.desc}
         </p>
+        {/* Sources */}
+        {ev.sources && ev.sources.length > 0 && (
+          <div style={{ marginBottom:28 }}>
+            <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:700, color: t.textMuted, letterSpacing:2, marginBottom:10, textTransform:"uppercase" }}>
+              Sources
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+              {ev.sources.map((src, i) => (
+                <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
+                  style={{
+                    fontFamily:"'Share Tech Mono', monospace", fontSize:13, color: layerColor.color,
+                    textDecoration:"none", display:"flex", alignItems:"center", gap:8,
+                    padding:"6px 10px", borderRadius:6, transition:"background 0.15s",
+                    background:"transparent",
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = `${layerColor.accent}12`}
+                  onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                >
+                  <span style={{
+                    fontSize:10, fontWeight:700, color: t.textMuted, background: `${t.border}`,
+                    padding:"2px 6px", borderRadius:3, minWidth:22, textAlign:"center",
+                  }}>{SOURCE_ICONS[src.type] || "?"}</span>
+                  <span>{src.label}</span>
+                  <span style={{ fontSize:11, opacity:0.4, marginLeft:"auto" }}>&#8599;</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
         <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:34 }}>
           {ev.tags.map(tag => (
             <span key={tag} style={{

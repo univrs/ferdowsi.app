@@ -1,0 +1,341 @@
+[
+  {
+    "id": "herstory-001",
+    "year": -3500,
+    "precision": "century",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "debated",
+    "title": "First Female Pharaohs",
+    "summary": "Queens Neithhotep and Merneith rule ancient Egypt independently. Their names were erased from later king lists.",
+    "body": "Queens Neithhotep and Merneith rule ancient Egypt independently during the First Dynasty, wielding full pharaonic power. Female leadership in one of history's greatest civilizations predates many later 'firsts' by millennia. Their names were systematically erased from later king lists — an early example of the pattern of women's achievements being written out of the historical record.",
+    "sources": [
+      { "type": "wikipedia", "label": "Neithhotep", "url": "https://en.wikipedia.org/wiki/Neithhotep" },
+      { "type": "wikipedia", "label": "Merneith", "url": "https://en.wikipedia.org/wiki/Merneith" },
+      { "type": "wikidata", "label": "Wikidata: Merneith", "qid": "Q233893" }
+    ],
+    "tags": ["egypt", "women", "leadership", "erased"],
+    "related": ["herstory-003", "culture-002"]
+  },
+  {
+    "id": "herstory-002",
+    "year": -2300,
+    "precision": "century",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Enheduanna — First Named Author",
+    "summary": "High priestess of Ur writes the Hymns to Inanna — the first signed literary works in human history.",
+    "body": "Enheduanna, High Priestess of the Moon God at Ur and daughter of Sargon of Akkad, writes the Hymns to Inanna — the first signed literary works in human history. She is the world's first named poet, predating Homer by 1,500 years. Her works survived on clay tablets for 4,300 years, but history forgot her until archaeologists rediscovered her in the 20th century.",
+    "sources": [
+      { "type": "wikipedia", "label": "Enheduanna", "url": "https://en.wikipedia.org/wiki/Enheduanna" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q171870" },
+      { "type": "museum", "label": "Penn Museum: Enheduanna", "url": "https://www.penn.museum/sites/expedition/enheduanna" }
+    ],
+    "tags": ["writing", "poetry", "women", "mesopotamia", "erased"],
+    "related": ["culture-001", "herstory-001"]
+  },
+  {
+    "id": "herstory-003",
+    "year": -1500,
+    "precision": "decade",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Hatshepsut Rules Egypt",
+    "summary": "One of history's most successful pharaohs reigns for 20+ years. Her stepson later destroyed her monuments.",
+    "body": "Hatshepsut rules Egypt for over 20 years, one of the longest and most successful reigns of any pharaoh. She commissions massive temples, re-establishes trade networks, and leads a major expedition to the land of Punt. After her death, her stepson Thutmose III systematically smashes her statues, chisels her name from monuments, and erases her from the official king lists — a 3,500-year cover-up.",
+    "sources": [
+      { "type": "wikipedia", "label": "Hatshepsut", "url": "https://en.wikipedia.org/wiki/Hatshepsut" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q15925" }
+    ],
+    "tags": ["egypt", "pharaoh", "women", "erased", "power"],
+    "related": ["herstory-001", "culture-002"]
+  },
+  {
+    "id": "herstory-004",
+    "year": -500,
+    "precision": "decade",
+    "layer": "herstory",
+    "importance": 3,
+    "confidence": "debated",
+    "title": "Artemisia Commands Fleet",
+    "summary": "Queen of Halicarnassus commands her own warships at Salamis — the only commander Xerxes commended.",
+    "body": "Artemisia I, Queen of Halicarnassus, commands her own warships at the Battle of Salamis — the only naval commander, male or female, whom the Persian King Xerxes personally commended for courage. Her tactical advice to avoid the naval battle was ignored; if followed, Persia would likely have won. Herodotus records her story, making her one of the few women whose military leadership survived the historical record.",
+    "sources": [
+      { "type": "wikipedia", "label": "Artemisia I of Caria", "url": "https://en.wikipedia.org/wiki/Artemisia_I_of_Caria" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q131221" }
+    ],
+    "tags": ["war", "women", "greece", "military", "leadership"],
+    "related": ["conflict-001"]
+  },
+  {
+    "id": "herstory-005",
+    "year": -350,
+    "precision": "century",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "legendary",
+    "title": "Agnodice — First Female Doctor",
+    "summary": "Athenian woman disguises herself as a man to study medicine. Saved by revolting patients who change the law.",
+    "body": "According to Hyginus, Agnodice disguises herself as a man to study medicine under Herophilus in Alexandria. She returns to Athens and becomes the city's most popular physician, especially among women. When male doctors accuse her of seducing patients, she reveals her sex in court. Her female patients revolt, threatening to die with her. Athens changes its laws to allow women to practice medicine.",
+    "sources": [
+      { "type": "wikipedia", "label": "Agnodice", "url": "https://en.wikipedia.org/wiki/Agnodice" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q280918" }
+    ],
+    "tags": ["medicine", "women", "greece", "rights", "courage"],
+    "related": ["conflict-001", "philosophy-001"]
+  },
+  {
+    "id": "herstory-006",
+    "year": 624,
+    "precision": "decade",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Khadijah bint Khuwaylid",
+    "summary": "Muhammad's first wife and first Muslim. A merchant who funded the early Islamic movement.",
+    "body": "Khadijah bint Khuwaylid, a successful merchant in Mecca, employed Muhammad and proposed marriage to him. She became the first person to accept Islam and funded the early Islamic movement from her own fortune. Called 'Mother of the Faithful,' she was Muhammad's only wife during her lifetime and his most trusted advisor. Her role as a businesswoman and religious leader challenges later patriarchal interpretations of Islam.",
+    "sources": [
+      { "type": "wikipedia", "label": "Khadija bint Khuwaylid", "url": "https://en.wikipedia.org/wiki/Khadija_bint_Khuwaylid" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q151787" }
+    ],
+    "tags": ["islam", "women", "business", "faith", "leadership"],
+    "related": ["society-007"]
+  },
+  {
+    "id": "herstory-007",
+    "year": 1030,
+    "precision": "decade",
+    "layer": "herstory",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Murasaki Shikibu's Tale of Genji",
+    "summary": "Japanese noblewoman writes what many scholars call the world's first novel.",
+    "body": "Murasaki Shikibu, a lady-in-waiting at the Japanese imperial court, writes The Tale of Genji — widely considered the world's first novel, over 1,000 years before most Western women could publish. The work explores psychology, love, power, and loss with a sophistication that astonished 20th-century novelists. It remains a masterpiece of world literature and a testament to Japanese women's literary culture.",
+    "sources": [
+      { "type": "wikipedia", "label": "The Tale of Genji", "url": "https://en.wikipedia.org/wiki/The_Tale_of_Genji" },
+      { "type": "wikipedia", "label": "Murasaki Shikibu", "url": "https://en.wikipedia.org/wiki/Murasaki_Shikibu" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q81624" }
+    ],
+    "tags": ["literature", "women", "japan", "first", "novel"],
+    "related": ["culture-001"]
+  },
+  {
+    "id": "herstory-008",
+    "year": 1098,
+    "precision": "decade",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Hildegard von Bingen — Polymath",
+    "summary": "Abbess, composer, herbalist, visionary, theologian. Her music was 'lost' for 600 years.",
+    "body": "Hildegard of Bingen is an abbess, composer of 77 musical works, playwright, herbalist, visionary, and theologian who corresponds with popes and emperors. She publishes the first known descriptions of female orgasm in medical literature. She develops her own alphabet and constructed language. Her extraordinary body of work was 'lost' for 600 years before being rediscovered in the 20th century.",
+    "sources": [
+      { "type": "wikipedia", "label": "Hildegard of Bingen", "url": "https://en.wikipedia.org/wiki/Hildegard_of_Bingen" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q42104" }
+    ],
+    "tags": ["science", "music", "women", "medieval", "genius"],
+    "related": ["herstory-007"]
+  },
+  {
+    "id": "herstory-009",
+    "year": 1405,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Christine de Pizan — Feminist Author",
+    "summary": "First known woman in Europe to earn her living by writing. Refuted claims of women's inferiority.",
+    "body": "Christine de Pizan, Italian-born French poet, becomes the first known woman in Europe to make her living by her pen. Her Book of the City of Ladies (1405) directly refutes male scholars who claimed women were inferior by nature, constructing an allegorical city populated by history's great women. She writes 600 years before the word 'feminism' existed.",
+    "sources": [
+      { "type": "wikipedia", "label": "Christine de Pizan", "url": "https://en.wikipedia.org/wiki/Christine_de_Pizan" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q234514" }
+    ],
+    "tags": ["literature", "women", "feminism", "france", "writing"],
+    "related": ["herstory-008", "science-001"]
+  },
+  {
+    "id": "herstory-010",
+    "year": 1843,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Ada Lovelace — First Programmer",
+    "summary": "Writes the first algorithm for a machine. Envisions computers composing music. 100 years ahead of her time.",
+    "body": "Ada Lovelace, daughter of Lord Byron, writes the first algorithm intended for a machine — Charles Babbage's Analytical Engine. More remarkably, she envisions that machines could compose music, manipulate symbols, and do things beyond pure calculation — an insight that anticipated modern computing by a full century. She is recognized as the founder of computer programming.",
+    "sources": [
+      { "type": "wikipedia", "label": "Ada Lovelace", "url": "https://en.wikipedia.org/wiki/Ada_Lovelace" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q7259" }
+    ],
+    "tags": ["computing", "women", "programming", "first", "technology"],
+    "related": ["science-008", "herstory-011"]
+  },
+  {
+    "id": "herstory-011",
+    "year": 1848,
+    "month": 7,
+    "day": 19,
+    "precision": "day",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Seneca Falls Convention",
+    "summary": "'All men and women are created equal.' The formal birth of the women's rights movement.",
+    "body": "Elizabeth Cady Stanton, Lucretia Mott, and 300 others gather at Seneca Falls, New York, to draft the Declaration of Sentiments: 'We hold these truths to be self-evident: that all men and women are created equal.' Modeled on the Declaration of Independence, it marks the formal birth of the women's rights movement in the United States. It would take 72 more years to win the right to vote.",
+    "sources": [
+      { "type": "wikipedia", "label": "Seneca Falls Convention", "url": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention" },
+      { "type": "primary", "label": "National Park Service: Seneca Falls", "url": "https://www.nps.gov/wori/index.htm" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1064007" }
+    ],
+    "tags": ["feminism", "rights", "usa", "suffrage", "equality"],
+    "related": ["herstory-013", "conflict-007"]
+  },
+  {
+    "id": "herstory-012",
+    "year": 1898,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Marie Curie — First Nobel",
+    "summary": "First woman Nobel laureate. First person to win two Nobels. The French Academy refused her due to sex.",
+    "body": "Marie Curie discovers polonium and radium, becoming the first woman to win a Nobel Prize (Physics, 1903) and the first person to win two Nobel Prizes (Chemistry, 1911). She is the first woman professor at the Sorbonne. The French Academy of Sciences refused to admit her because of her sex. She died of aplastic anemia caused by years of radiation exposure in her pioneering research.",
+    "sources": [
+      { "type": "wikipedia", "label": "Marie Curie", "url": "https://en.wikipedia.org/wiki/Marie_Curie" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q7186" },
+      { "type": "primary", "label": "Nobel Prize: Marie Curie", "url": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/" }
+    ],
+    "tags": ["science", "women", "physics", "chemistry", "first", "erased"],
+    "related": ["science-005"]
+  },
+  {
+    "id": "herstory-013",
+    "year": 1920,
+    "month": 8,
+    "day": 18,
+    "precision": "day",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Women's Suffrage — USA",
+    "summary": "19th Amendment ratified after 72 years of struggle. New Zealand was first in 1893.",
+    "body": "The 19th Amendment to the US Constitution is ratified, guaranteeing American women the right to vote after 72 years of organized struggle since Seneca Falls. New Zealand led the world in 1893. Millions of women of color in the US would still be effectively denied this right for decades through Jim Crow laws and other suppression tactics.",
+    "sources": [
+      { "type": "wikipedia", "label": "Nineteenth Amendment to the United States Constitution", "url": "https://en.wikipedia.org/wiki/Nineteenth_Amendment_to_the_United_States_Constitution" },
+      { "type": "primary", "label": "National Archives: 19th Amendment", "url": "https://www.archives.gov/historical-docs/19th-amendment" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q622664" }
+    ],
+    "tags": ["suffrage", "rights", "usa", "democracy", "equality"],
+    "related": ["herstory-011"]
+  },
+  {
+    "id": "herstory-014",
+    "year": 1950,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Rosalind Franklin's Photo 51",
+    "summary": "Her X-ray crystallography reveals DNA's structure. Watson and Crick used her data without credit.",
+    "body": "Rosalind Franklin's X-ray crystallography produces Photo 51, which reveals the double helix structure of DNA. James Watson and Francis Crick use her data — shown to them without her knowledge by her colleague Maurice Wilkins — to build their famous model. They win the Nobel Prize in 1962; she is not mentioned. Franklin died of ovarian cancer in 1958, likely caused by X-ray exposure, never knowing what was done with her work.",
+    "sources": [
+      { "type": "wikipedia", "label": "Rosalind Franklin", "url": "https://en.wikipedia.org/wiki/Rosalind_Franklin" },
+      { "type": "wikipedia", "label": "Photo 51", "url": "https://en.wikipedia.org/wiki/Photo_51" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q130336" }
+    ],
+    "tags": ["science", "women", "dna", "erased", "injustice", "biology"],
+    "related": ["science-006"]
+  },
+  {
+    "id": "herstory-015",
+    "year": 1963,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Friedan's Feminine Mystique",
+    "summary": "Documents 'the problem that has no name.' The book that launched second-wave feminism.",
+    "body": "Betty Friedan's The Feminine Mystique documents 'the problem that has no name' — the suffocating frustration of educated women trapped in suburban domesticity. A million copies sell in the first year. The book catalyzes second-wave feminism, leading to the founding of NOW (National Organization for Women) and decades of legal and social reform for women's rights.",
+    "sources": [
+      { "type": "wikipedia", "label": "The Feminine Mystique", "url": "https://en.wikipedia.org/wiki/The_Feminine_Mystique" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1218755" }
+    ],
+    "tags": ["feminism", "usa", "rights", "equality", "liberation"],
+    "related": ["herstory-013", "herstory-016"]
+  },
+  {
+    "id": "herstory-016",
+    "year": 1963,
+    "month": 6,
+    "day": 16,
+    "precision": "day",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Valentina Tereshkova in Space",
+    "summary": "First woman in space, orbiting Earth 48 times. USSR then grounded all female cosmonauts for 19 years.",
+    "body": "Valentina Tereshkova becomes the first woman in space aboard Vostok 6, orbiting Earth 48 times over nearly three days. A Soviet textile worker and amateur parachutist, she was selected from over 400 candidates. She remains the only woman to have flown a solo space mission. The Soviet Union then grounded all female cosmonauts for 19 years — it would be 1982 before another woman reached orbit.",
+    "sources": [
+      { "type": "wikipedia", "label": "Valentina Tereshkova", "url": "https://en.wikipedia.org/wiki/Valentina_Tereshkova" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q15620" }
+    ],
+    "tags": ["space", "women", "soviet", "first", "courage"],
+    "related": ["science-007"]
+  },
+  {
+    "id": "herstory-017",
+    "year": 1962,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Katherine Johnson's Calculations",
+    "summary": "NASA mathematician verified orbital mechanics for Glenn's flight. Glenn personally requested her check the computers.",
+    "body": "Katherine Johnson, a Black mathematician at NASA, manually verifies the orbital mechanics calculations for John Glenn's historic first American orbital flight. NASA had begun using IBM computers for trajectory calculations, but Glenn personally refused to fly until Johnson checked the computer's figures by hand. Her work was hidden for decades until the 2016 book and film Hidden Figures revealed her story.",
+    "sources": [
+      { "type": "wikipedia", "label": "Katherine Johnson", "url": "https://en.wikipedia.org/wiki/Katherine_Johnson" },
+      { "type": "primary", "label": "NASA: Katherine Johnson", "url": "https://www.nasa.gov/content/katherine-johnson-biography" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q273322" }
+    ],
+    "tags": ["computing", "women", "nasa", "mathematics", "erased"],
+    "related": ["science-007", "herstory-016"]
+  },
+  {
+    "id": "herstory-018",
+    "year": 2017,
+    "precision": "year",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "#MeToo Goes Global",
+    "summary": "Tarana Burke's movement explodes worldwide. Most significant shift in workplace power since suffrage.",
+    "body": "Tarana Burke coined 'Me Too' in 2006 to support survivors of sexual violence. In October 2017, after the Harvey Weinstein exposé, the hashtag #MeToo goes viral globally. Millions of women share experiences of harassment and assault. Powerful men across entertainment, politics, media, and business face consequences. It represents the most significant shift in workplace power dynamics since the suffrage movement.",
+    "sources": [
+      { "type": "wikipedia", "label": "Me Too movement", "url": "https://en.wikipedia.org/wiki/Me_Too_movement" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q45201989" }
+    ],
+    "tags": ["feminism", "justice", "global", "movement", "equality"],
+    "related": ["herstory-015"]
+  },
+  {
+    "id": "herstory-019",
+    "year": 2020,
+    "month": 1,
+    "day": 20,
+    "precision": "day",
+    "layer": "herstory",
+    "importance": 4,
+    "confidence": "established",
+    "title": "First Female VP of the USA",
+    "summary": "Kamala Harris becomes the first woman, first Black, and first South Asian VP.",
+    "body": "Kamala Harris is inaugurated as the 49th Vice President of the United States — the first woman, first Black American, and first South Asian American to hold the office. Her election breaks one of the last glass ceilings in American political history, 100 years after women gained the right to vote and 244 years after the nation's founding declaration that 'all men are created equal.'",
+    "sources": [
+      { "type": "wikipedia", "label": "Kamala Harris", "url": "https://en.wikipedia.org/wiki/Kamala_Harris" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q10853588" }
+    ],
+    "tags": ["politics", "women", "usa", "first", "equality"],
+    "related": ["herstory-013", "conflict-007"]
+  }
+]

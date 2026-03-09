@@ -1,0 +1,110 @@
+[
+  {
+    "id": "earth-001",
+    "year": -4500000000,
+    "precision": "epoch",
+    "layer": "earth",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Earth & Moon Form",
+    "summary": "Proto-Earth completes accretion. A Mars-sized body (Theia) collides and ejects material that becomes the Moon.",
+    "body": "Proto-Earth completes accretion. A Mars-sized body called Theia collides with early Earth, ejecting debris that coalesces into the Moon. This giant impact stabilizes Earth's axial tilt and rotation, creates tidal forces essential for life, and generates the magnetic field that shields the atmosphere from solar wind.",
+    "sources": [
+      { "type": "wikipedia", "label": "Giant-impact hypothesis", "url": "https://en.wikipedia.org/wiki/Giant-impact_hypothesis" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q2" },
+      { "type": "academic", "label": "NASA: Earth Formation", "url": "https://science.nasa.gov/earth/facts/" }
+    ],
+    "tags": ["earth", "moon", "geology"],
+    "related": ["cosmos-004", "earth-002"]
+  },
+  {
+    "id": "earth-002",
+    "year": -2400000000,
+    "precision": "epoch",
+    "layer": "earth",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Great Oxidation Event",
+    "summary": "Cyanobacteria flood the atmosphere with oxygen, poisoning the anaerobic world and enabling complex life.",
+    "body": "Cyanobacteria flood the atmosphere with oxygen through photosynthesis, poisoning the anaerobic world and triggering Earth's first mass extinction. This catastrophe paradoxically becomes the foundation of complex life — aerobic respiration unlocks 18x more energy than anaerobic metabolism.",
+    "sources": [
+      { "type": "wikipedia", "label": "Great Oxidation Event", "url": "https://en.wikipedia.org/wiki/Great_Oxidation_Event" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q578486" }
+    ],
+    "tags": ["atmosphere", "oxygen", "extinction"],
+    "related": ["life-001", "earth-003"]
+  },
+  {
+    "id": "earth-003",
+    "year": -250000000,
+    "precision": "epoch",
+    "layer": "earth",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Great Permian Extinction",
+    "summary": "The Great Dying — 96% of marine species and 70% of land vertebrates vanish.",
+    "body": "The Great Dying — 96% of marine species and 70% of land vertebrates vanish in Earth's most severe extinction event. Volcanic eruptions in Siberia (the Siberian Traps) release massive CO2, triggering runaway greenhouse warming and ocean acidification. Recovery takes 10 million years.",
+    "sources": [
+      { "type": "wikipedia", "label": "Permian-Triassic extinction", "url": "https://en.wikipedia.org/wiki/Permian%E2%80%93Triassic_extinction_event" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q183257" }
+    ],
+    "tags": ["extinction", "geology", "volcanic"],
+    "related": ["earth-004", "life-002"]
+  },
+  {
+    "id": "earth-004",
+    "year": -66000000,
+    "precision": "epoch",
+    "layer": "earth",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Chicxulub Impact",
+    "summary": "A 10km asteroid strikes the Yucatan. Non-avian dinosaurs go extinct. Mammals inherit the Earth.",
+    "body": "A 10km asteroid strikes the Yucatan Peninsula with the force of 10 billion nuclear weapons. The impact winter kills non-avian dinosaurs and 75% of all species. Mammals, previously small and nocturnal, radiate into every available ecological niche. Without this catastrophe, primates — and humans — may never have evolved.",
+    "sources": [
+      { "type": "wikipedia", "label": "Chicxulub crater", "url": "https://en.wikipedia.org/wiki/Chicxulub_crater" },
+      { "type": "wikipedia", "label": "Cretaceous-Paleogene extinction", "url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q223044" }
+    ],
+    "tags": ["asteroid", "extinction", "cretaceous"],
+    "related": ["earth-003", "life-003"]
+  },
+  {
+    "id": "earth-005",
+    "year": -12000,
+    "precision": "millennium",
+    "layer": "earth",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Last Ice Age Ends",
+    "summary": "Glaciers retreat. Sea levels rise 120 meters. Climate stabilizes into the Holocene.",
+    "body": "The Pleistocene glaciation ends as Earth's orbital parameters shift. Glaciers covering North America and Europe retreat. Sea levels rise 120 meters, flooding land bridges and reshaping coastlines. The stable, warm Holocene climate begins — the environmental prerequisite for agriculture and civilization.",
+    "sources": [
+      { "type": "wikipedia", "label": "Last Glacial Period", "url": "https://en.wikipedia.org/wiki/Last_Glacial_Period" },
+      { "type": "wikipedia", "label": "Holocene", "url": "https://en.wikipedia.org/wiki/Holocene" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q29461" }
+    ],
+    "tags": ["climate", "ice age", "holocene"],
+    "related": ["society-002", "indigenous-002"]
+  },
+  {
+    "id": "earth-006",
+    "year": 2015,
+    "month": 12,
+    "day": 12,
+    "precision": "day",
+    "layer": "earth",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Paris Climate Accord",
+    "summary": "196 nations agree to limit global warming to 1.5C. Implementation remains deeply insufficient.",
+    "body": "At COP21 in Paris, 196 nations adopt the first universal, legally binding global climate deal. The agreement aims to limit warming to 1.5C above pre-industrial levels. As of 2024, current policies put the world on track for 2.5-2.9C of warming. The accord represents both humanity's first collective response to an existential threat and the inadequacy of that response.",
+    "sources": [
+      { "type": "wikipedia", "label": "Paris Agreement", "url": "https://en.wikipedia.org/wiki/Paris_Agreement" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q21904756" },
+      { "type": "primary", "label": "UNFCCC: Paris Agreement text", "url": "https://unfccc.int/process-and-meetings/the-paris-agreement" }
+    ],
+    "tags": ["climate", "environment", "global", "governance"],
+    "related": []
+  }
+]

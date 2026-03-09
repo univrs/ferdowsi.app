@@ -1,0 +1,92 @@
+[
+  {
+    "id": "indigenous-001",
+    "year": -40000,
+    "precision": "epoch",
+    "layer": "indigenous",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Aboriginal Songlines",
+    "summary": "Australia's First Peoples develop navigational cosmology encoded in song. The oldest continuous knowledge system on Earth.",
+    "body": "Australia's First Peoples develop a navigational and cosmological system encoded in song that maps the continent's entire landscape. Songlines — also called Dreaming tracks — are simultaneously navigation routes, oral histories, spiritual frameworks, and ecological management systems. Some songlines remain accurate to geological features formed over 10,000 years ago, making them the oldest continuous knowledge system on Earth.",
+    "sources": [
+      { "type": "wikipedia", "label": "Songline", "url": "https://en.wikipedia.org/wiki/Songline" },
+      { "type": "wikipedia", "label": "Australian Aboriginal astronomy", "url": "https://en.wikipedia.org/wiki/Australian_Aboriginal_astronomy" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1424182" }
+    ],
+    "tags": ["indigenous", "australia", "navigation", "wisdom", "cosmology"],
+    "related": ["society-002", "indigenous-002"]
+  },
+  {
+    "id": "indigenous-002",
+    "year": -12000,
+    "precision": "millennium",
+    "layer": "indigenous",
+    "importance": 4,
+    "confidence": "established",
+    "title": "First Nations Land Management",
+    "summary": "Indigenous peoples practice sophisticated land management — controlled burns, aquaculture, food forests.",
+    "body": "Indigenous peoples across the Americas, Australia, and Africa practice sophisticated land management techniques for millennia. Controlled burns maintain grasslands and prevent catastrophic wildfires. Fish weirs and aquaculture systems sustain large populations. Food forests combine agriculture and ecology. These lands, called 'wilderness' by European colonizers, were in fact carefully managed ecosystems whose stewardship was erased from history.",
+    "sources": [
+      { "type": "wikipedia", "label": "Indigenous land management", "url": "https://en.wikipedia.org/wiki/Indigenous_land_management" },
+      { "type": "book", "label": "Charles C. Mann, 1491", "url": "https://en.wikipedia.org/wiki/1491:_New_Revelations_of_the_Americas_Before_Columbus" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1781885" }
+    ],
+    "tags": ["indigenous", "ecology", "americas", "science", "erased"],
+    "related": ["indigenous-001", "earth-005"]
+  },
+  {
+    "id": "indigenous-003",
+    "year": -3000,
+    "precision": "millennium",
+    "layer": "indigenous",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Polynesian Navigation",
+    "summary": "Pacific Islanders navigate 10 million square miles of open ocean using stars, waves, and birds.",
+    "body": "Polynesian navigators sail across 10 million square miles of open Pacific Ocean using only stars, wave patterns, birds, and phosphorescence. They reach Hawaii 1,500 years before Europeans know the Pacific exists and settle Easter Island, New Zealand, and virtually every habitable island in the world's largest ocean. It is the greatest navigational achievement in pre-modern history, requiring knowledge systems as sophisticated as any Western science.",
+    "sources": [
+      { "type": "wikipedia", "label": "Polynesian navigation", "url": "https://en.wikipedia.org/wiki/Polynesian_navigation" },
+      { "type": "wikipedia", "label": "Polynesian expansion", "url": "https://en.wikipedia.org/wiki/Polynesian_expansion" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q7226613" }
+    ],
+    "tags": ["indigenous", "navigation", "pacific", "ocean", "genius"],
+    "related": ["indigenous-001"]
+  },
+  {
+    "id": "indigenous-004",
+    "year": 1492,
+    "precision": "year",
+    "layer": "indigenous",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Indigenous Genocide Begins",
+    "summary": "Columbus's arrival begins systematic destruction. 90% of indigenous populations die within 150 years.",
+    "body": "Christopher Columbus's arrival in the Caribbean initiates the systematic destruction of the Western Hemisphere's civilizations. Through disease, enslavement, forced labor, and deliberate slaughter, an estimated 55 million indigenous people — 90% of the pre-contact population — die within 150 years. Entire languages, knowledge systems, and civilizations that developed over millennia are destroyed in the largest demographic catastrophe in human history.",
+    "sources": [
+      { "type": "wikipedia", "label": "Genocide of indigenous peoples", "url": "https://en.wikipedia.org/wiki/Genocide_of_indigenous_peoples" },
+      { "type": "academic", "label": "Koch et al. 2019: Earth system impacts of European colonization", "url": "https://doi.org/10.1016/j.quascirev.2018.12.004" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q2143149" }
+    ],
+    "tags": ["genocide", "indigenous", "colonialism", "americas", "catastrophe"],
+    "related": ["society-009", "indigenous-005"]
+  },
+  {
+    "id": "indigenous-005",
+    "year": 1830,
+    "precision": "year",
+    "layer": "indigenous",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Trail of Tears",
+    "summary": "Indian Removal Act forces 60,000+ Native Americans from ancestral lands. 15,000 die on forced marches.",
+    "body": "The US Indian Removal Act of 1830, signed by President Andrew Jackson, authorizes the forced relocation of Native Americans from their ancestral lands east of the Mississippi. Over the following decade, 60,000+ people of the Cherokee, Muscogee (Creek), Seminole, Choctaw, and Chickasaw nations are marched westward. An estimated 15,000 die on the journey. The Trail of Tears represents one of the most deliberate acts of ethnic cleansing in American history.",
+    "sources": [
+      { "type": "wikipedia", "label": "Trail of Tears", "url": "https://en.wikipedia.org/wiki/Trail_of_Tears" },
+      { "type": "primary", "label": "National Park Service: Trail of Tears", "url": "https://www.nps.gov/trte/index.htm" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q483998" }
+    ],
+    "tags": ["indigenous", "genocide", "usa", "removal", "catastrophe"],
+    "related": ["indigenous-004"]
+  }
+]
