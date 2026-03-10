@@ -684,16 +684,6 @@ export default function GoddessView() {
     return () => window.removeEventListener("keydown", handler);
   }, [searchOpen, selectedEvent]);
 
-  const handleSearchSelect = useCallback((ev) => {
-    setSelectedEvent(ev);
-    setSearchOpen(false);
-    setSearchQuery("");
-    // Fly to the event's time period
-    const range = viewRef.current.end - viewRef.current.start;
-    const padding = Math.max(range * 0.1, 50);
-    animateTo(ev.year - padding, ev.year + padding);
-  }, [animateTo]);
-
   const dragRef = useRef({ startX:0, startViewStart:0, startViewEnd:0 });
   const timelineRef = useRef(null);
   const lanesRef = useRef(null);
@@ -790,6 +780,15 @@ export default function GoddessView() {
     };
     animRef.current = requestAnimationFrame(anim);
   }, []);
+
+  const handleSearchSelect = useCallback((ev) => {
+    setSelectedEvent(ev);
+    setSearchOpen(false);
+    setSearchQuery("");
+    const range = viewRef.current.end - viewRef.current.start;
+    const padding = Math.max(range * 0.1, 50);
+    animateTo(ev.year - padding, ev.year + padding);
+  }, [animateTo]);
 
   const handleWheel = useCallback((e) => {
     e.preventDefault();
