@@ -1,8 +1,10 @@
 
-import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
 import Fuse from "fuse.js";
 import { EVENTS_FLAT, LAYERS, EPOCHS } from "../data/index.js";
+
+const CosmicView = lazy(() => import("./CosmicView.jsx"));
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // THEME — Gaia earth tones, dark & light
@@ -648,6 +650,7 @@ export default function GoddessView() {
   const [containerRect, setContainerRect] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [cosmicMode, setCosmicMode] = useState(false);
   const searchInputRef = useRef(null);
 
   // Fuse.js search index
@@ -915,6 +918,22 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
 .epoch-scroll::-webkit-scrollbar{display:none}
 `;
 
+  if (cosmicMode) {
+    return (
+      <ThemeContext.Provider value={theme}>
+        <div style={{ width:"100vw", height:"100vh", overflow:"hidden" }}>
+          <Suspense fallback={
+            <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", background: t.bg }}>
+              <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:14, color: t.textMuted, letterSpacing:3 }}>LOADING COSMIC VIEW...</div>
+            </div>
+          }>
+            <CosmicView theme={theme} onBack={() => setCosmicMode(false)} />
+          </Suspense>
+        </div>
+      </ThemeContext.Provider>
+    );
+  }
+
   return (
     <ThemeContext.Provider value={theme}>
     <div style={{ width:"100vw", height:"100vh", overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", color: t.text }}>
@@ -973,6 +992,15 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
             }}>
               {theme === "dark" ? "☀" : "☾"}
             </button>
+
+            {!isMobile && <button onClick={() => setCosmicMode(true)} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
+              padding:"7px 14px", borderRadius:5, cursor:"pointer",
+              border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
+              transition:"all 0.3s", letterSpacing:1,
+            }}>
+              ◈
+            </button>}
 
             {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:1.5, textAlign:"right" }}>
               <div><span style={{ color: epochColor, fontWeight:700 }}>{visibleEvents.length}</span> EVENTS</div>
