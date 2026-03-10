@@ -658,10 +658,13 @@ export default function GoddessView() {
   const viewRef = useRef({ start: viewStart, end: viewEnd });
   viewRef.current = { start: viewStart, end: viewEnd };
 
-  // Listen for system theme changes
+  // Track whether user has manually toggled theme
+  const userToggledTheme = useRef(false);
+
+  // Listen for system theme changes (only if user hasn't manually toggled)
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: light)");
-    const handler = (e) => setTheme(e.matches ? "light" : "dark");
+    const handler = (e) => { if (!userToggledTheme.current) setTheme(e.matches ? "light" : "dark"); };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -905,7 +908,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               {isAutoPlaying ? "■" : "▶"}{!isMobile && (isAutoPlaying ? " STOP" : " TOUR")}
             </button>
 
-            <button onClick={() => setTheme(p => p === "dark" ? "light" : "dark")} style={{
+            <button onClick={() => { userToggledTheme.current = true; setTheme(p => p === "dark" ? "light" : "dark"); }} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
               padding: isMobile ? "6px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
               border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
