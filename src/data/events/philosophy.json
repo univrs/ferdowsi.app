@@ -10,12 +10,32 @@
     "summary": "Buddha, Confucius, Zoroaster, Hebrew prophets, and Greek pre-Socratics all emerge simultaneously.",
     "body": "In a remarkable convergence, the world's foundational philosophical and religious traditions emerge nearly simultaneously across three continents. Buddha in India, Confucius and Laozi in China, Zoroaster in Persia, the Hebrew prophets in Israel, and the Greek pre-Socratics all develop systems of thought that still shape human civilization. Karl Jaspers called this period the 'Axial Age' — the axis around which all subsequent thought revolves.",
     "sources": [
-      { "type": "wikipedia", "label": "Axial Age", "url": "https://en.wikipedia.org/wiki/Axial_Age" },
-      { "type": "book", "label": "Karl Jaspers, The Origin and Goal of History", "url": "https://en.wikipedia.org/wiki/The_Origin_and_Goal_of_History" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q210652" }
+      {
+        "type": "wikipedia",
+        "label": "Axial Age",
+        "url": "https://en.wikipedia.org/wiki/Axial_Age"
+      },
+      {
+        "type": "book",
+        "label": "Karl Jaspers, The Origin and Goal of History",
+        "url": "https://en.wikipedia.org/wiki/The_Origin_and_Goal_of_History"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q210652"
+      }
     ],
-    "tags": ["philosophy", "religion", "consciousness", "axial"],
-    "related": ["society-004", "culture-003"]
+    "tags": [
+      "philosophy",
+      "religion",
+      "consciousness",
+      "axial"
+    ],
+    "related": [
+      "society-004",
+      "culture-003"
+    ]
   },
   {
     "id": "philosophy-002",
@@ -28,11 +48,31 @@
     "summary": "An Athenian stonemason invents the dialectic method. Sentenced to death for 'corrupting the youth.'",
     "body": "Socrates walks through the Athenian agora asking uncomfortable questions: What is justice? What is virtue? Can it be taught? He writes nothing, but his method of relentless questioning — the Socratic method — becomes the foundation of Western philosophy, science, and law. Athens sentences him to death by hemlock in 399 BCE for impiety and corrupting the young. His student Plato ensures his ideas survive.",
     "sources": [
-      { "type": "wikipedia", "label": "Socrates", "url": "https://en.wikipedia.org/wiki/Socrates" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q913" }
+      {
+        "type": "wikipedia",
+        "label": "Socrates",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q913"
+      }
     ],
-    "tags": ["philosophy", "greece", "dialectic", "reason"],
-    "related": ["philosophy-001", "philosophy-003"]
+    "tags": [
+      "philosophy",
+      "greece",
+      "dialectic",
+      "reason"
+    ],
+    "related": [
+      "philosophy-001",
+      "philosophy-003"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Socrates%20Louvre.jpg",
+      "wdDescription": "5th-century BCE Greek philosopher"
+    }
   },
   {
     "id": "philosophy-003",
@@ -45,12 +85,36 @@
     "summary": "The theory of Forms, philosopher-kings, and the Allegory of the Cave. Western metaphysics begins.",
     "body": "Plato founds the Academy in Athens — the Western world's first institution of higher learning — and writes dialogues exploring justice, beauty, equality, politics, and the nature of knowledge. The Republic imagines an ideal state governed by philosopher-kings. His Allegory of the Cave argues that most humans mistake shadows for reality. His theory of Forms posits a perfect, unchanging reality behind the visible world — an idea that shapes Christianity, science, and mathematics for millennia.",
     "sources": [
-      { "type": "wikipedia", "label": "Plato", "url": "https://en.wikipedia.org/wiki/Plato" },
-      { "type": "wikipedia", "label": "Republic (Plato)", "url": "https://en.wikipedia.org/wiki/Republic_(Plato)" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q859" }
+      {
+        "type": "wikipedia",
+        "label": "Plato",
+        "url": "https://en.wikipedia.org/wiki/Plato"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Republic (Plato)",
+        "url": "https://en.wikipedia.org/wiki/Republic_(Plato)"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q859"
+      }
     ],
-    "tags": ["philosophy", "greece", "metaphysics", "politics"],
-    "related": ["philosophy-002", "philosophy-004"]
+    "tags": [
+      "philosophy",
+      "greece",
+      "metaphysics",
+      "politics"
+    ],
+    "related": [
+      "philosophy-002",
+      "philosophy-004"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Plato%20Silanion%20Musei%20Capitolini%20MC1377.jpg",
+      "wdDescription": "4th-century BCE Greek philosopher"
+    }
   },
   {
     "id": "philosophy-004",
@@ -63,11 +127,31 @@
     "summary": "The first systematic thinker. Logic, biology, ethics, politics, poetics — all organized into disciplines.",
     "body": "Aristotle, student of Plato and tutor of Alexander the Great, creates the first comprehensive system of Western philosophy. He invents formal logic, classifies 500 species of animals, writes the foundational texts of ethics, politics, rhetoric, and literary criticism. His insistence on empirical observation makes him the father of science. For 2,000 years, European and Islamic scholars call him simply 'The Philosopher.'",
     "sources": [
-      { "type": "wikipedia", "label": "Aristotle", "url": "https://en.wikipedia.org/wiki/Aristotle" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q868" }
+      {
+        "type": "wikipedia",
+        "label": "Aristotle",
+        "url": "https://en.wikipedia.org/wiki/Aristotle"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q868"
+      }
     ],
-    "tags": ["philosophy", "logic", "science", "greece"],
-    "related": ["philosophy-003", "culture-003"]
+    "tags": [
+      "philosophy",
+      "logic",
+      "science",
+      "greece"
+    ],
+    "related": [
+      "philosophy-003",
+      "culture-003"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aristotle%20Altemps%20Inv8575.jpg",
+      "wdDescription": "4th-century BCE Classical Greek philosopher and polymath"
+    }
   },
   {
     "id": "philosophy-005",
@@ -80,11 +164,30 @@
     "summary": "Zeno of Citium teaches that virtue is the only true good. Endure what you cannot change.",
     "body": "Zeno of Citium begins teaching at the Stoa Poikile (Painted Porch) in Athens. Stoicism teaches that virtue — wisdom, courage, justice, temperance — is the only true good. External circumstances are 'indifferent.' The philosophy attracts slaves (Epictetus), emperors (Marcus Aurelius), and statesmen (Seneca). Its emphasis on what you can and cannot control remains one of the most practical philosophical systems ever devised.",
     "sources": [
-      { "type": "wikipedia", "label": "Stoicism", "url": "https://en.wikipedia.org/wiki/Stoicism" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q48235" }
+      {
+        "type": "wikipedia",
+        "label": "Stoicism",
+        "url": "https://en.wikipedia.org/wiki/Stoicism"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q48235"
+      }
     ],
-    "tags": ["philosophy", "stoicism", "ethics", "greece"],
-    "related": ["philosophy-003", "philosophy-004"]
+    "tags": [
+      "philosophy",
+      "stoicism",
+      "ethics",
+      "greece"
+    ],
+    "related": [
+      "philosophy-003",
+      "philosophy-004"
+    ],
+    "wikidata": {
+      "wdDescription": "school of Hellenistic philosophy who held that the practice of virtue suffices to attain eudaimonia"
+    }
   },
   {
     "id": "philosophy-006",
@@ -97,12 +200,36 @@
     "summary": "Chinese sage codifies ethics of duty, filial piety, and good governance. Shapes East Asia for 2,500 years.",
     "body": "Kong Qiu (Confucius) teaches that social harmony comes from proper relationships, ritual propriety, and moral self-cultivation. His Analects, compiled by students after his death, emphasize filial piety, benevolence (ren), and the duty of rulers to govern justly. Confucianism becomes the philosophical foundation of Chinese, Korean, Japanese, and Vietnamese civilization — shaping education, government, and family life for 2,500 years.",
     "sources": [
-      { "type": "wikipedia", "label": "Confucius", "url": "https://en.wikipedia.org/wiki/Confucius" },
-      { "type": "wikipedia", "label": "Analects", "url": "https://en.wikipedia.org/wiki/Analects" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q4604" }
+      {
+        "type": "wikipedia",
+        "label": "Confucius",
+        "url": "https://en.wikipedia.org/wiki/Confucius"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Analects",
+        "url": "https://en.wikipedia.org/wiki/Analects"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q4604"
+      }
     ],
-    "tags": ["philosophy", "china", "ethics", "confucianism"],
-    "related": ["philosophy-001", "society-004"]
+    "tags": [
+      "philosophy",
+      "china",
+      "ethics",
+      "confucianism"
+    ],
+    "related": [
+      "philosophy-001",
+      "society-004"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Confucius%2C%20fresco%20from%20a%20Western%20Han%20tomb%20of%20Dongping%20County%2C%20Shandong%20province%2C%20China.jpg",
+      "wdDescription": "5th-century BCE Chinese philosopher and politician"
+    }
   },
   {
     "id": "philosophy-007",
@@ -115,12 +242,36 @@
     "summary": "Siddhartha Gautama teaches that suffering arises from craving. The Eightfold Path leads to liberation.",
     "body": "Prince Siddhartha Gautama renounces wealth and power after encountering old age, sickness, and death. After years of ascetic practice, he achieves enlightenment under the Bodhi tree. His Four Noble Truths diagnose the human condition: life involves suffering (dukkha); suffering arises from craving; craving can cease; the Eightfold Path leads to that cessation. Buddhism spreads across Asia, spawning Theravada, Mahayana, and Zen traditions.",
     "sources": [
-      { "type": "wikipedia", "label": "Gautama Buddha", "url": "https://en.wikipedia.org/wiki/Gautama_Buddha" },
-      { "type": "wikipedia", "label": "Four Noble Truths", "url": "https://en.wikipedia.org/wiki/Four_Noble_Truths" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9441" }
+      {
+        "type": "wikipedia",
+        "label": "Gautama Buddha",
+        "url": "https://en.wikipedia.org/wiki/Gautama_Buddha"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Four Noble Truths",
+        "url": "https://en.wikipedia.org/wiki/Four_Noble_Truths"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9441"
+      }
     ],
-    "tags": ["philosophy", "buddhism", "india", "enlightenment"],
-    "related": ["philosophy-001", "philosophy-006"]
+    "tags": [
+      "philosophy",
+      "buddhism",
+      "india",
+      "enlightenment"
+    ],
+    "related": [
+      "philosophy-001",
+      "philosophy-006"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Buddha%20in%20Sarnath%20Museum%20%28Dhammajak%20Mutra%29.jpg",
+      "wdDescription": "Indian philosopher and the founder of Buddhism (623 or 563 BCE – 543 or 483 BCE)"
+    }
   },
   {
     "id": "philosophy-008",
@@ -133,12 +284,36 @@
     "summary": "Radical doubt strips away all assumptions. Only consciousness survives. Modern philosophy begins.",
     "body": "Rene Descartes publishes Discourse on the Method, systematically doubting everything — senses, mathematics, even his own body. The only thing that survives radical doubt is the act of doubting itself: 'Cogito, ergo sum' (I think, therefore I am). This move establishes consciousness as the foundation of knowledge and launches modern Western philosophy. It also creates the mind-body problem that neuroscience still grapples with today.",
     "sources": [
-      { "type": "wikipedia", "label": "Cogito, ergo sum", "url": "https://en.wikipedia.org/wiki/Cogito,_ergo_sum" },
-      { "type": "wikipedia", "label": "Discourse on the Method", "url": "https://en.wikipedia.org/wiki/Discourse_on_the_Method" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9191" }
+      {
+        "type": "wikipedia",
+        "label": "Cogito, ergo sum",
+        "url": "https://en.wikipedia.org/wiki/Cogito,_ergo_sum"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Discourse on the Method",
+        "url": "https://en.wikipedia.org/wiki/Discourse_on_the_Method"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9191"
+      }
     ],
-    "tags": ["philosophy", "rationalism", "consciousness", "france"],
-    "related": ["philosophy-004", "science-002"]
+    "tags": [
+      "philosophy",
+      "rationalism",
+      "consciousness",
+      "france"
+    ],
+    "related": [
+      "philosophy-004",
+      "science-002"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Frans%20Hals%20-%20Portret%20van%20Ren%C3%A9%20Descartes.jpg",
+      "wdDescription": "French philosopher, mathematician, and scientist (1596–1650)"
+    }
   },
   {
     "id": "philosophy-009",
@@ -151,11 +326,31 @@
     "summary": "We don't perceive reality directly — our minds structure experience. The Copernican revolution in philosophy.",
     "body": "Immanuel Kant argues that the human mind doesn't passively receive reality — it actively structures experience through innate categories of space, time, and causality. We can never know 'things in themselves,' only things as they appear to us. This 'Copernican revolution' in philosophy reconciles rationalism and empiricism, establishes the limits of human knowledge, and provides the moral framework (the categorical imperative) that underlies modern human rights.",
     "sources": [
-      { "type": "wikipedia", "label": "Critique of Pure Reason", "url": "https://en.wikipedia.org/wiki/Critique_of_Pure_Reason" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9312" }
+      {
+        "type": "wikipedia",
+        "label": "Critique of Pure Reason",
+        "url": "https://en.wikipedia.org/wiki/Critique_of_Pure_Reason"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9312"
+      }
     ],
-    "tags": ["philosophy", "epistemology", "ethics", "enlightenment"],
-    "related": ["philosophy-008", "conflict-007"]
+    "tags": [
+      "philosophy",
+      "epistemology",
+      "ethics",
+      "enlightenment"
+    ],
+    "related": [
+      "philosophy-008",
+      "conflict-007"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Immanuel%20Kant%20-%20Gemaelde%202.jpg",
+      "wdDescription": "German philosopher (1724–1804)"
+    }
   },
   {
     "id": "philosophy-010",
@@ -168,11 +363,32 @@
     "summary": "History is class struggle. Capitalism contains the seeds of its own destruction.",
     "body": "Karl Marx and Friedrich Engels publish The Communist Manifesto, arguing that all history is the history of class struggle. Capitalism, they predict, will concentrate wealth, immiserate workers, and eventually be overthrown by proletarian revolution. Whether as inspiration or warning, Marx's analysis of capitalism's internal contradictions shapes the 20th century more than any other single text — from the Russian and Chinese revolutions to the welfare state.",
     "sources": [
-      { "type": "wikipedia", "label": "The Communist Manifesto", "url": "https://en.wikipedia.org/wiki/The_Communist_Manifesto" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9061" }
+      {
+        "type": "wikipedia",
+        "label": "The Communist Manifesto",
+        "url": "https://en.wikipedia.org/wiki/The_Communist_Manifesto"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9061"
+      }
     ],
-    "tags": ["philosophy", "economics", "revolution", "class"],
-    "related": ["conflict-008", "conflict-010"]
+    "tags": [
+      "philosophy",
+      "economics",
+      "revolution",
+      "class"
+    ],
+    "related": [
+      "conflict-008",
+      "conflict-010"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Karl%20Marx%20001%20restored.jpg",
+      "wdDescription": "German-born philosopher (1818–1883)",
+      "partOf": "Marx siblings"
+    }
   },
   {
     "id": "philosophy-011",
@@ -185,12 +401,36 @@
     "summary": "The Enlightenment killed the divine foundation of morality. Now what? The will to power, the Ubermensch.",
     "body": "Friedrich Nietzsche declares in The Gay Science that 'God is dead — and we have killed him.' He means that the Enlightenment has destroyed the religious foundation of Western morality, leaving a terrifying vacuum. His response: embrace the 'will to power,' create your own values, become the Ubermensch. His ideas are later distorted by Nazis, but his diagnosis of nihilism and the crisis of meaning remains devastatingly relevant.",
     "sources": [
-      { "type": "wikipedia", "label": "Friedrich Nietzsche", "url": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche" },
-      { "type": "wikipedia", "label": "God is dead", "url": "https://en.wikipedia.org/wiki/God_is_dead" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9358" }
+      {
+        "type": "wikipedia",
+        "label": "Friedrich Nietzsche",
+        "url": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche"
+      },
+      {
+        "type": "wikipedia",
+        "label": "God is dead",
+        "url": "https://en.wikipedia.org/wiki/God_is_dead"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9358"
+      }
     ],
-    "tags": ["philosophy", "nihilism", "morality", "existentialism"],
-    "related": ["philosophy-009", "philosophy-012"]
+    "tags": [
+      "philosophy",
+      "nihilism",
+      "morality",
+      "existentialism"
+    ],
+    "related": [
+      "philosophy-009",
+      "philosophy-012"
+    ],
+    "wikidata": {
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nietzsche187a.jpg",
+      "wdDescription": "German philosopher (1844–1900)"
+    }
   },
   {
     "id": "philosophy-012",
@@ -203,11 +443,35 @@
     "summary": "Existence precedes essence. You are condemned to be free. De Beauvoir extends this to women's liberation.",
     "body": "Jean-Paul Sartre publishes Being and Nothingness, arguing that humans have no fixed nature — 'existence precedes essence.' We are 'condemned to be free,' fully responsible for who we become. Simone de Beauvoir applies existentialist thought to women in The Second Sex (1949): 'One is not born, but rather becomes, a woman.' Together they forge a philosophy of radical freedom that inspires liberation movements worldwide.",
     "sources": [
-      { "type": "wikipedia", "label": "Existentialism", "url": "https://en.wikipedia.org/wiki/Existentialism" },
-      { "type": "wikipedia", "label": "Simone de Beauvoir", "url": "https://en.wikipedia.org/wiki/Simone_de_Beauvoir" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q9382" }
+      {
+        "type": "wikipedia",
+        "label": "Existentialism",
+        "url": "https://en.wikipedia.org/wiki/Existentialism"
+      },
+      {
+        "type": "wikipedia",
+        "label": "Simone de Beauvoir",
+        "url": "https://en.wikipedia.org/wiki/Simone_de_Beauvoir"
+      },
+      {
+        "type": "wikidata",
+        "label": "Wikidata",
+        "qid": "Q9382"
+      }
     ],
-    "tags": ["philosophy", "existentialism", "freedom", "feminism"],
-    "related": ["philosophy-011", "herstory-015"]
+    "tags": [
+      "philosophy",
+      "existentialism",
+      "freedom",
+      "feminism"
+    ],
+    "related": [
+      "philosophy-011",
+      "herstory-015"
+    ],
+    "wikidata": {
+      "wdDescription": "internal organ of humans and vertebrates",
+      "partOf": "urinary system"
+    }
   }
 ]

@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext } from "react";
 import { createPortal } from "react-dom";
+import Fuse from "fuse.js";
 import { EVENTS_FLAT, LAYERS, EPOCHS } from "../data/index.js";
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -645,6 +646,53 @@ export default function GoddessView() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [breathPhase, setBreathPhase] = useState(0);
   const [containerRect, setContainerRect] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef(null);
+
+  // Fuse.js search index
+  const fuse = useMemo(() => new Fuse(EVENTS, {
+    keys: [
+      { name: "title", weight: 0.4 },
+      { name: "desc", weight: 0.25 },
+      { name: "tags", weight: 0.2 },
+      { name: "body", weight: 0.15 },
+    ],
+    threshold: 0.35,
+    includeScore: true,
+  }), []);
+
+  const searchResults = useMemo(() => {
+    if (!searchQuery || searchQuery.length < 2) return [];
+    return fuse.search(searchQuery).slice(0, 8);
+  }, [searchQuery, fuse]);
+
+  // Keyboard shortcut: / to open search, Escape to close
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === "/" && !searchOpen && !selectedEvent) {
+        e.preventDefault();
+        setSearchOpen(true);
+        setTimeout(() => searchInputRef.current?.focus(), 50);
+      }
+      if (e.key === "Escape" && searchOpen) {
+        setSearchOpen(false);
+        setSearchQuery("");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [searchOpen, selectedEvent]);
+
+  const handleSearchSelect = useCallback((ev) => {
+    setSelectedEvent(ev);
+    setSearchOpen(false);
+    setSearchQuery("");
+    // Fly to the event's time period
+    const range = viewRef.current.end - viewRef.current.start;
+    const padding = Math.max(range * 0.1, 50);
+    animateTo(ev.year - padding, ev.year + padding);
+  }, [animateTo]);
 
   const dragRef = useRef({ startX:0, startViewStart:0, startViewEnd:0 });
   const timelineRef = useRef(null);
@@ -897,6 +945,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
           {!isMobile && <div style={{ width:1, height:36, background: t.border, flexShrink:0 }} />}
 
           <div style={{ marginLeft:"auto", display:"flex", alignItems:"center", gap: isMobile ? 8 : 14, flexShrink:0 }}>
+            <button onClick={() => { setSearchOpen(p => !p); if (!searchOpen) setTimeout(() => searchInputRef.current?.focus(), 50); }} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
+              padding: isMobile ? "6px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
+              border: searchOpen ? `1.5px solid ${epochColor}` : `1px solid ${t.border}`,
+              background: searchOpen ? `${epochColor}18` : "transparent",
+              color: searchOpen ? epochColor : t.textMuted,
+              transition:"all 0.3s",
+            }}>
+              &#x2315;{!isMobile && " SEARCH"}
+            </button>
             <button onClick={() => setIsAutoPlaying(p => !p)} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
               padding: isMobile ? "6px 10px" : "7px 16px", borderRadius:5, cursor:"pointer",
@@ -935,6 +993,74 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
             </button>
           </div>
         </div>
+
+        {/* Search bar */}
+        {searchOpen && (
+          <div style={{ position:"relative", zIndex:200 }}>
+            <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Search events, people, ideas..."
+                style={{
+                  flex:1, fontFamily:"'Lora', serif", fontSize: isMobile ? 14 : 15,
+                  padding: isMobile ? "8px 12px" : "10px 16px", borderRadius:8,
+                  background: t.surface, color: t.text,
+                  border:`1px solid ${epochColor}44`, outline:"none",
+                  caretColor: epochColor,
+                }}
+                onKeyDown={e => {
+                  if (e.key === "Enter" && searchResults.length > 0) handleSearchSelect(searchResults[0].item);
+                  if (e.key === "Escape") { setSearchOpen(false); setSearchQuery(""); }
+                }}
+                autoFocus
+              />
+              <button onClick={() => { setSearchOpen(false); setSearchQuery(""); }} style={{
+                fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
+                padding:"8px 12px", borderRadius:6, cursor:"pointer",
+                border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
+              }}>ESC</button>
+            </div>
+            {searchResults.length > 0 && (
+              <div style={{
+                position:"absolute", top:"100%", left:0, right:0, marginTop:4,
+                background: t.cardBg, border:`1px solid ${t.border}`,
+                borderRadius:10, overflow:"hidden", backdropFilter:"blur(12px)",
+                boxShadow:"0 12px 40px rgba(0,0,0,0.3)", maxHeight:360, overflowY:"auto",
+              }}>
+                {searchResults.map(({ item, score }) => {
+                  const lCol = lc[item.layer] || { color:"#9a8a7a", accent:"#6a5a4a" };
+                  return (
+                    <button key={item.id} onClick={() => handleSearchSelect(item)} style={{
+                      display:"flex", alignItems:"center", gap:10, width:"100%", textAlign:"left",
+                      padding: isMobile ? "10px 12px" : "12px 16px", cursor:"pointer",
+                      background:"transparent", border:"none", borderBottom:`1px solid ${t.border}`,
+                      transition:"background 0.15s",
+                    }}
+                      onMouseEnter={e => e.currentTarget.style.background = `${lCol.accent}12`}
+                      onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                    >
+                      <span style={{ width:8, height:8, borderRadius:"50%", flexShrink:0, background: lCol.color }} />
+                      <div style={{ flex:1, minWidth:0 }}>
+                        <div style={{ fontFamily:"'Cinzel', serif", fontSize:14, fontWeight:700, color: t.text, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>
+                          {item.title}
+                        </div>
+                        <div style={{ fontFamily:"'Lora', serif", fontSize:12, color: t.textMuted, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>
+                          {item.desc}
+                        </div>
+                      </div>
+                      <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, color: lCol.color, flexShrink:0 }}>
+                        {formatYear(item.year)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Epoch buttons — horizontal scroll on mobile */}
         <div className="epoch-scroll" style={{
