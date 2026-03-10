@@ -1,8 +1,39 @@
 
-import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext, lazy, Suspense, Component } from "react";
 import { createPortal } from "react-dom";
 import Fuse from "fuse.js";
 import { EVENTS_FLAT, LAYERS, EPOCHS } from "../data/index.js";
+
+const TimelineView3D = lazy(() => import("./TimelineView3D.jsx"));
+
+// Error boundary for 3D — catches WebGL failures gracefully
+class WebGLErrorBoundary extends Component {
+  constructor(props) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error) { return { hasError: true, error }; }
+  render() {
+    if (this.state.hasError) {
+      const t = this.props.theme === "dark"
+        ? { bg: "#0d0c0a", text: "#e8e0d4", muted: "rgba(210,200,180,0.55)" }
+        : { bg: "#f5f0e8", text: "#2a2418", muted: "rgba(60,52,38,0.55)" };
+      return (
+        <div style={{ flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", background: t.bg, gap:12, padding:40 }}>
+          <div style={{ fontFamily:"'Cinzel', serif", fontSize:18, fontWeight:700, color: t.text }}>3D Unavailable</div>
+          <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:12, color: t.muted, textAlign:"center", maxWidth:400, lineHeight:1.6 }}>
+            WebGL could not initialize. This usually means your browser or device does not support hardware-accelerated 3D graphics. Try opening this page in Chrome or Firefox on a device with GPU support.
+          </div>
+          <button onClick={() => this.props.onFallback()} style={{
+            marginTop:12, fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
+            padding:"8px 20px", borderRadius:5, cursor:"pointer", letterSpacing:1.5,
+            border:`1px solid ${t.muted}`, background:"transparent", color: t.text,
+          }}>
+            BACK TO 2D
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // THEME — Gaia earth tones, dark & light
@@ -642,6 +673,7 @@ export default function GoddessView() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== "undefined" && window.innerWidth >= 768);
   const [hoveredEvent, setHoveredEvent] = useState(null);
+  const [viewMode, setViewMode] = useState("2d"); // "2d" or "3d"
   const [isDragging, setIsDragging] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [breathPhase, setBreathPhase] = useState(0);
@@ -934,7 +966,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
         <div style={{ display:"flex", alignItems:"center", gap: isMobile ? 10 : 20 }}>
           <div style={{ flexShrink:0 }}>
             <div style={{ fontFamily:"'Cinzel', serif", fontSize: isMobile ? 16 : 22, fontWeight:900, color: t.text, letterSpacing: isMobile ? 3 : 5, lineHeight:1.1 }}>
-              SIMURGH'S<span style={{ color: epochColor, marginLeft:6 }}>VIEW</span>
+              SIMURGH
             </div>
             {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:3, marginTop:3 }}>
               HERSTORY OF TIME
@@ -952,7 +984,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               color: searchOpen ? epochColor : t.textMuted,
               transition:"all 0.3s",
             }}>
-              &#x2315;{!isMobile && " SEARCH"}
+              &#x2315;
             </button>
             <button onClick={() => setIsAutoPlaying(p => !p)} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
@@ -962,7 +994,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               color: isAutoPlaying ? t.nowColor : t.textMuted,
               transition:"all 0.3s",
             }}>
-              {isAutoPlaying ? "■" : "▶"}{!isMobile && (isAutoPlaying ? " STOP" : " TOUR")}
+              {isAutoPlaying ? "■" : "▶"}
             </button>
 
             <button onClick={() => { userToggledTheme.current = true; setTheme(p => p === "dark" ? "light" : "dark"); }} style={{
@@ -971,16 +1003,23 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
               transition:"all 0.3s", letterSpacing:1,
             }}>
-              {theme === "dark" ? "☀" : "☾"}{!isMobile && (theme === "dark" ? " LIGHT" : " DARK")}
+              {theme === "dark" ? "☀" : "☾"}
+            </button>
+
+            <button onClick={() => setViewMode(p => p === "2d" ? "3d" : "2d")} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
+              padding: isMobile ? "6px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
+              border: viewMode === "3d" ? `1.5px solid ${epochColor}` : `1px solid ${t.border}`,
+              background: viewMode === "3d" ? `${epochColor}18` : "transparent",
+              color: viewMode === "3d" ? epochColor : t.textMuted,
+              transition:"all 0.3s", letterSpacing:1,
+            }}>
+              {viewMode === "3d" ? "◈ 3D" : "◇ 3D"}
             </button>
 
             {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:1.5, textAlign:"right" }}>
               <div><span style={{ color: epochColor, fontWeight:700 }}>{visibleEvents.length}</span> EVENTS</div>
               <div style={{ opacity:0.6, fontSize:10 }}>{zoomLabel}</div>
-            </div>}
-            {!isMobile && <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-              <div style={{ width:7, height:7, borderRadius:"50%", background: t.nowColor, boxShadow:`0 0 8px ${t.nowColor}` }} />
-              <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600, color: t.nowColor, opacity:0.5, letterSpacing:2 }}>LIVE</span>
             </div>}
             <button onClick={() => setSidebarOpen(p => !p)} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
@@ -988,7 +1027,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               border:`1px solid ${t.border}`, color: t.textMuted,
               borderRadius:5, cursor:"pointer",
             }}>
-              {sidebarOpen ? "◁" : "▷"}{!isMobile && " LAYERS"}
+              {sidebarOpen ? "◁" : "▷"}
             </button>
           </div>
         </div>
@@ -1092,6 +1131,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
       </div>
 
       {/* ── BODY ── */}
+      {viewMode === "3d" ? (
+        <div style={{ flex:1, overflow:"hidden", position:"relative", zIndex:10 }}>
+          <WebGLErrorBoundary theme={theme} onFallback={() => setViewMode("2d")}>
+            <Suspense fallback={
+              <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", background: t.bg }}>
+                <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:14, color: t.textMuted, letterSpacing:3 }}>
+                  LOADING 3D...
+                </div>
+              </div>
+            }>
+              <TimelineView3D
+                events={EVENTS}
+                layers={LAYERS}
+                activeLayers={activeLayers}
+                layerColors={lc}
+                theme={theme}
+                onSelectEvent={setSelectedEvent}
+                selectedEvent={selectedEvent}
+              />
+            </Suspense>
+          </WebGLErrorBoundary>
+        </div>
+      ) : (
       <div style={{ display:"flex", flex:1, overflow:"hidden", position:"relative", zIndex:10 }}>
 
         {sidebarOpen && (
@@ -1246,6 +1308,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
           </div>
         </div>
       </div>
+      )}
 
       {/* STATUS BAR */}
       <div style={{

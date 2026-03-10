@@ -32,7 +32,7 @@ export const SOURCE_TYPE = {
 export const EPOCHS = {
   COSMIC:       { label:"COSMIC",        sub:"13.8 Billion Years",  start:-13_800_000_000, end:2026, colorKey:"cosmos" },
   GEOLOGICAL:   { label:"GEOLOGICAL",    sub:"500 Million Years",   start:-500_000_000,    end:2026, colorKey:"earth" },
-  DEEP_HUMAN:   { label:"DEEP HUMAN",    sub:"70,000 Years",        start:-70_000,         end:2026, colorKey:"society" },
+  DEEP_HUMAN:   { label:"ANCIENT",        sub:"70,000 Years",        start:-70_000,         end:2026, colorKey:"society" },
   HISTORICAL:   { label:"HISTORICAL",    sub:"5,000 Years",         start:-5_000,          end:2026, colorKey:"science" },
   MODERN:       { label:"MODERN",        sub:"600 Years",           start:1400,            end:2026, colorKey:"culture" },
   CONTEMPORARY: { label:"CONTEMPORARY",  sub:"200 Years",           start:1800,            end:2026, colorKey:"life" },
