@@ -7,15 +7,14 @@
     "importance": 5,
     "confidence": "established",
     "title": "Aboriginal Songlines",
-    "summary": "Australia's First Peoples develop navigational cosmology encoded in song. The oldest continuous knowledge system on Earth.",
-    "body": "Australia's First Peoples develop a navigational and cosmological system encoded in song that maps the continent's entire landscape. Songlines — also called Dreaming tracks — are simultaneously navigation routes, oral histories, spiritual frameworks, and ecological management systems. Some songlines remain accurate to geological features formed over 10,000 years ago, making them the oldest continuous knowledge system on Earth.",
+    "summary": "Australia's First Peoples develop a navigational and cosmological system encoded in song.",
+    "body": "Australia's First Peoples develop a navigational and cosmological system encoded in song that maps the continent's entire landscape. Some songlines remain accurate to geological features formed 10,000+ years ago. The oldest continuous knowledge system on Earth.",
     "sources": [
       { "type": "wikipedia", "label": "Songline", "url": "https://en.wikipedia.org/wiki/Songline" },
-      { "type": "wikipedia", "label": "Australian Aboriginal astronomy", "url": "https://en.wikipedia.org/wiki/Australian_Aboriginal_astronomy" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q1424182" }
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1140372" }
     ],
     "tags": ["indigenous", "australia", "navigation", "wisdom", "cosmology"],
-    "related": ["society-002", "indigenous-002"]
+    "related": ["society-002"]
   },
   {
     "id": "indigenous-002",
@@ -24,13 +23,12 @@
     "layer": "indigenous",
     "importance": 4,
     "confidence": "established",
-    "title": "First Nations Land Management",
-    "summary": "Indigenous peoples practice sophisticated land management — controlled burns, aquaculture, food forests.",
-    "body": "Indigenous peoples across the Americas, Australia, and Africa practice sophisticated land management techniques for millennia. Controlled burns maintain grasslands and prevent catastrophic wildfires. Fish weirs and aquaculture systems sustain large populations. Food forests combine agriculture and ecology. These lands, called 'wilderness' by European colonizers, were in fact carefully managed ecosystems whose stewardship was erased from history.",
+    "title": "First Nations Terra Management",
+    "summary": "Indigenous peoples across the Americas practice sophisticated land management at continental scale.",
+    "body": "Indigenous peoples across the Americas practice sophisticated land management — controlled burns, aquaculture, food forests — maintaining biodiversity at a scale that post-colonial 'wilderness' destroyed. Called 'wilderness' by colonizers who erased its management.",
     "sources": [
-      { "type": "wikipedia", "label": "Indigenous land management", "url": "https://en.wikipedia.org/wiki/Indigenous_land_management" },
-      { "type": "book", "label": "Charles C. Mann, 1491", "url": "https://en.wikipedia.org/wiki/1491:_New_Revelations_of_the_Americas_Before_Columbus" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q1781885" }
+      { "type": "wikipedia", "label": "Indigenous land management", "url": "https://en.wikipedia.org/wiki/Native_American_use_of_fire_in_ecosystems" },
+      { "type": "book", "label": "Charles C. Mann, 1491", "url": "https://en.wikipedia.org/wiki/1491:_New_Revelations_of_the_Americas_Before_Columbus" }
     ],
     "tags": ["indigenous", "ecology", "americas", "science", "erased"],
     "related": ["indigenous-001", "earth-005"]
@@ -43,15 +41,14 @@
     "importance": 4,
     "confidence": "established",
     "title": "Polynesian Navigation",
-    "summary": "Pacific Islanders navigate 10 million square miles of open ocean using stars, waves, and birds.",
-    "body": "Polynesian navigators sail across 10 million square miles of open Pacific Ocean using only stars, wave patterns, birds, and phosphorescence. They reach Hawaii 1,500 years before Europeans know the Pacific exists and settle Easter Island, New Zealand, and virtually every habitable island in the world's largest ocean. It is the greatest navigational achievement in pre-modern history, requiring knowledge systems as sophisticated as any Western science.",
+    "summary": "Pacific Islanders navigate 10 million square miles of open ocean using only stars, waves, and birds.",
+    "body": "Pacific Islanders navigate 10 million square miles of open ocean using only stars, wave patterns, birds, and phosphorescence. They reach Hawaii 1,500 years before Europeans know the Pacific exists. The greatest navigational achievement in pre-modern history.",
     "sources": [
       { "type": "wikipedia", "label": "Polynesian navigation", "url": "https://en.wikipedia.org/wiki/Polynesian_navigation" },
-      { "type": "wikipedia", "label": "Polynesian expansion", "url": "https://en.wikipedia.org/wiki/Polynesian_expansion" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q7226613" }
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q39631" }
     ],
     "tags": ["indigenous", "navigation", "pacific", "ocean", "genius"],
-    "related": ["indigenous-001"]
+    "related": ["indigenous-001", "society-002"]
   },
   {
     "id": "indigenous-004",
@@ -61,12 +58,11 @@
     "importance": 5,
     "confidence": "established",
     "title": "Indigenous Genocide Begins",
-    "summary": "Columbus's arrival begins systematic destruction. 90% of indigenous populations die within 150 years.",
-    "body": "Christopher Columbus's arrival in the Caribbean initiates the systematic destruction of the Western Hemisphere's civilizations. Through disease, enslavement, forced labor, and deliberate slaughter, an estimated 55 million indigenous people — 90% of the pre-contact population — die within 150 years. Entire languages, knowledge systems, and civilizations that developed over millennia are destroyed in the largest demographic catastrophe in human history.",
+    "summary": "Columbus's arrival begins the systematic destruction of the Western Hemisphere's civilizations.",
+    "body": "Columbus's arrival in the Caribbean initiates the systematic destruction of the Western Hemisphere's civilizations. 90% of indigenous populations — an estimated 55 million people — die within 150 years from disease, enslavement, and slaughter. The largest demographic catastrophe in human history.",
     "sources": [
-      { "type": "wikipedia", "label": "Genocide of indigenous peoples", "url": "https://en.wikipedia.org/wiki/Genocide_of_indigenous_peoples" },
-      { "type": "academic", "label": "Koch et al. 2019: Earth system impacts of European colonization", "url": "https://doi.org/10.1016/j.quascirev.2018.12.004" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q2143149" }
+      { "type": "wikipedia", "label": "Population history of Indigenous peoples", "url": "https://en.wikipedia.org/wiki/Population_history_of_Indigenous_peoples_of_the_Americas" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q7058900" }
     ],
     "tags": ["genocide", "indigenous", "colonialism", "americas", "catastrophe"],
     "related": ["society-009", "indigenous-005"]
@@ -79,14 +75,99 @@
     "importance": 4,
     "confidence": "established",
     "title": "Trail of Tears",
-    "summary": "Indian Removal Act forces 60,000+ Native Americans from ancestral lands. 15,000 die on forced marches.",
-    "body": "The US Indian Removal Act of 1830, signed by President Andrew Jackson, authorizes the forced relocation of Native Americans from their ancestral lands east of the Mississippi. Over the following decade, 60,000+ people of the Cherokee, Muscogee (Creek), Seminole, Choctaw, and Chickasaw nations are marched westward. An estimated 15,000 die on the journey. The Trail of Tears represents one of the most deliberate acts of ethnic cleansing in American history.",
+    "summary": "US Indian Removal Act forces 60,000+ Native Americans from their ancestral lands. 15,000 die.",
+    "body": "US Indian Removal Act forces 60,000+ Native Americans from their ancestral lands. 15,000 die on forced marches. Entire nations — Cherokee, Muscogee, Seminole, Choctaw, Chickasaw — are ethnically cleansed from the American Southeast.",
     "sources": [
       { "type": "wikipedia", "label": "Trail of Tears", "url": "https://en.wikipedia.org/wiki/Trail_of_Tears" },
-      { "type": "primary", "label": "National Park Service: Trail of Tears", "url": "https://www.nps.gov/trte/index.htm" },
-      { "type": "wikidata", "label": "Wikidata", "qid": "Q483998" }
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q622083" }
     ],
     "tags": ["indigenous", "genocide", "usa", "removal", "catastrophe"],
-    "related": ["indigenous-004"]
+    "related": ["indigenous-004", "conflict-007"]
+  },
+  {
+    "id": "indigenous-006",
+    "year": -1200,
+    "precision": "century",
+    "layer": "indigenous",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Olmec Civilization",
+    "summary": "Mesoamerica's 'mother culture' builds colossal stone heads, develops writing, and invents the concept of zero.",
+    "body": "The Olmec, considered the 'mother culture' of Mesoamerica, flourish in the tropical lowlands of what is now southern Mexico. They carve colossal basalt heads weighing up to 50 tons, develop early forms of writing and calendrical systems, and likely invent the concept of zero — centuries before India. Their art, religion, and ballgame tradition influence every subsequent Mesoamerican civilization including the Maya and Aztec.",
+    "sources": [
+      { "type": "wikipedia", "label": "Olmec", "url": "https://en.wikipedia.org/wiki/Olmec" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q135364" }
+    ],
+    "tags": ["indigenous", "mesoamerica", "civilization", "mathematics"],
+    "related": ["society-004", "indigenous-003"]
+  },
+  {
+    "id": "indigenous-007",
+    "year": -1000,
+    "precision": "century",
+    "layer": "indigenous",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Haudenosaunee Confederacy",
+    "summary": "The Iroquois Great Law of Peace — the oldest living participatory democracy. It influences the US Constitution.",
+    "body": "The Haudenosaunee (Iroquois) form a confederacy of five (later six) nations under the Great Law of Peace — an oral constitution establishing representative governance, separation of powers, and women's political authority. Clan mothers choose and can depose chiefs. Benjamin Franklin and other founders study the confederacy's structure; the US Congress formally acknowledges its influence on the Constitution in 1988.",
+    "sources": [
+      { "type": "wikipedia", "label": "Haudenosaunee", "url": "https://en.wikipedia.org/wiki/Haudenosaunee" },
+      { "type": "wikipedia", "label": "Great Law of Peace", "url": "https://en.wikipedia.org/wiki/Great_Law_of_Peace" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q483024" }
+    ],
+    "tags": ["indigenous", "democracy", "governance", "women"],
+    "related": ["conflict-001", "conflict-007"]
+  },
+  {
+    "id": "indigenous-008",
+    "year": 1200,
+    "precision": "century",
+    "layer": "indigenous",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Great Zimbabwe",
+    "summary": "A stone city of 18,000 people in southern Africa. European colonizers refuse to believe Africans built it.",
+    "body": "The Kingdom of Zimbabwe builds a massive stone city without mortar in what is now southeastern Zimbabwe. At its peak around 1300 CE, Great Zimbabwe houses 18,000 people and controls gold trade between the interior and the Swahili coast. When European colonizers encounter the ruins, they attribute them to Phoenicians, Arabs, or Biblical figures — refusing for over a century to accept that Africans built one of the medieval world's great cities.",
+    "sources": [
+      { "type": "wikipedia", "label": "Great Zimbabwe", "url": "https://en.wikipedia.org/wiki/Great_Zimbabwe" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q191469" }
+    ],
+    "tags": ["indigenous", "africa", "architecture", "erased", "trade"],
+    "related": ["society-004", "indigenous-006"]
+  },
+  {
+    "id": "indigenous-009",
+    "year": 1973,
+    "precision": "year",
+    "layer": "indigenous",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Wounded Knee Occupation",
+    "summary": "AIM occupies Wounded Knee for 71 days. The Indigenous rights movement enters the global stage.",
+    "body": "Members of the American Indian Movement (AIM) occupy the town of Wounded Knee on the Pine Ridge Reservation for 71 days, demanding treaty rights and sovereignty. The occupation, at the site of the 1890 massacre, draws global media attention to Indigenous rights and government treaty violations. It galvanizes the modern Indigenous rights movement and leads to the 2007 UN Declaration on the Rights of Indigenous Peoples.",
+    "sources": [
+      { "type": "wikipedia", "label": "Wounded Knee Occupation", "url": "https://en.wikipedia.org/wiki/Wounded_Knee_Occupation" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q1428907" }
+    ],
+    "tags": ["indigenous", "rights", "protest", "usa", "sovereignty"],
+    "related": ["indigenous-005", "indigenous-004"]
+  },
+  {
+    "id": "indigenous-010",
+    "year": 2016,
+    "precision": "year",
+    "layer": "indigenous",
+    "importance": 3,
+    "confidence": "established",
+    "title": "Standing Rock — Water Is Life",
+    "summary": "The Sioux and allies block the Dakota Access Pipeline. Indigenous environmental activism goes global.",
+    "body": "The Standing Rock Sioux Tribe and thousands of supporters establish camps to block construction of the Dakota Access Pipeline, which threatens their water supply and crosses sacred burial grounds. The 'Water Protectors' face militarized police, attack dogs, and water cannons in freezing temperatures. The protest becomes a global symbol of Indigenous-led environmental resistance and the intersection of climate justice with Indigenous sovereignty.",
+    "sources": [
+      { "type": "wikipedia", "label": "Dakota Access Pipeline protests", "url": "https://en.wikipedia.org/wiki/Dakota_Access_Pipeline_protests" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q25439025" }
+    ],
+    "tags": ["indigenous", "environment", "water", "protest", "climate"],
+    "related": ["indigenous-009", "earth-006"]
   }
 ]

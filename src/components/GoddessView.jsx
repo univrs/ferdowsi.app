@@ -283,40 +283,38 @@ function ConnectionLines({ hoveredEvent, visibleEvents, yearToPct, activeLayerId
 // ═══════════════════════════════════════════════════════════════════════════════
 // EVENT NODE
 // ═══════════════════════════════════════════════════════════════════════════════
-function EventNode({ ev, xPct, onClick, selected, onHover, breathPhase }) {
+function EventNode({ ev, xPct, onClick, selected, onHover, breathPhase, isMobile }) {
   const { t, lc } = useTheme();
   const [hovered, setHovered] = useState(false);
   const nodeRef = useRef(null);
   const [cardPos, setCardPos] = useState(null);
   const layerColor = lc[ev.layer] || { color:"#9a8a7a", accent:"#6a5a4a" };
-  const size = 10 + ev.imp * 4;
+  const size = isMobile ? 8 + ev.imp * 3 : 10 + ev.imp * 4;
   const breathScale = 1 + Math.sin(breathPhase + ev.id * 1.7) * 0.06;
 
-  // Calculate card position in viewport coords when hovered
+  // Calculate card position in viewport coords when hovered (desktop only)
   useEffect(() => {
-    if (!hovered || !nodeRef.current) { setCardPos(null); return; }
+    if (isMobile || !hovered || !nodeRef.current) { setCardPos(null); return; }
     const rect = nodeRef.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
-    const CARD_W = 320, CARD_H = 220;
-    // If not enough room above (< 220px from top), show below
+    const CARD_W = 300, CARD_H = 200;
     const showBelow = rect.top < CARD_H + 10;
-    // Clamp horizontal so card stays on screen
     let left = cx - CARD_W / 2;
     left = Math.max(8, Math.min(window.innerWidth - CARD_W - 8, left));
     const top = showBelow ? rect.bottom + 12 : rect.top - CARD_H - 12;
     setCardPos({ left, top, showBelow });
-  }, [hovered]);
+  }, [hovered, isMobile]);
 
   return (
     <div
       ref={nodeRef}
-      onMouseEnter={() => { setHovered(true); onHover(ev); }}
-      onMouseLeave={() => { setHovered(false); onHover(null); }}
+      onMouseEnter={() => { if (!isMobile) { setHovered(true); onHover(ev); } }}
+      onMouseLeave={() => { if (!isMobile) { setHovered(false); onHover(null); } }}
       onClick={(e) => { e.stopPropagation(); onClick(ev); }}
       style={{
         position:"absolute", left:`${xPct * 100}%`, top:"50%",
         transform:"translate(-50%, -50%)", zIndex: hovered ? 100 : 10,
-        cursor:"pointer", padding:10,
+        cursor:"pointer", padding: isMobile ? 14 : 10,
       }}
     >
       <div style={{
@@ -339,12 +337,12 @@ function EventNode({ ev, xPct, onClick, selected, onHover, breathPhase }) {
         position:"relative", zIndex:2,
       }} />
       {/* Hover card rendered via portal so it escapes all overflow/z-index contexts */}
-      {hovered && cardPos && createPortal(
+      {hovered && cardPos && !isMobile && createPortal(
         <div style={{
           position:"fixed",
           left: cardPos.left,
           top: cardPos.top,
-          width: 320,
+          width: 300,
           background: t.cardBg,
           border: `1px solid ${layerColor.accent}55`,
           borderTop: cardPos.showBelow ? "none" : `3px solid ${layerColor.accent}`,
@@ -454,10 +452,11 @@ function EventModal({ ev, onClose, allEvents, onNavigate }) {
       animation:"fadeIn 0.2s ease-out",
     }}>
       <div onClick={e => e.stopPropagation()} style={{
-        width:660, maxWidth:"92vw", maxHeight:"88vh", overflowY:"auto",
+        width:660, maxWidth:"96vw", maxHeight:"92vh", overflowY:"auto",
         background: t.cardBg,
         border:`1px solid ${layerColor.accent}44`, borderTop:`3px solid ${layerColor.accent}`,
-        borderRadius:16, padding:"40px 44px",
+        borderRadius: window.innerWidth < 768 ? 10 : 16,
+        padding: window.innerWidth < 768 ? "24px 18px" : "40px 44px",
         boxShadow:`0 40px 120px rgba(0,0,0,0.5), 0 0 60px ${layerColor.accent}10`,
       }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:28, flexWrap:"wrap", gap:8 }}>
@@ -478,7 +477,7 @@ function EventModal({ ev, onClose, allEvents, onNavigate }) {
             {ev.precision && <span style={{ fontSize:11, opacity:0.6, marginLeft:6 }}>({ev.precision})</span>}
           </span>
         </div>
-        <h2 style={{ fontFamily:"'Cinzel', serif", fontSize:30, fontWeight:900, color: t.text, marginBottom:20, lineHeight:1.3 }}>
+        <h2 style={{ fontFamily:"'Cinzel', serif", fontSize: window.innerWidth < 768 ? 22 : 30, fontWeight:900, color: t.text, marginBottom: window.innerWidth < 768 ? 14 : 20, lineHeight:1.3 }}>
           {ev.title}
         </h2>
         <div style={{ height:2, background:`linear-gradient(90deg, ${layerColor.accent}55, transparent)`, marginBottom:24, borderRadius:1 }} />
@@ -616,6 +615,17 @@ function EventModal({ ev, onClose, allEvents, onNavigate }) {
 // ═══════════════════════════════════════════════════════════════════════════════
 // MAIN
 // ═══════════════════════════════════════════════════════════════════════════════
+// Mobile detection hook
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < breakpoint);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < breakpoint);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [breakpoint]);
+  return isMobile;
+}
+
 export default function GoddessView() {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
@@ -623,12 +633,13 @@ export default function GoddessView() {
   });
   const t = THEMES[theme];
   const lc = LAYER_COLORS[theme];
+  const isMobile = useIsMobile();
 
   const [viewStart, setViewStart] = useState(-5_000);
   const [viewEnd, setViewEnd] = useState(2026);
   const [activeLayers, setActiveLayers] = useState(new Set(LAYERS.map(l => l.id)));
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== "undefined" && window.innerWidth >= 768);
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
@@ -851,6 +862,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
 ::-webkit-scrollbar-thumb{background:${t.scrollThumb};border-radius:2px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideInRight{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
+.epoch-scroll::-webkit-scrollbar{display:none}
 `;
 
   return (
@@ -862,84 +874,92 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
       {/* ── HEADER ── */}
       <div style={{
         position:"relative", zIndex:50, flexShrink:0,
-        padding:"16px 28px 14px",
+        padding: isMobile ? "10px 12px 8px" : "16px 28px 14px",
         background: t.headerBg,
         borderBottom:`1px solid ${t.border}`,
         backdropFilter:"blur(20px)",
-        display:"flex", alignItems:"center", gap:20,
+        display:"flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "stretch" : "center", gap: isMobile ? 8 : 20,
       }}>
-        <div style={{ flexShrink:0 }}>
-          <div style={{ fontFamily:"'Cinzel', serif", fontSize:22, fontWeight:900, color: t.text, letterSpacing:5, lineHeight:1.1 }}>
-            SIMURGH'S<span style={{ color: epochColor, marginLeft:6 }}>VIEW</span>
+        {/* Top row: logo + controls */}
+        <div style={{ display:"flex", alignItems:"center", gap: isMobile ? 10 : 20 }}>
+          <div style={{ flexShrink:0 }}>
+            <div style={{ fontFamily:"'Cinzel', serif", fontSize: isMobile ? 16 : 22, fontWeight:900, color: t.text, letterSpacing: isMobile ? 3 : 5, lineHeight:1.1 }}>
+              SIMURGH'S<span style={{ color: epochColor, marginLeft:6 }}>VIEW</span>
+            </div>
+            {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:3, marginTop:3 }}>
+              HERSTORY OF TIME
+            </div>}
           </div>
-          <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:3, marginTop:3 }}>
-            HERSTORY OF TIME
+
+          {!isMobile && <div style={{ width:1, height:36, background: t.border, flexShrink:0 }} />}
+
+          <div style={{ marginLeft:"auto", display:"flex", alignItems:"center", gap: isMobile ? 8 : 14, flexShrink:0 }}>
+            <button onClick={() => setIsAutoPlaying(p => !p)} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
+              padding: isMobile ? "6px 10px" : "7px 16px", borderRadius:5, cursor:"pointer",
+              border: isAutoPlaying ? `1.5px solid ${t.nowColor}` : `1px solid ${t.border}`,
+              background: isAutoPlaying ? `${t.nowColor}18` : "transparent",
+              color: isAutoPlaying ? t.nowColor : t.textMuted,
+              transition:"all 0.3s",
+            }}>
+              {isAutoPlaying ? "■" : "▶"}{!isMobile && (isAutoPlaying ? " STOP" : " TOUR")}
+            </button>
+
+            <button onClick={() => setTheme(p => p === "dark" ? "light" : "dark")} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
+              padding: isMobile ? "6px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
+              border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
+              transition:"all 0.3s", letterSpacing:1,
+            }}>
+              {theme === "dark" ? "☀" : "☾"}{!isMobile && (theme === "dark" ? " LIGHT" : " DARK")}
+            </button>
+
+            {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:1.5, textAlign:"right" }}>
+              <div><span style={{ color: epochColor, fontWeight:700 }}>{visibleEvents.length}</span> EVENTS</div>
+              <div style={{ opacity:0.6, fontSize:10 }}>{zoomLabel}</div>
+            </div>}
+            {!isMobile && <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+              <div style={{ width:7, height:7, borderRadius:"50%", background: t.nowColor, boxShadow:`0 0 8px ${t.nowColor}` }} />
+              <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600, color: t.nowColor, opacity:0.5, letterSpacing:2 }}>LIVE</span>
+            </div>}
+            <button onClick={() => setSidebarOpen(p => !p)} style={{
+              fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
+              padding: isMobile ? "6px 10px" : "7px 14px", background:"transparent",
+              border:`1px solid ${t.border}`, color: t.textMuted,
+              borderRadius:5, cursor:"pointer",
+            }}>
+              {sidebarOpen ? "◁" : "▷"}{!isMobile && " LAYERS"}
+            </button>
           </div>
         </div>
 
-        <div style={{ width:1, height:36, background: t.border, flexShrink:0 }} />
-
-        <div style={{ display:"flex", gap:5, flexWrap:"wrap" }}>
+        {/* Epoch buttons — horizontal scroll on mobile */}
+        <div className="epoch-scroll" style={{
+          display:"flex", gap:5,
+          overflowX: isMobile ? "auto" : "visible", flexWrap: isMobile ? "nowrap" : "wrap",
+          WebkitOverflowScrolling:"touch", scrollbarWidth:"none", msOverflowStyle:"none",
+          paddingBottom: isMobile ? 2 : 0,
+        }}>
           {Object.entries(EPOCHS).map(([key, ep]) => {
             const active = currentEpochKey === key;
             const ec = lc[ep.colorKey]?.color || "#9a8a7a";
             return (
               <button key={key} onClick={() => handleEpochChange(key)} style={{
-                fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
-                padding:"7px 14px", borderRadius:5, cursor:"pointer",
+                fontFamily:"'Share Tech Mono', monospace", fontSize: isMobile ? 10 : 11, fontWeight:700, letterSpacing:1.5,
+                padding: isMobile ? "5px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
                 border: active ? `1.5px solid ${ec}` : `1px solid ${t.border}`,
                 background: active ? `${ec}18` : "transparent",
                 color: active ? ec : t.textMuted,
-                transition:"all 0.3s",
+                transition:"all 0.3s", flexShrink:0, whiteSpace:"nowrap",
               }}
                 onMouseEnter={e => { if (!active) { e.target.style.borderColor = `${ec}66`; e.target.style.color = ec; }}}
                 onMouseLeave={e => { if (!active) { e.target.style.borderColor = t.border; e.target.style.color = t.textMuted; }}}
               >
                 {ep.label}
-                <span style={{ display:"block", fontSize:9, fontWeight:600, opacity:0.5, marginTop:2 }}>{ep.sub}</span>
+                {!isMobile && <span style={{ display:"block", fontSize:9, fontWeight:600, opacity:0.5, marginTop:2 }}>{ep.sub}</span>}
               </button>
             );
           })}
-        </div>
-
-        <div style={{ marginLeft:"auto", display:"flex", alignItems:"center", gap:14, flexShrink:0 }}>
-          <button onClick={() => setIsAutoPlaying(p => !p)} style={{
-            fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
-            padding:"7px 16px", borderRadius:5, cursor:"pointer",
-            border: isAutoPlaying ? `1.5px solid ${t.nowColor}` : `1px solid ${t.border}`,
-            background: isAutoPlaying ? `${t.nowColor}18` : "transparent",
-            color: isAutoPlaying ? t.nowColor : t.textMuted,
-            transition:"all 0.3s",
-          }}>
-            {isAutoPlaying ? "■ STOP" : "▶ TOUR"}
-          </button>
-
-          {/* Theme toggle */}
-          <button onClick={() => setTheme(p => p === "dark" ? "light" : "dark")} style={{
-            fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
-            padding:"7px 14px", borderRadius:5, cursor:"pointer",
-            border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
-            transition:"all 0.3s", letterSpacing:1,
-          }}>
-            {theme === "dark" ? "☀ LIGHT" : "☾ DARK"}
-          </button>
-
-          <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:1.5, textAlign:"right" }}>
-            <div><span style={{ color: epochColor, fontWeight:700 }}>{visibleEvents.length}</span> EVENTS</div>
-            <div style={{ opacity:0.6, fontSize:10 }}>{zoomLabel}</div>
-          </div>
-          <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-            <div style={{ width:7, height:7, borderRadius:"50%", background: t.nowColor, boxShadow:`0 0 8px ${t.nowColor}` }} />
-            <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600, color: t.nowColor, opacity:0.5, letterSpacing:2 }}>LIVE</span>
-          </div>
-          <button onClick={() => setSidebarOpen(p => !p)} style={{
-            fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5,
-            padding:"7px 14px", background:"transparent",
-            border:`1px solid ${t.border}`, color: t.textMuted,
-            borderRadius:5, cursor:"pointer",
-          }}>
-            {sidebarOpen ? "◁" : "▷"} LAYERS
-          </button>
         </div>
       </div>
 
@@ -947,44 +967,51 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
       <div style={{ display:"flex", flex:1, overflow:"hidden", position:"relative", zIndex:10 }}>
 
         {sidebarOpen && (
-          <div style={{
-            width:210, flexShrink:0, display:"flex", flexDirection:"column",
-            background: t.surface, borderRight:`1px solid ${t.border}`,
-            overflowY:"auto", backdropFilter:"blur(10px)",
-            animation:"slideInRight 0.2s ease-out",
-          }}>
-            <div style={{ padding:"18px 16px 12px", fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:700, color: t.textDim, letterSpacing:3 }}>
-              DIMENSIONS
-            </div>
-            {LAYERS.map((layer) => {
-              const lCol = lc[layer.id] || { color:"#9a8a7a", accent:"#6a5a4a" };
-              return (
-                <button key={layer.id} onClick={() => toggleLayer(layer.id)} style={{
-                  display:"flex", alignItems:"center", gap:12, padding:"11px 16px",
-                  background: activeLayers.has(layer.id) ? `${lCol.accent}0c` : "transparent",
-                  border:"none", borderLeft: `3px solid ${activeLayers.has(layer.id) ? lCol.accent : "transparent"}`,
-                  cursor:"pointer", textAlign:"left", transition:"all 0.2s",
-                }}>
-                  <div style={{
-                    width:11, height:11, borderRadius:"50%",
-                    background: activeLayers.has(layer.id) ? lCol.color : t.textDim,
-                    boxShadow: activeLayers.has(layer.id) ? `0 0 8px ${lCol.accent}66` : "none",
-                    flexShrink:0, transition:"all 0.2s",
-                  }} />
-                  <span style={{
-                    fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.2,
-                    color: activeLayers.has(layer.id) ? lCol.color : t.textDim,
-                    transition:"all 0.2s",
-                  }}>{layer.label}</span>
-                </button>
-              );
-            })}
-            <div style={{ padding:"20px 16px 16px", marginTop:"auto", borderTop:`1px solid ${t.border}` }}>
-              <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textDim, lineHeight:2.4, letterSpacing:0.5 }}>
-                SCROLL → ZOOM<br/>DRAG → PAN<br/>EDGE → DRIFT<br/>HOVER → LINKS<br/>▶ TOUR → FLY
+          <>
+            {/* Mobile overlay backdrop */}
+            {isMobile && <div onClick={() => setSidebarOpen(false)} style={{
+              position:"absolute", inset:0, zIndex:90, background:"rgba(0,0,0,0.5)",
+            }} />}
+            <div style={{
+              width: isMobile ? 200 : 210, flexShrink:0, display:"flex", flexDirection:"column",
+              background: t.surface, borderRight:`1px solid ${t.border}`,
+              overflowY:"auto", backdropFilter:"blur(10px)",
+              animation:"slideInRight 0.2s ease-out",
+              ...(isMobile ? { position:"absolute", left:0, top:0, bottom:0, zIndex:100 } : {}),
+            }}>
+              <div style={{ padding: isMobile ? "14px 12px 8px" : "18px 16px 12px", fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:700, color: t.textDim, letterSpacing:3 }}>
+                DIMENSIONS
               </div>
+              {LAYERS.map((layer) => {
+                const lCol = lc[layer.id] || { color:"#9a8a7a", accent:"#6a5a4a" };
+                return (
+                  <button key={layer.id} onClick={() => toggleLayer(layer.id)} style={{
+                    display:"flex", alignItems:"center", gap: isMobile ? 8 : 12, padding: isMobile ? "9px 12px" : "11px 16px",
+                    background: activeLayers.has(layer.id) ? `${lCol.accent}0c` : "transparent",
+                    border:"none", borderLeft: `3px solid ${activeLayers.has(layer.id) ? lCol.accent : "transparent"}`,
+                    cursor:"pointer", textAlign:"left", transition:"all 0.2s",
+                  }}>
+                    <div style={{
+                      width:11, height:11, borderRadius:"50%",
+                      background: activeLayers.has(layer.id) ? lCol.color : t.textDim,
+                      boxShadow: activeLayers.has(layer.id) ? `0 0 8px ${lCol.accent}66` : "none",
+                      flexShrink:0, transition:"all 0.2s",
+                    }} />
+                    <span style={{
+                      fontFamily:"'Share Tech Mono', monospace", fontSize: isMobile ? 10 : 11, fontWeight:700, letterSpacing:1.2,
+                      color: activeLayers.has(layer.id) ? lCol.color : t.textDim,
+                      transition:"all 0.2s",
+                    }}>{layer.label}</span>
+                  </button>
+                );
+              })}
+              {!isMobile && <div style={{ padding:"20px 16px 16px", marginTop:"auto", borderTop:`1px solid ${t.border}` }}>
+                <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textDim, lineHeight:2.4, letterSpacing:0.5 }}>
+                  SCROLL → ZOOM<br/>DRAG → PAN<br/>EDGE → DRIFT<br/>HOVER → LINKS<br/>▶ TOUR → FLY
+                </div>
+              </div>}
             </div>
-          </div>
+          </>
         )}
 
         {/* TIMELINE */}
@@ -999,11 +1026,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
             flex:1, overflow:"hidden", display:"flex", flexDirection:"column",
             cursor: isDragging ? "grabbing" : "grab",
             userSelect:"none", WebkitUserSelect:"none", position:"relative",
+            touchAction:"none",
           }}
         >
           {/* RULER */}
           <div style={{
-            position:"relative", height:56, flexShrink:0,
+            position:"relative", height: isMobile ? 40 : 56, flexShrink:0,
             background: theme === "dark"
               ? "linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(13,12,10,0.3) 100%)"
               : "linear-gradient(180deg, rgba(245,240,232,0.8) 0%, rgba(235,228,216,0.4) 100%)",
@@ -1019,9 +1047,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
                 }}>
                   <div style={{ width:1, height: year === 0 ? 32 : 20, background: year === 0 ? `${epochColor}55` : t.textDim, marginTop:"auto" }} />
                   <span style={{
-                    fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:700, letterSpacing:0.5,
+                    fontFamily:"'Share Tech Mono', monospace", fontSize: isMobile ? 9 : 12, fontWeight:700, letterSpacing:0.5,
                     color: year === 0 ? epochColor : t.rulerText,
-                    whiteSpace:"nowrap", transform:"translateX(-50%)", marginBottom:6,
+                    whiteSpace:"nowrap", transform:"translateX(-50%)", marginBottom: isMobile ? 3 : 6,
                   }}>{formatYear(year)}</span>
                 </div>
               );
@@ -1060,7 +1088,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
                 const lCol = lc[layer.id] || { color:"#9a8a7a", accent:"#6a5a4a" };
                 return (
                   <div key={layer.id} style={{
-                    position:"relative", height:82, flexShrink:0,
+                    position:"relative", height: isMobile ? 56 : 82, flexShrink:0,
                     borderBottom:`1px solid ${t.border}`,
                     background:`linear-gradient(90deg, ${lCol.accent}06 0%, transparent 5%, transparent 95%, ${lCol.accent}06 100%)`,
                   }}>
@@ -1070,18 +1098,18 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
                       transform:"translateY(-50%)", pointerEvents:"none",
                     }} />
                     <div style={{
-                      position:"absolute", left:14, top:"50%", transform:"translateY(-50%)",
-                      display:"flex", alignItems:"center", gap:8, zIndex:20, pointerEvents:"none",
+                      position:"absolute", left: isMobile ? 6 : 14, top:"50%", transform:"translateY(-50%)",
+                      display:"flex", alignItems:"center", gap: isMobile ? 4 : 8, zIndex:20, pointerEvents:"none",
                       background:`linear-gradient(90deg, ${t.fadeEdge} 0%, ${t.fadeEdge.replace("0.9","0.3")} 80%, transparent 100%)`,
-                      paddingRight:28, paddingTop:2, paddingBottom:2,
+                      paddingRight: isMobile ? 12 : 28, paddingTop:2, paddingBottom:2,
                     }}>
-                      <div style={{ width:7, height:7, borderRadius:"50%", background: lCol.color, boxShadow:`0 0 6px ${lCol.accent}55`, flexShrink:0 }} />
-                      <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700, letterSpacing:1.5, color: lCol.color, opacity:0.65, whiteSpace:"nowrap" }}>{layer.label}</span>
+                      <div style={{ width: isMobile ? 5 : 7, height: isMobile ? 5 : 7, borderRadius:"50%", background: lCol.color, boxShadow:`0 0 6px ${lCol.accent}55`, flexShrink:0 }} />
+                      <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize: isMobile ? 8 : 11, fontWeight:700, letterSpacing: isMobile ? 0.5 : 1.5, color: lCol.color, opacity:0.65, whiteSpace:"nowrap" }}>{isMobile ? layer.label.split(" ")[0] : layer.label}</span>
                     </div>
                     {events.map(ev => {
                       const pct = yearToPct(ev.year);
                       if (pct < -0.05 || pct > 1.05) return null;
-                      return <EventNode key={ev.id} ev={ev} xPct={pct} onClick={setSelectedEvent} selected={selectedEvent?.id === ev.id} onHover={setHoveredEvent} breathPhase={breathPhase} />;
+                      return <EventNode key={ev.id} ev={ev} xPct={pct} onClick={setSelectedEvent} selected={selectedEvent?.id === ev.id} onHover={setHoveredEvent} breathPhase={breathPhase} isMobile={isMobile} />;
                     })}
                   </div>
                 );
@@ -1093,23 +1121,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
 
       {/* STATUS BAR */}
       <div style={{
-        position:"relative", zIndex:50, flexShrink:0, height:34,
-        display:"flex", alignItems:"center", padding:"0 24px", gap:28,
+        position:"relative", zIndex:50, flexShrink:0, height: isMobile ? 28 : 34,
+        display:"flex", alignItems:"center", padding: isMobile ? "0 10px" : "0 24px", gap: isMobile ? 12 : 28,
         background: t.surface, borderTop:`1px solid ${t.border}`,
       }}>
-        {[
+        {(isMobile ? [
+          ["EVENTS", `${visibleEvents.length}`],
+          ["ZOOM", zoomLabel],
+        ] : [
           ["ZOOM", zoomLabel],
           ["RANGE", `${formatYear(viewStart)} → ${formatYear(viewEnd)}`],
           ["EVENTS", `${visibleEvents.length} / ${EVENTS.length}`],
           ["LAYERS", `${activeLayers.size} / ${LAYERS.length}`],
-        ].map(([k, v]) => (
-          <span key={k} style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, letterSpacing:1, color: t.textDim }}>
+        ]).map(([k, v]) => (
+          <span key={k} style={{ fontFamily:"'Share Tech Mono', monospace", fontSize: isMobile ? 10 : 11, fontWeight:600, letterSpacing:1, color: t.textDim }}>
             <span style={{ color: epochColor, marginRight:6, fontWeight:700 }}>{k}</span>{v}
           </span>
         ))}
-        <span style={{ marginLeft:"auto", fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600, color: t.textDim, letterSpacing:1.5 }}>
+        {!isMobile && <span style={{ marginLeft:"auto", fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600, color: t.textDim, letterSpacing:1.5 }}>
           Simurgh's View — Because human HERstory deserves to be seen whole.
-        </span>
+        </span>}
+        {isMobile && <span style={{ marginLeft:"auto", fontFamily:"'Share Tech Mono', monospace", fontSize:9, fontWeight:600, color: t.textDim, letterSpacing:1 }}>
+          {formatYear(viewStart)} → {formatYear(viewEnd)}
+        </span>}
       </div>
 
       {selectedEvent && <EventModal ev={selectedEvent} onClose={() => setSelectedEvent(null)} allEvents={EVENTS} onNavigate={setSelectedEvent} />}

@@ -10,31 +10,12 @@
     "summary": "Cuneiform script emerges in Sumer for accounting. Within centuries, it records laws, literature, and astronomy.",
     "body": "Cuneiform script emerges in Sumer, initially as a system for tracking grain surpluses and debts on clay tablets. Within centuries, writing evolves to record laws (Code of Ur-Nammu), literature (Epic of Gilgamesh), and astronomical observations. The invention of writing marks the boundary between prehistory and history — the moment human knowledge becomes cumulative across generations.",
     "sources": [
-      {
-        "type": "wikipedia",
-        "label": "Cuneiform",
-        "url": "https://en.wikipedia.org/wiki/Cuneiform"
-      },
-      {
-        "type": "wikipedia",
-        "label": "History of writing",
-        "url": "https://en.wikipedia.org/wiki/History_of_writing"
-      },
-      {
-        "type": "wikidata",
-        "label": "Wikidata",
-        "qid": "Q8196"
-      }
+      { "type": "wikipedia", "label": "Cuneiform", "url": "https://en.wikipedia.org/wiki/Cuneiform" },
+      { "type": "wikipedia", "label": "History of writing", "url": "https://en.wikipedia.org/wiki/History_of_writing" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q8196" }
     ],
-    "tags": [
-      "writing",
-      "communication",
-      "information"
-    ],
-    "related": [
-      "society-004",
-      "herstory-002"
-    ],
+    "tags": ["writing", "communication", "information"],
+    "related": ["society-004", "herstory-002"],
     "wikidata": {
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arabic-script.png",
       "wdDescription": "alphabet specifically codified for writing the Arabic language"
@@ -51,32 +32,14 @@
     "summary": "The Giza complex is completed by Pharaoh Khufu. It remains the tallest human structure for 3,800 years.",
     "body": "The Great Pyramid of Giza is completed for Pharaoh Khufu, standing 146 meters tall. Built from 2.3 million limestone blocks averaging 2.5 tons each, it remains the tallest human-made structure for 3,800 years. The precision of its construction — aligned to true north within 3/60th of a degree — demonstrates engineering sophistication that still amazes modern architects.",
     "sources": [
-      {
-        "type": "wikipedia",
-        "label": "Great Pyramid of Giza",
-        "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
-      },
-      {
-        "type": "wikidata",
-        "label": "Wikidata",
-        "qid": "Q37200"
-      }
+      { "type": "wikipedia", "label": "Great Pyramid of Giza", "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q37200" }
     ],
-    "tags": [
-      "egypt",
-      "architecture",
-      "engineering"
-    ],
-    "related": [
-      "herstory-001",
-      "culture-001"
-    ],
+    "tags": ["egypt", "architecture", "engineering"],
+    "related": ["herstory-001", "culture-001"],
     "wikidata": {
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg",
-      "coords": {
-        "lon": 31.13422,
-        "lat": 29.97915
-      },
+      "coords": { "lon": 31.13422, "lat": 29.97915 },
       "wdDescription": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
       "country": "Egypt",
       "partOf": "Giza pyramid complex"
@@ -93,34 +56,191 @@
     "summary": "Alexander the Great dies at 32, having conquered from Greece to India. Hellenistic culture spreads.",
     "body": "Alexander the Great dies in Babylon at 32, having created an empire stretching from Greece to India. His conquests spread Greek language, philosophy, art, and science across three continents. The Hellenistic period that follows sees the blending of Greek, Persian, Egyptian, and Indian cultures — producing breakthroughs in mathematics, astronomy, and medicine at places like the Library of Alexandria.",
     "sources": [
-      {
-        "type": "wikipedia",
-        "label": "Alexander the Great",
-        "url": "https://en.wikipedia.org/wiki/Alexander_the_Great"
-      },
-      {
-        "type": "wikipedia",
-        "label": "Hellenistic period",
-        "url": "https://en.wikipedia.org/wiki/Hellenistic_period"
-      },
-      {
-        "type": "wikidata",
-        "label": "Wikidata",
-        "qid": "Q8409"
-      }
+      { "type": "wikipedia", "label": "Alexander the Great", "url": "https://en.wikipedia.org/wiki/Alexander_the_Great" },
+      { "type": "wikipedia", "label": "Hellenistic period", "url": "https://en.wikipedia.org/wiki/Hellenistic_period" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q8409" }
     ],
-    "tags": [
-      "greece",
-      "empire",
-      "hellenistic"
-    ],
-    "related": [
-      "philosophy-001",
-      "conflict-001"
-    ],
+    "tags": ["greece", "empire", "hellenistic"],
+    "related": ["philosophy-001", "conflict-001"],
     "wikidata": {
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20the%20Great%20mosaic%20%28cropped%29.jpg",
-      "wdDescription": "king of Macedonia and conqueror of Achaemenid Persia (356–323 BC)"
+      "wdDescription": "king of Macedonia and conqueror of Achaemenid Persia (356-323 BC)"
     }
+  },
+  {
+    "id": "culture-004",
+    "year": -2100,
+    "precision": "century",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Epic of Gilgamesh",
+    "summary": "The oldest surviving work of literature. A king searches for immortality and learns what it means to be human.",
+    "body": "The Epic of Gilgamesh, composed in Sumerian and later Akkadian, is the oldest substantial work of literature in human history. It tells the story of a tyrannical king who, devastated by the death of his friend Enkidu, searches for immortality. He fails — but learns that meaning comes from the works we leave behind. The epic contains a flood narrative that predates the biblical Genesis by over a millennium.",
+    "sources": [
+      { "type": "wikipedia", "label": "Epic of Gilgamesh", "url": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q8275" }
+    ],
+    "tags": ["literature", "mesopotamia", "mythology", "mortality"],
+    "related": ["culture-001", "society-004"]
+  },
+  {
+    "id": "culture-005",
+    "year": -440,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Greek Tragedy — Sophocles & Euripides",
+    "summary": "Theater becomes a mirror for society. Oedipus, Antigone, and Medea explore fate, duty, and justice.",
+    "body": "Athenian playwrights Sophocles and Euripides transform religious festival performances into profound explorations of the human condition. Sophocles' Oedipus Rex explores fate and free will; Antigone pits moral duty against political authority. Euripides' Medea gives voice to the rage of an abandoned woman. Greek tragedy invents the dramatic form that Western theater, opera, and cinema still follow — and asks questions about justice, power, and gender that remain unresolved.",
+    "sources": [
+      { "type": "wikipedia", "label": "Greek tragedy", "url": "https://en.wikipedia.org/wiki/Greek_tragedy" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q131539" }
+    ],
+    "tags": ["theater", "greece", "literature", "drama"],
+    "related": ["philosophy-002", "philosophy-003"]
+  },
+  {
+    "id": "culture-006",
+    "year": 1304,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Rumi's Masnavi Completed",
+    "summary": "The Persian mystic poet composes 25,000 couplets on divine love. Becomes the best-selling poet in America 700 years later.",
+    "body": "Jalal ad-Din Muhammad Rumi, a 13th-century Persian Sufi mystic, completes the Masnavi — 25,000 couplets of spiritual poetry exploring divine love, the nature of the soul, and unity with God. His work transcends Islam to speak to universal human longing. Seven centuries later, Rumi becomes the best-selling poet in the United States, his verses shared by millions who may know nothing of Sufism.",
+    "sources": [
+      { "type": "wikipedia", "label": "Rumi", "url": "https://en.wikipedia.org/wiki/Rumi" },
+      { "type": "wikipedia", "label": "Masnavi", "url": "https://en.wikipedia.org/wiki/Masnavi" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q7604" }
+    ],
+    "tags": ["poetry", "persia", "sufism", "mysticism"],
+    "related": ["society-007", "herstory-009"]
+  },
+  {
+    "id": "culture-007",
+    "year": 1504,
+    "precision": "year",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Renaissance Art — Da Vinci & Michelangelo",
+    "summary": "The Mona Lisa and David. Art, science, and humanism fuse in Florence. The individual becomes the subject.",
+    "body": "Leonardo da Vinci paints the Mona Lisa while Michelangelo sculpts David — two works that define the High Renaissance ideal of human beauty, genius, and potential. Da Vinci's notebooks contain designs for helicopters, tanks, and anatomical studies centuries ahead of their time. The Renaissance represents the rebirth of classical learning fused with Christian humanism, placing the individual human — not just God — at the center of art and inquiry.",
+    "sources": [
+      { "type": "wikipedia", "label": "Renaissance art", "url": "https://en.wikipedia.org/wiki/Renaissance_art" },
+      { "type": "wikipedia", "label": "Leonardo da Vinci", "url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q762" }
+    ],
+    "tags": ["art", "renaissance", "italy", "humanism"],
+    "related": ["science-001", "philosophy-008"]
+  },
+  {
+    "id": "culture-008",
+    "year": 1600,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Shakespeare's Hamlet",
+    "summary": "To be or not to be. The English language gains its greatest playwright. Human psychology is laid bare on stage.",
+    "body": "William Shakespeare writes Hamlet, King Lear, Othello, and Macbeth in a burst of creativity that transforms Western literature. His plays explore ambition, jealousy, love, madness, and mortality with psychological depth unmatched for centuries. He coins over 1,700 words still in use today. More than any other writer, Shakespeare shapes the English language and the Western understanding of what it means to be human.",
+    "sources": [
+      { "type": "wikipedia", "label": "William Shakespeare", "url": "https://en.wikipedia.org/wiki/William_Shakespeare" },
+      { "type": "wikipedia", "label": "Hamlet", "url": "https://en.wikipedia.org/wiki/Hamlet" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q692" }
+    ],
+    "tags": ["literature", "theater", "england", "language"],
+    "related": ["culture-005", "culture-007"]
+  },
+  {
+    "id": "culture-009",
+    "year": 1823,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Beethoven's Ninth Symphony",
+    "summary": "A deaf composer writes an 'Ode to Joy.' Classical music reaches its emotional peak. The EU adopts it as its anthem.",
+    "body": "Ludwig van Beethoven, almost completely deaf, conducts the premiere of his Ninth Symphony in Vienna. The final movement sets Schiller's 'Ode to Joy' to music, expressing a radical vision of universal brotherhood. The audience erupts; Beethoven, unable to hear the applause, must be turned around to see it. The Ninth bridges Classical and Romantic eras and is later adopted as the anthem of the European Union.",
+    "sources": [
+      { "type": "wikipedia", "label": "Symphony No. 9 (Beethoven)", "url": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q255" }
+    ],
+    "tags": ["music", "classical", "germany", "symphony"],
+    "related": ["culture-008", "conflict-008"]
+  },
+  {
+    "id": "culture-010",
+    "year": 1895,
+    "precision": "year",
+    "layer": "culture",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Cinema Is Born",
+    "summary": "The Lumiere brothers screen moving pictures in Paris. A new art form — and the most powerful propaganda tool — is born.",
+    "body": "Auguste and Louis Lumiere screen 10 short films at the Grand Cafe in Paris on December 28, 1895. Audience members reportedly flee from the image of an approaching train. Within decades, cinema becomes the dominant art form of the 20th century — a medium of entertainment, propaganda, art, and cultural identity that reshapes how humans see themselves and the world. From Chaplin to Kurosawa to Bollywood, film becomes the universal language.",
+    "sources": [
+      { "type": "wikipedia", "label": "History of film", "url": "https://en.wikipedia.org/wiki/History_of_film" },
+      { "type": "wikipedia", "label": "Lumiere brothers", "url": "https://en.wikipedia.org/wiki/Auguste_and_Louis_Lumi%C3%A8re" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q11424" }
+    ],
+    "tags": ["cinema", "art", "technology", "entertainment"],
+    "related": ["science-001", "culture-009"]
+  },
+  {
+    "id": "culture-011",
+    "year": 1920,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Jazz & the Harlem Renaissance",
+    "summary": "African American artists create jazz, the blues, and a literary movement. America's greatest cultural export is born.",
+    "body": "In the 1920s, African American musicians in New Orleans, Chicago, and New York create jazz — a new art form built on improvisation, syncopation, and the blues tradition rooted in slavery. The Harlem Renaissance sees Black writers (Langston Hughes, Zora Neale Hurston), artists, and musicians redefine American culture. Jazz becomes America's most influential cultural export, shaping rock, hip-hop, and popular music worldwide.",
+    "sources": [
+      { "type": "wikipedia", "label": "Jazz", "url": "https://en.wikipedia.org/wiki/Jazz" },
+      { "type": "wikipedia", "label": "Harlem Renaissance", "url": "https://en.wikipedia.org/wiki/Harlem_Renaissance" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q3235978" }
+    ],
+    "tags": ["music", "jazz", "african-american", "arts"],
+    "related": ["herstory-013", "culture-010"]
+  },
+  {
+    "id": "culture-012",
+    "year": 1010,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 5,
+    "confidence": "established",
+    "title": "Ferdowsi's Shahnameh",
+    "summary": "The Persian Book of Kings — 50,000 couplets preserving 1,000 years of Iranian mythology and history.",
+    "body": "Abu'l-Qasim Ferdowsi spends 30 years composing the Shahnameh (Book of Kings), an epic poem of nearly 50,000 couplets that preserves the mythology, history, and cultural identity of the Persian-speaking world. Written deliberately in pure Persian to resist Arabic linguistic dominance after the Islamic conquest, the Shahnameh becomes the foundational text of Iranian identity and one of the longest epic poems ever written by a single author.",
+    "sources": [
+      { "type": "wikipedia", "label": "Shahnameh", "url": "https://en.wikipedia.org/wiki/Shahnameh" },
+      { "type": "wikipedia", "label": "Ferdowsi", "url": "https://en.wikipedia.org/wiki/Ferdowsi" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q46966" }
+    ],
+    "tags": ["poetry", "persia", "epic", "identity", "literature"],
+    "related": ["society-007", "culture-006"]
+  },
+  {
+    "id": "culture-013",
+    "year": 1970,
+    "precision": "decade",
+    "layer": "culture",
+    "importance": 4,
+    "confidence": "established",
+    "title": "Hip-Hop & Digital Culture",
+    "summary": "From Bronx block parties to a global culture. Rap, DJing, graffiti, and breakdancing reshape the world.",
+    "body": "Hip-hop emerges from African American and Latino communities in the South Bronx — DJ Kool Herc's block parties, Grandmaster Flash's turntablism, graffiti art, and breakdancing. By the 1990s, rap becomes the dominant global music genre. Hip-hop culture reshapes fashion, language, politics, and art worldwide. From the Bronx to Lagos to Tokyo, it becomes the most influential cultural movement of the late 20th century.",
+    "sources": [
+      { "type": "wikipedia", "label": "Hip hop", "url": "https://en.wikipedia.org/wiki/Hip_hop" },
+      { "type": "wikidata", "label": "Wikidata", "qid": "Q11401" }
+    ],
+    "tags": ["music", "hip-hop", "african-american", "culture"],
+    "related": ["culture-011", "science-008"]
   }
 ]
