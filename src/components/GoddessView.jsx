@@ -349,28 +349,45 @@ function EventNode({ ev, xPct, onClick, selected, onHover, breathPhase }) {
           border: `1px solid ${layerColor.accent}55`,
           borderTop: cardPos.showBelow ? "none" : `3px solid ${layerColor.accent}`,
           borderBottom: cardPos.showBelow ? `3px solid ${layerColor.accent}` : "none",
-          borderRadius: 12, padding:"18px 20px",
+          borderRadius: 12, overflow:"hidden",
           pointerEvents:"none", animation:"fadeIn 0.12s ease-out",
           boxShadow: `0 20px 60px rgba(0,0,0,0.4), 0 0 30px ${layerColor.accent}15`,
           backdropFilter:"blur(12px)", zIndex:9999,
         }}>
-          <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:600, color: layerColor.color, letterSpacing:2, marginBottom:6 }}>
-            {formatYear(ev.year)} · {LAYERS.find(l => l.id === ev.layer)?.label}
-          </div>
-          <div style={{ fontFamily:"'Cinzel', serif", fontSize:17, fontWeight:700, color: t.text, marginBottom:10, lineHeight:1.4 }}>
-            {ev.title}
-          </div>
-          <div style={{ fontFamily:"'Lora', serif", fontSize:14, color: t.textMuted, lineHeight:1.7 }}>
-            {ev.desc.slice(0, 160)}...
-          </div>
-          <div style={{ marginTop:12, display:"flex", gap:5, flexWrap:"wrap" }}>
-            {ev.tags.slice(0,4).map(tag => (
-              <span key={tag} style={{
-                fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600,
-                color: layerColor.accent, background:`${layerColor.accent}15`,
-                border:`1px solid ${layerColor.accent}30`, padding:"3px 9px", borderRadius:4, letterSpacing:1,
-              }}>{tag}</span>
-            ))}
+          {ev.wikidata?.image && (
+            <div style={{ width:"100%", height:100, overflow:"hidden" }}>
+              <img src={ev.wikidata.image} alt="" style={{ width:"100%", height:100, objectFit:"cover", display:"block" }} onError={e => { e.target.parentElement.style.display = "none"; }} />
+            </div>
+          )}
+          <div style={{ padding:"14px 18px 16px" }}>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
+              <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: layerColor.color, letterSpacing:2 }}>
+                {formatYear(ev.year)}
+              </span>
+              {ev.confidence && CONFIDENCE_BADGE[ev.confidence] && (
+                <span style={{
+                  fontFamily:"'Share Tech Mono', monospace", fontSize:9, fontWeight:600,
+                  color: CONFIDENCE_BADGE[ev.confidence].color,
+                  background:`${CONFIDENCE_BADGE[ev.confidence].color}18`,
+                  padding:"2px 6px", borderRadius:3, letterSpacing:1,
+                }}>{CONFIDENCE_BADGE[ev.confidence].label}</span>
+              )}
+            </div>
+            <div style={{ fontFamily:"'Cinzel', serif", fontSize:16, fontWeight:700, color: t.text, marginBottom:8, lineHeight:1.4 }}>
+              {ev.title}
+            </div>
+            <div style={{ fontFamily:"'Lora', serif", fontSize:13, color: t.textMuted, lineHeight:1.7, marginBottom:10 }}>
+              {ev.desc.length > 140 ? ev.desc.slice(0, 140) + "..." : ev.desc}
+            </div>
+            <div style={{ display:"flex", gap:5, flexWrap:"wrap" }}>
+              {ev.tags.slice(0,4).map(tag => (
+                <span key={tag} style={{
+                  fontFamily:"'Share Tech Mono', monospace", fontSize:10, fontWeight:600,
+                  color: layerColor.accent, background:`${layerColor.accent}15`,
+                  border:`1px solid ${layerColor.accent}30`, padding:"2px 8px", borderRadius:4, letterSpacing:1,
+                }}>{tag}</span>
+              ))}
+            </div>
           </div>
         </div>,
         document.body
@@ -403,17 +420,31 @@ const SOURCE_ICONS = {
   museum: "M", news: "N", book: "B",
 };
 
-function EventModal({ ev, onClose }) {
+function EventModal({ ev, onClose, allEvents, onNavigate }) {
   const { t, lc } = useTheme();
   const layerColor = lc[ev.layer] || { color:"#9a8a7a", accent:"#6a5a4a" };
   const layerLabel = LAYERS.find(l => l.id === ev.layer)?.label || "";
   const badge = CONFIDENCE_BADGE[ev.confidence] || null;
 
+  // Resolve related events
+  const relatedEvents = useMemo(() => {
+    if (!ev.related || !allEvents) return [];
+    return ev.related.map(rid => allEvents.find(e => e._richId === rid)).filter(Boolean);
+  }, [ev, allEvents]);
+
+  // Sorted event list for arrow navigation
+  const sortedEvents = useMemo(() => allEvents ? [...allEvents].sort((a, b) => a.year - b.year) : [], [allEvents]);
+  const currentIdx = sortedEvents.findIndex(e => e.id === ev.id);
+
   useEffect(() => {
-    const h = (e) => { if (e.key === "Escape") onClose(); };
+    const h = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft" && currentIdx > 0) onNavigate(sortedEvents[currentIdx - 1]);
+      if (e.key === "ArrowRight" && currentIdx < sortedEvents.length - 1) onNavigate(sortedEvents[currentIdx + 1]);
+    };
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
-  }, [onClose]);
+  }, [onClose, currentIdx, sortedEvents, onNavigate]);
 
   return (
     <div onClick={onClose} style={{
@@ -496,7 +527,7 @@ function EventModal({ ev, onClose }) {
             </div>
           </div>
         )}
-        <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:34 }}>
+        <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:28 }}>
           {ev.tags.map(tag => (
             <span key={tag} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:600, color: layerColor.accent,
@@ -505,17 +536,78 @@ function EventModal({ ev, onClose }) {
             }}># {tag}</span>
           ))}
         </div>
-        <button onClick={onClose} style={{
-          fontFamily:"'Share Tech Mono', monospace", fontSize:13, fontWeight:700, letterSpacing:2,
-          color: t.textMuted, background:"transparent",
-          border:`1.5px solid ${t.border}`, padding:"12px 28px",
-          borderRadius:6, cursor:"pointer", transition:"all 0.2s",
-        }}
-          onMouseEnter={e => { e.target.style.color = t.text; e.target.style.borderColor = t.borderHover; }}
-          onMouseLeave={e => { e.target.style.color = t.textMuted; e.target.style.borderColor = t.border; }}
-        >
-          ESC · CLOSE
-        </button>
+        {/* Related Events */}
+        {relatedEvents.length > 0 && (
+          <div style={{ marginBottom:28 }}>
+            <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:700, color: t.textMuted, letterSpacing:2, marginBottom:10, textTransform:"uppercase" }}>
+              Related Events
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+              {relatedEvents.map(rel => {
+                const relLc = lc[rel.layer] || { color:"#9a8a7a", accent:"#6a5a4a" };
+                return (
+                  <button key={rel.id} onClick={() => onNavigate(rel)}
+                    style={{
+                      fontFamily:"'Lora', serif", fontSize:14, color: t.text, textAlign:"left",
+                      background:"transparent", border:`1px solid ${t.border}`,
+                      padding:"10px 14px", borderRadius:8, cursor:"pointer",
+                      display:"flex", alignItems:"center", gap:10, transition:"all 0.15s",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = `${relLc.accent}12`; e.currentTarget.style.borderColor = relLc.accent + "44"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = t.border; }}
+                  >
+                    <span style={{
+                      width:8, height:8, borderRadius:"50%", flexShrink:0,
+                      background: relLc.color,
+                    }} />
+                    <span style={{ flex:1 }}>{rel.title}</span>
+                    <span style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, color: t.textMuted, flexShrink:0 }}>
+                      {formatYear(rel.year)}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        {/* Navigation */}
+        <div style={{ display:"flex", gap:10, alignItems:"center", justifyContent:"space-between" }}>
+          <div style={{ display:"flex", gap:8 }}>
+            {currentIdx > 0 && (
+              <button onClick={() => onNavigate(sortedEvents[currentIdx - 1])} style={{
+                fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:600, letterSpacing:1,
+                color: t.textMuted, background:"transparent",
+                border:`1px solid ${t.border}`, padding:"8px 16px",
+                borderRadius:6, cursor:"pointer", transition:"all 0.2s",
+              }}
+                onMouseEnter={e => { e.target.style.color = t.text; e.target.style.borderColor = t.borderHover; }}
+                onMouseLeave={e => { e.target.style.color = t.textMuted; e.target.style.borderColor = t.border; }}
+              >PREV</button>
+            )}
+            {currentIdx < sortedEvents.length - 1 && (
+              <button onClick={() => onNavigate(sortedEvents[currentIdx + 1])} style={{
+                fontFamily:"'Share Tech Mono', monospace", fontSize:12, fontWeight:600, letterSpacing:1,
+                color: t.textMuted, background:"transparent",
+                border:`1px solid ${t.border}`, padding:"8px 16px",
+                borderRadius:6, cursor:"pointer", transition:"all 0.2s",
+              }}
+                onMouseEnter={e => { e.target.style.color = t.text; e.target.style.borderColor = t.borderHover; }}
+                onMouseLeave={e => { e.target.style.color = t.textMuted; e.target.style.borderColor = t.border; }}
+              >NEXT</button>
+            )}
+          </div>
+          <button onClick={onClose} style={{
+            fontFamily:"'Share Tech Mono', monospace", fontSize:13, fontWeight:700, letterSpacing:2,
+            color: t.textMuted, background:"transparent",
+            border:`1.5px solid ${t.border}`, padding:"10px 24px",
+            borderRadius:6, cursor:"pointer", transition:"all 0.2s",
+          }}
+            onMouseEnter={e => { e.target.style.color = t.text; e.target.style.borderColor = t.borderHover; }}
+            onMouseLeave={e => { e.target.style.color = t.textMuted; e.target.style.borderColor = t.border; }}
+          >
+            ESC
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -1020,7 +1112,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
         </span>
       </div>
 
-      {selectedEvent && <EventModal ev={selectedEvent} onClose={() => setSelectedEvent(null)} />}
+      {selectedEvent && <EventModal ev={selectedEvent} onClose={() => setSelectedEvent(null)} allEvents={EVENTS} onNavigate={setSelectedEvent} />}
     </div>
     </ThemeContext.Provider>
   );
