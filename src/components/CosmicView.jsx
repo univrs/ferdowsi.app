@@ -592,8 +592,6 @@ export default function CosmicView({ theme = "dark", onBack }) {
       if (S.pointerCount === 1) {
         S.isDragging = true;
         S.dragStart.set(e.clientX, e.clientY);
-        S.pointerDownX = e.clientX;
-        S.pointerDownY = e.clientY;
         S.flyTarget = null;
         container.style.cursor = "grabbing";
       }
@@ -615,25 +613,25 @@ export default function CosmicView({ theme = "dark", onBack }) {
       }
     }
 
-    function onPointerUp(e) {
+    function onPointerUp() {
       S.pointerCount = Math.max(0, S.pointerCount - 1);
       if (S.pointerCount === 0) {
-        const moved = Math.abs(e.clientX - S.pointerDownX) + Math.abs(e.clientY - S.pointerDownY);
-        if (moved < 6) {
-          // Raycast directly at click position — don't rely on async hoveredIndex
-          const rect = container.getBoundingClientRect();
-          const clickMouse = new THREE.Vector2(
-            ((e.clientX - rect.left) / rect.width) * 2 - 1,
-            -((e.clientY - rect.top) / rect.height) * 2 + 1
-          );
-          S.raycaster.setFromCamera(clickMouse, camera);
-          const hits = S.raycaster.intersectObject(mesh);
-          if (hits.length > 0) {
-            selectEventCbRef.current?.(events[hits[0].instanceId]);
-          }
-        }
         S.isDragging = false;
         container.style.cursor = "grab";
+      }
+    }
+
+    // Use the native click event — it already handles drag vs click distinction
+    function onClick(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clickMouse = new THREE.Vector2(
+        ((e.clientX - rect.left) / rect.width) * 2 - 1,
+        -((e.clientY - rect.top) / rect.height) * 2 + 1
+      );
+      S.raycaster.setFromCamera(clickMouse, camera);
+      const hits = S.raycaster.intersectObject(mesh);
+      if (hits.length > 0) {
+        selectEventCbRef.current?.(events[hits[0].instanceId]);
       }
     }
 
@@ -665,6 +663,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerup", onPointerUp);
     canvas.addEventListener("pointerleave", onPointerLeave);
+    canvas.addEventListener("click", onClick);
     canvas.addEventListener("dblclick", onDblClick);
 
     // ── Touch: pinch-to-zoom (two fingers) ──
@@ -711,6 +710,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerup", onPointerUp);
       canvas.removeEventListener("pointerleave", onPointerLeave);
+      canvas.removeEventListener("click", onClick);
       canvas.removeEventListener("dblclick", onDblClick);
       canvas.removeEventListener("touchstart", onTouchStart);
       canvas.removeEventListener("touchmove", onTouchMove);
