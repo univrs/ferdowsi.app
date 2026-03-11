@@ -618,10 +618,19 @@ export default function CosmicView({ theme = "dark", onBack }) {
     function onPointerUp(e) {
       S.pointerCount = Math.max(0, S.pointerCount - 1);
       if (S.pointerCount === 0) {
-        // Detect click: minimal movement from pointerdown
         const moved = Math.abs(e.clientX - S.pointerDownX) + Math.abs(e.clientY - S.pointerDownY);
-        if (moved < 6 && S.hoveredIndex >= 0) {
-          selectEventCbRef.current?.(events[S.hoveredIndex]);
+        if (moved < 6) {
+          // Raycast directly at click position — don't rely on async hoveredIndex
+          const rect = container.getBoundingClientRect();
+          const clickMouse = new THREE.Vector2(
+            ((e.clientX - rect.left) / rect.width) * 2 - 1,
+            -((e.clientY - rect.top) / rect.height) * 2 + 1
+          );
+          S.raycaster.setFromCamera(clickMouse, camera);
+          const hits = S.raycaster.intersectObject(mesh);
+          if (hits.length > 0) {
+            selectEventCbRef.current?.(events[hits[0].instanceId]);
+          }
         }
         S.isDragging = false;
         container.style.cursor = "grab";
