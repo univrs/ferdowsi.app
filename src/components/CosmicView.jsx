@@ -622,18 +622,22 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
         S.isDragging = false;
         container.style.cursor = "grab";
 
-        // Fresh raycast on click (not drag) — same approach as onDblClick
-        if (!wasDrag) {
-          const rect = container.getBoundingClientRect();
-          const mx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-          const my = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-          const clickRay = new THREE.Raycaster();
-          clickRay.setFromCamera(new THREE.Vector2(mx, my), camera);
-          const hits = clickRay.intersectObject(mesh);
-          if (hits.length > 0) {
-            const ev = events[hits[0].instanceId];
-            if (ev) onSelectEventRef.current?.(ev);
-          }
+        const rect = container.getBoundingClientRect();
+        const mx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        const my = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        const clickRay = new THREE.Raycaster();
+        clickRay.setFromCamera(new THREE.Vector2(mx, my), camera);
+        const hits = clickRay.intersectObject(mesh);
+
+        // DEBUG: show what's happening directly in the DOM
+        if (infoRef.current) {
+          infoRef.current.textContent = `UP wasDrag:${wasDrag} hits:${hits.length} cb:${!!onSelectEventRef.current}`;
+          infoRef.current.style.color = hits.length > 0 ? "#6aff6a" : "#ff6a6a";
+        }
+
+        if (!wasDrag && hits.length > 0) {
+          const ev = events[hits[0].instanceId];
+          if (ev) onSelectEventRef.current?.(ev);
         }
       }
     }
