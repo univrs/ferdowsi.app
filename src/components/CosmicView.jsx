@@ -633,11 +633,26 @@ export default function CosmicView({ theme = "dark", onBack }) {
       }
     }
 
-    function onPointerUp() {
+    function onPointerUp(e) {
       S.pointerCount = Math.max(0, S.pointerCount - 1);
       if (S.pointerCount === 0) {
+        const wasDrag = Math.abs(e.clientX - S.dragStart.x) > 8 || Math.abs(e.clientY - S.dragStart.y) > 8;
         S.isDragging = false;
         container.style.cursor = "grab";
+
+        // Fresh raycast on click (not drag) — same approach as onDblClick
+        if (!wasDrag) {
+          const rect = container.getBoundingClientRect();
+          const mx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          const my = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+          const clickRay = new THREE.Raycaster();
+          clickRay.setFromCamera(new THREE.Vector2(mx, my), camera);
+          const hits = clickRay.intersectObject(mesh);
+          if (hits.length > 0) {
+            const ev = events[hits[0].instanceId];
+            if (ev) selectEventCbRef.current?.(ev);
+          }
+        }
       }
     }
 
@@ -729,15 +744,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden" }}>
-      {/* onClick on the div — canvas clicks bubble up, React handles it directly */}
-      <div
-        ref={containerRef}
-        style={{ width: "100%", height: "100%", cursor: "grab" }}
-        onClick={() => {
-          const ev = stateRef.current?.hoveredEvent;
-          if (ev) setSelectedEvent(ev);
-        }}
-      />
+      <div ref={containerRef} style={{ width: "100%", height: "100%", cursor: "grab" }} />
 
       {/* HUD: back button */}
       <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10, display: "flex", flexDirection: "column", gap: 8 }}>
