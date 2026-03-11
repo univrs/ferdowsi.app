@@ -1,0 +1,720 @@
+{
+  "generatedAt": "2026-03-10T19:02:27.285Z",
+  "description": "Related events discovered via Wikidata that could be added to the timeline",
+  "discoveries": [
+    {
+      "sourceEvent": "conflict-003",
+      "sourceQid": "Q36477",
+      "suggestions": [
+        {
+          "qid": "Q104224919",
+          "label": "geographic coordinate",
+          "description": "position on the Earth consisting of a latitude and a longitude",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "conflict-004",
+      "sourceQid": "Q42834",
+      "suggestions": [
+        {
+          "qid": "Q2886278",
+          "label": "Low Roman Empire",
+          "description": "historical period (ca. 235 to 476 AD)",
+          "date": null
+        },
+        {
+          "qid": "Q2277",
+          "label": "Roman Empire",
+          "description": "period of ancient Rome following the Republic",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "conflict-005",
+      "sourceQid": "Q46083",
+      "suggestions": [
+        {
+          "qid": "Q815217",
+          "label": "Siege of Toul",
+          "description": "1870 siege",
+          "date": null
+        },
+        {
+          "qid": "Q10829794",
+          "label": "Battle of Pontarlier",
+          "description": "1871 final military operation of the Franco-Prussian War",
+          "date": null
+        },
+        {
+          "qid": "Q154705",
+          "label": "unification of Germany",
+          "description": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
+          "date": null
+        },
+        {
+          "qid": "Q70802",
+          "label": "French Third Republic",
+          "description": "nation of France from 1870 to 1940",
+          "date": null
+        },
+        {
+          "qid": "Q697266",
+          "label": "Battle of Gravelotte",
+          "description": "1870 battle of the Franco-Prussian War",
+          "date": null
+        },
+        {
+          "qid": "Q472982",
+          "label": "Siege of Belfort",
+          "description": "103-day military assault and blockade of the city of Belfort, France",
+          "date": null
+        },
+        {
+          "qid": "Q688847",
+          "label": "Siege of Metz",
+          "description": "1870 battle of the Franco-Prussian War",
+          "date": null
+        },
+        {
+          "qid": "Q690489",
+          "label": "Siege of Paris",
+          "description": "1870 siege during the Franco-Prussian War",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "cosmos-001",
+      "sourceQid": "Q830",
+      "suggestions": [
+        {
+          "qid": "Q473194",
+          "label": "oxen",
+          "description": "castrated male bovine, used for work or raised for meat",
+          "date": null
+        },
+        {
+          "qid": "Q11748378",
+          "label": "cow",
+          "description": "adult female cattle of the species Bos taurus, domestic ruminant mammal",
+          "date": null
+        },
+        {
+          "qid": "Q693690",
+          "label": "bull",
+          "description": "uncastrated adult male cattle",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "cosmos-002",
+      "sourceQid": "Q830106",
+      "suggestions": [
+        {
+          "qid": "Q29896506",
+          "label": "GeoNames ontology",
+          "description": "data model used by GeoNames database",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "cosmos-003",
+      "sourceQid": "Q321",
+      "suggestions": [
+        {
+          "qid": "Q33187",
+          "label": "Orion Arm",
+          "description": "minor spiral arm of the Milky Way galaxy; contains the Solar System",
+          "date": null
+        },
+        {
+          "qid": "Q98840948",
+          "label": "Galactic north",
+          "description": "galactic north as applied to the Milky Way",
+          "date": null
+        },
+        {
+          "qid": "Q98840963",
+          "label": "Galactic south",
+          "description": "galactic south as applied to the Milky Way",
+          "date": null
+        },
+        {
+          "qid": "Q98840910",
+          "label": "Milky Way Galactic pole",
+          "description": "galactic pole as applied to the Milky Way",
+          "date": null
+        },
+        {
+          "qid": "Q32898",
+          "label": "Carina–Sagittarius Arm",
+          "description": "spiral arm of the Milky Way Galaxy",
+          "date": null
+        },
+        {
+          "qid": "Q32895",
+          "label": "Perseus Arm",
+          "description": "one of two major spiral arms of the Milky Way galaxy",
+          "date": null
+        },
+        {
+          "qid": "Q32896",
+          "label": "Norma Arm",
+          "description": "spiral arm of the Milky Way Galaxy",
+          "date": null
+        },
+        {
+          "qid": "Q32913",
+          "label": "Scutum–Centaurus Arm",
+          "description": "spiral arm of the Milky Way Galaxy",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "cosmos-004",
+      "sourceQid": "Q544",
+      "suggestions": [
+        {
+          "qid": "Q525",
+          "label": "Sun",
+          "description": "star at the centre of the Solar System",
+          "date": null
+        },
+        {
+          "qid": "Q817157",
+          "label": "Local Interstellar Cloud",
+          "description": "interstellar cloud in the Milky Way Galaxy",
+          "date": null
+        },
+        {
+          "qid": "Q321",
+          "label": "Milky Way",
+          "description": "galaxy containing our Solar System",
+          "date": null
+        },
+        {
+          "qid": "Q7879772",
+          "label": "inner Solar System",
+          "description": "region of the Solar System comprising of Mercury, Venus, Earth and Mars with natural satellites, as well as the main-belt asteroids",
+          "date": null
+        },
+        {
+          "qid": "Q3962257",
+          "label": "outer Solar System",
+          "description": "outer region of the Solar System, home to the giant planets and their nautral satellite, as well as comets, dwarf-planets and their natural satellites",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "culture-001",
+      "sourceQid": "Q8196",
+      "suggestions": [
+        {
+          "qid": "Q167809",
+          "label": "ز",
+          "description": "Arabic letter zain (U+0632), zayn, or zāy",
+          "date": null
+        },
+        {
+          "qid": "Q221588",
+          "label": "ش",
+          "description": "Arabic letter sheen (U+0634), shīn, or šīn",
+          "date": null
+        },
+        {
+          "qid": "Q221802",
+          "label": "ص",
+          "description": "Arabic letter sad (U+0635), ṣād or tsade",
+          "date": null
+        },
+        {
+          "qid": "Q221893",
+          "label": "ض",
+          "description": "Arabic letter dad (U+0636) or ḍād",
+          "date": null
+        },
+        {
+          "qid": "Q221965",
+          "label": "ط",
+          "description": "Arabic letter tah (U+0637) or ṭā’",
+          "date": null
+        },
+        {
+          "qid": "Q222171",
+          "label": "ع",
+          "description": "Arabic letter ain (U+0639), ayin, or ʿayn",
+          "date": null
+        },
+        {
+          "qid": "Q222792",
+          "label": "غ",
+          "description": "Arabic letter ghain (U+063A) or ġayn",
+          "date": null
+        },
+        {
+          "qid": "Q222849",
+          "label": "ف",
+          "description": "Arabic letter feh (U+0641) or fāʾ",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "culture-002",
+      "sourceQid": "Q37200",
+      "suggestions": [
+        {
+          "qid": "Q489772",
+          "label": "Seven Wonders of the Ancient World",
+          "description": "remarkable constructions of classical antiquity",
+          "date": null
+        },
+        {
+          "qid": "Q12508",
+          "label": "Giza pyramid complex",
+          "description": "archaeological site on the Giza Plateau, Egypt",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "culture-004",
+      "sourceQid": "Q8275",
+      "suggestions": [
+        {
+          "qid": "Q99690489",
+          "label": "Book II",
+          "description": "second part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q99690519",
+          "label": "Book III",
+          "description": "third part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013545",
+          "label": "Book IV",
+          "description": "fourth part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013546",
+          "label": "Book V",
+          "description": "fifth part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013549",
+          "label": "Book VIII",
+          "description": "eighth part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013547",
+          "label": "Book VI",
+          "description": "sixth part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013550",
+          "label": "Book IX",
+          "description": "ninth part of the Iliad",
+          "date": null
+        },
+        {
+          "qid": "Q123013555",
+          "label": "Book XIV",
+          "description": "fourteenth part of the Iliad",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "culture-005",
+      "sourceQid": "Q131539",
+      "suggestions": [
+        {
+          "qid": "Q8275050",
+          "label": "children's book",
+          "description": "book written for children to read",
+          "date": null
+        },
+        {
+          "qid": "Q11163999",
+          "label": "children's and young adult literature",
+          "description": "literary genre",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "earth-001",
+      "sourceQid": "Q2",
+      "suggestions": [
+        {
+          "qid": "Q1349417",
+          "label": "Earth's surface",
+          "description": "term for the surface of the Earth",
+          "date": null
+        },
+        {
+          "qid": "Q18589965",
+          "label": "Earth-Moon system",
+          "description": "Moon orbiting Earth",
+          "date": null
+        },
+        {
+          "qid": "Q193927",
+          "label": "Earth's core",
+          "description": "innermost part of Earth's centre",
+          "date": null
+        },
+        {
+          "qid": "Q1239",
+          "label": "Indian Ocean",
+          "description": "ocean bounded by Africa, Asia, Australia, and Antarctica",
+          "date": null
+        },
+        {
+          "qid": "Q51",
+          "label": "Antarctica",
+          "description": "terrestrial continent in the Southern Hemisphere",
+          "date": null
+        },
+        {
+          "qid": "Q6500960",
+          "label": "Earth's magnetic field",
+          "description": "magnetic field that extends from the Earth's inner core to where it meets the solar wind",
+          "date": null
+        },
+        {
+          "qid": "Q48",
+          "label": "Asia",
+          "description": "terrestrial continent, mainly in the northeastern quadrant",
+          "date": null
+        },
+        {
+          "qid": "Q5107",
+          "label": "continent",
+          "description": "large landmass identified by convention",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "earth-003",
+      "sourceQid": "Q183257",
+      "suggestions": [
+        {
+          "qid": "Q928865",
+          "label": "art therapy",
+          "description": "therapeutic technique that incorporates creative methods of expression through visual art media",
+          "date": null
+        },
+        {
+          "qid": "Q1404521",
+          "label": "feminist therapy",
+          "description": "set of related therapies",
+          "date": null
+        },
+        {
+          "qid": "Q2279219",
+          "label": "psychodynamic psychotherapy",
+          "description": "form of psychoanalysis and / or depth psychology",
+          "date": null
+        },
+        {
+          "qid": "Q41630",
+          "label": "psychoanalysis",
+          "description": "psychological theory that was founded in 1890 by the Viennese neurologist Sigmund Freud",
+          "date": null
+        },
+        {
+          "qid": "Q828879",
+          "label": "gestalt therapy",
+          "description": "form of psychotherapy",
+          "date": null
+        },
+        {
+          "qid": "Q9418",
+          "label": "psychology",
+          "description": "study of mental functions and behaviours",
+          "date": null
+        },
+        {
+          "qid": "Q1147152",
+          "label": "cognitive behavioral therapy",
+          "description": "psychotherapeutic approach that addresses dysfunctional emotions, behaviors and cognitions",
+          "date": null
+        },
+        {
+          "qid": "Q179661",
+          "label": "medical treatment",
+          "description": "attempted medical remediation of a health problem, usually following a diagnosis",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "herstory-002",
+      "sourceQid": "Q171870",
+      "suggestions": [
+        {
+          "qid": "Q69254",
+          "label": "1969 Formula One season",
+          "description": "sports season",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "herstory-004",
+      "sourceQid": "Q131221",
+      "suggestions": [
+        {
+          "qid": "Q39427",
+          "label": "Surrealism",
+          "description": "international cultural movement that began in the early 1920s",
+          "date": null
+        },
+        {
+          "qid": "Q6034",
+          "label": "Dada",
+          "description": "avant-garde art movement in the early 20th century",
+          "date": null
+        },
+        {
+          "qid": "Q915841",
+          "label": "vorticism",
+          "description": "short-lived modernist movement in British art and poetry of the early 20th century",
+          "date": null
+        },
+        {
+          "qid": "Q42934",
+          "label": "cubism",
+          "description": "early-20th-century avant-garde art movement",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "life-003",
+      "sourceQid": "Q82658",
+      "suggestions": [
+        {
+          "qid": "Q21174357",
+          "label": "gypsum exposure",
+          "description": "hazardous chemical exposure",
+          "date": null
+        },
+        {
+          "qid": "Q27702376",
+          "label": "bofutsushosan",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27702608",
+          "label": "white-tiger and ginseng decoction",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27730950",
+          "label": "chotosan",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27731325",
+          "label": "eppikajutsuto",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27731328",
+          "label": "gokoto",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27824998",
+          "label": "makyokansekito",
+          "description": "Kampo drug",
+          "date": null
+        },
+        {
+          "qid": "Q27825047",
+          "label": "mokuboito",
+          "description": "Kampo drug",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "life-005",
+      "sourceQid": "Q471379",
+      "suggestions": [
+        {
+          "qid": "Q18891156",
+          "label": "The Scream",
+          "description": "1893 painting by Norwegian artist Edvard Munch",
+          "date": null
+        },
+        {
+          "qid": "Q18891155",
+          "label": "The Scream",
+          "description": "pastel drawing by Edvard Munch (1893)",
+          "date": null
+        },
+        {
+          "qid": "Q18891158",
+          "label": "The Scream",
+          "description": "painting by Edvard Munch (1910)",
+          "date": null
+        },
+        {
+          "qid": "Q18891157",
+          "label": "The Scream",
+          "description": "pastel by Edvard Munch (1895)",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "philosophy-005",
+      "sourceQid": "Q48235",
+      "suggestions": [
+        {
+          "qid": "Q8078",
+          "label": "logic",
+          "description": "study of correct reasoning",
+          "date": null
+        },
+        {
+          "qid": "Q9465",
+          "label": "ethics",
+          "description": "branch of philosophy that systematizes, defends, and recommends concepts of right and wrong conduct",
+          "date": null
+        },
+        {
+          "qid": "Q413",
+          "label": "physics",
+          "description": "study of matter and its motion, along with related concepts such as energy and force",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "science-002",
+      "sourceQid": "Q83203",
+      "suggestions": [
+        {
+          "qid": "Q2261656",
+          "label": "human torso",
+          "description": "anatomy term for the human body minus the limbs",
+          "date": null
+        },
+        {
+          "qid": "Q726",
+          "label": "horse",
+          "description": "domesticated four-footed mammal from the equine family",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "science-003",
+      "sourceQid": "Q428",
+      "suggestions": [
+        {
+          "qid": "Q219786",
+          "label": "Hūd",
+          "description": "11th chapter of the Qur'an",
+          "date": null
+        },
+        {
+          "qid": "Q17032468",
+          "label": "waḥy",
+          "description": "revelation in Islam",
+          "date": null
+        },
+        {
+          "qid": "Q1762323",
+          "label": "Injil",
+          "description": "Christian Gospel from an Islamic perspective",
+          "date": null
+        },
+        {
+          "qid": "Q219738",
+          "label": "At-Tawbah",
+          "description": "9th chapter of the Qur'an",
+          "date": null
+        },
+        {
+          "qid": "Q219815",
+          "label": "Yūsuf",
+          "description": "12th chapter of the Qur'an",
+          "date": null
+        },
+        {
+          "qid": "Q233811",
+          "label": "Al-Kawthar",
+          "description": "108th chapter of the Qur'an",
+          "date": null
+        },
+        {
+          "qid": "Q24000496",
+          "label": "Al-Kāfirūn",
+          "description": "109th chapter of the Qur'an",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "science-005",
+      "sourceQid": "Q3711325",
+      "suggestions": [
+        {
+          "qid": "Q11465",
+          "label": "velocity",
+          "description": "rate of change of the position of an object as a function of time, and the direction of that change",
+          "date": null
+        }
+      ]
+    },
+    {
+      "sourceEvent": "society-001",
+      "sourceQid": "Q484954",
+      "suggestions": [
+        {
+          "qid": "Q77468620",
+          "label": "psychological terminology",
+          "description": "set of all technical terms in psychology",
+          "date": null
+        },
+        {
+          "qid": "Q18122377",
+          "label": "optimism and pessimism",
+          "description": "",
+          "date": null
+        },
+        {
+          "qid": "Q9357054",
+          "label": "theory of emotion",
+          "description": "theory developed by Robert Plutchik illustrated in the wheel of emotions",
+          "date": null
+        }
+      ]
+    }
+  ]
+}
