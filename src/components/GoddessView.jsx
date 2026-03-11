@@ -860,9 +860,13 @@ export default function GoddessView() {
       const dist = Math.abs(e.touches[0].clientX - e.touches[1].clientX);
       if (touchRef.current.lastDist > 0) {
         const sc = touchRef.current.lastDist / dist, v = viewRef.current;
-        const range = v.end - v.start, mid = (v.start + v.end)/2;
-        const nr = Math.max(10, Math.min(15e9, range*sc));
-        setViewStart(mid-nr/2); setViewEnd(mid+nr/2);
+        const range = v.end - v.start;
+        // Zoom toward the midpoint between the two fingers, not the view center
+        const midClientX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midFrac = Math.max(0, Math.min(1, (midClientX - rect.left) / rect.width));
+        const anchor = v.start + midFrac * range;
+        const nr = Math.max(10, Math.min(15e9, range * sc));
+        setViewStart(anchor - midFrac * nr); setViewEnd(anchor + (1 - midFrac) * nr);
       }
       touchRef.current.lastDist = dist;
     }
@@ -993,14 +997,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               {theme === "dark" ? "☀" : "☾"}
             </button>
 
-            {!isMobile && <button onClick={() => setCosmicMode(true)} style={{
+            <button onClick={() => setCosmicMode(true)} style={{
               fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:700,
-              padding:"7px 14px", borderRadius:5, cursor:"pointer",
+              padding: isMobile ? "6px 10px" : "7px 14px", borderRadius:5, cursor:"pointer",
               border:`1px solid ${t.border}`, background:"transparent", color: t.textMuted,
               transition:"all 0.3s", letterSpacing:1,
             }}>
               ◈
-            </button>}
+            </button>
 
             {!isMobile && <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:11, fontWeight:600, color: t.textMuted, letterSpacing:1.5, textAlign:"right" }}>
               <div><span style={{ color: epochColor, fontWeight:700 }}>{visibleEvents.length}</span> EVENTS</div>

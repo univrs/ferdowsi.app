@@ -1,7 +1,7 @@
 // CosmicView.jsx — Phase 2: Real events, force-directed layout via Web Worker
 // GPU instanced rendering + physics simulation running off main thread
 
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
 import { EVENTS_FLAT, LAYERS } from "../data/index.js";
 
@@ -39,6 +39,40 @@ const LAYER_COLORS_LIGHT = {
   philosophy: new THREE.Color("#5a4a6a"),
 };
 
+// CSS string versions for React modal
+const CSS_COLORS_DARK = {
+  herstory:   { color: "#c9977a", accent: "#9a6248" },
+  indigenous: { color: "#c4a85a", accent: "#8a7530" },
+  cosmos:     { color: "#9a90b8", accent: "#6a5a8a" },
+  earth:      { color: "#7aaa7e", accent: "#4a7a4e" },
+  life:       { color: "#6a9a7a", accent: "#3a7a5a" },
+  society:    { color: "#c4aa6a", accent: "#8a7a3a" },
+  conflict:   { color: "#b87a6a", accent: "#8a4a3a" },
+  science:    { color: "#6a8ab0", accent: "#3a5a7a" },
+  culture:    { color: "#b88a9a", accent: "#7a4a5a" },
+  philosophy: { color: "#9a8aaa", accent: "#6a5a7a" },
+};
+
+const CSS_COLORS_LIGHT = {
+  herstory:   { color: "#8a5238", accent: "#6a3a28" },
+  indigenous: { color: "#7a6520", accent: "#5a4810" },
+  cosmos:     { color: "#5a4a7a", accent: "#3a2a5a" },
+  earth:      { color: "#3a6a3e", accent: "#2a4a2e" },
+  life:       { color: "#2a6a4a", accent: "#1a4a3a" },
+  society:    { color: "#7a6a2a", accent: "#5a4a1a" },
+  conflict:   { color: "#7a3a2a", accent: "#5a2a1a" },
+  science:    { color: "#2a4a6a", accent: "#1a3a5a" },
+  culture:    { color: "#6a3a4a", accent: "#4a2a3a" },
+  philosophy: { color: "#5a4a6a", accent: "#3a2a4a" },
+};
+
+const CONFIDENCE_BADGE = {
+  established: { label: "Established", color: "#6a9a5a" },
+  debated:     { label: "Debated",     color: "#c4aa4a" },
+  legendary:   { label: "Legendary",   color: "#9a7aba" },
+  approximate: { label: "Approximate", color: "#8a8a8a" },
+};
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // BUILD LINK DATA from event relations
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -58,6 +92,202 @@ function buildLinks(events) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// COSMIC EVENT MODAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function CosmicEventModal({ ev, events, isDark, onClose, onNavigate }) {
+  const cssColors = isDark ? CSS_COLORS_DARK : CSS_COLORS_LIGHT;
+  const lc = cssColors[ev.layer] || { color: "#9a8a7a", accent: "#6a5a4a" };
+  const layerLabel = LAYERS.find(l => l.id === ev.layer)?.label || ev.layer;
+  const badge = CONFIDENCE_BADGE[ev.confidence] || null;
+  const isMobile = window.innerWidth < 768;
+
+  const t = {
+    text:       isDark ? "#e8e0d4"                   : "#2a2418",
+    textMuted:  isDark ? "rgba(210,200,180,0.55)"    : "rgba(60,52,38,0.55)",
+    border:     isDark ? "rgba(180,160,120,0.12)"    : "rgba(80,70,50,0.15)",
+    cardBg:     isDark
+      ? "linear-gradient(135deg,rgba(22,18,12,0.98),rgba(30,24,16,0.98))"
+      : "linear-gradient(135deg,rgba(255,250,242,0.98),rgba(245,238,226,0.98))",
+    overlay:    isDark ? "rgba(10,9,7,0.88)"         : "rgba(245,240,232,0.88)",
+  };
+
+  const relatedEvents = useMemo(() => {
+    if (!ev.related || !events) return [];
+    return ev.related
+      .map(rid => events.find(e => e._richId === rid || String(e.id) === rid))
+      .filter(Boolean);
+  }, [ev, events]);
+
+  useEffect(() => {
+    const h = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: t.overlay, backdropFilter: "blur(8px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        animation: "cosmicFadeIn 0.2s ease-out",
+        fontFamily: "'Share Tech Mono', monospace",
+      }}
+    >
+      <style>{`
+        @keyframes cosmicFadeIn { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Share+Tech+Mono&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+      `}</style>
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          width: 660, maxWidth: "96vw", maxHeight: "92vh", overflowY: "auto",
+          background: t.cardBg,
+          border: `1px solid ${lc.accent}44`, borderTop: `3px solid ${lc.accent}`,
+          borderRadius: isMobile ? 10 : 16,
+          padding: isMobile ? "24px 18px" : "40px 44px",
+          boxShadow: `0 40px 120px rgba(0,0,0,0.5), 0 0 60px ${lc.accent}10`,
+        }}
+      >
+        {/* Header row */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28, flexWrap: "wrap", gap: 8 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <span style={{
+              fontSize: 13, fontWeight: 700, color: lc.color,
+              background: `${lc.accent}15`, border: `1px solid ${lc.accent}33`,
+              padding: "6px 16px", borderRadius: 6, letterSpacing: 2, textTransform: "uppercase",
+            }}>{layerLabel}</span>
+            {badge && (
+              <span style={{
+                fontSize: 11, fontWeight: 600, color: badge.color,
+                background: `${badge.color}18`, border: `1px solid ${badge.color}33`,
+                padding: "4px 10px", borderRadius: 4, letterSpacing: 1,
+              }}>{badge.label}</span>
+            )}
+          </div>
+          <span style={{ fontSize: 14, fontWeight: 600, color: t.textMuted, letterSpacing: 1 }}>
+            {formatYear(ev.year)}
+            {ev.precision && <span style={{ fontSize: 11, opacity: 0.6, marginLeft: 6 }}>({ev.precision})</span>}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h2 style={{
+          fontFamily: "'Cinzel', serif",
+          fontSize: isMobile ? 22 : 30, fontWeight: 900,
+          color: t.text, marginBottom: isMobile ? 14 : 20, lineHeight: 1.3,
+        }}>{ev.title}</h2>
+
+        <div style={{ height: 2, background: `linear-gradient(90deg,${lc.accent}55,transparent)`, marginBottom: 24, borderRadius: 1 }} />
+
+        {/* Image */}
+        {ev.wikidata?.image && (
+          <div style={{ marginBottom: 20, borderRadius: 10, overflow: "hidden", border: `1px solid ${t.border}`, maxHeight: 260 }}>
+            <img
+              src={ev.wikidata.image} alt={ev.title}
+              style={{ width: "100%", height: 260, objectFit: "cover", display: "block" }}
+              onError={e => { e.target.style.display = "none"; }}
+            />
+          </div>
+        )}
+
+        {ev.wikidata?.wdDescription && (
+          <div style={{ fontSize: 12, color: t.textMuted, marginBottom: 14, fontStyle: "italic" }}>
+            {ev.wikidata.wdDescription}
+          </div>
+        )}
+
+        {/* Body */}
+        <p style={{
+          fontFamily: "'Lora', serif",
+          fontSize: 17, color: t.text, lineHeight: 2, marginBottom: 16, opacity: 0.85,
+        }}>
+          {ev.body || ev.desc}
+        </p>
+
+        {/* Sources */}
+        {ev.sources && ev.sources.length > 0 && (
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: t.textMuted, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>
+              Sources
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              {ev.sources.map((src, i) => (
+                <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
+                  style={{ fontSize: 13, color: lc.color, textDecoration: "none", display: "flex", alignItems: "center", gap: 8, padding: "6px 10px", borderRadius: 6 }}
+                >
+                  {src.label} <span style={{ opacity: 0.5 }}>↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tags */}
+        {ev.tags && ev.tags.length > 0 && (
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 28 }}>
+            {ev.tags.map(tag => (
+              <span key={tag} style={{
+                fontSize: 12, fontWeight: 600, color: lc.accent,
+                background: `${lc.accent}12`, border: `1px solid ${lc.accent}28`,
+                padding: "5px 14px", borderRadius: 6, letterSpacing: 1.5,
+              }}># {tag}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Related events */}
+        {relatedEvents.length > 0 && (
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: t.textMuted, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>
+              Related Events
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              {relatedEvents.map(rel => {
+                const relLc = (isDark ? CSS_COLORS_DARK : CSS_COLORS_LIGHT)[rel.layer] || { color: "#9a8a7a", accent: "#6a5a4a" };
+                return (
+                  <button
+                    key={rel.id}
+                    onClick={() => onNavigate(rel)}
+                    style={{
+                      fontFamily: "'Lora', serif", fontSize: 14, color: t.text, textAlign: "left",
+                      background: "transparent", border: `1px solid ${t.border}`,
+                      padding: "10px 14px", borderRadius: 8, cursor: "pointer",
+                      display: "flex", alignItems: "center", gap: 10,
+                    }}
+                  >
+                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: relLc.color, flexShrink: 0 }} />
+                    <span style={{ flex: 1 }}>{rel.title}</span>
+                    <span style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: 11, color: t.textMuted, flexShrink: 0 }}>
+                      {formatYear(rel.year)}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Close */}
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <button
+            onClick={onClose}
+            style={{
+              fontFamily: "'Share Tech Mono', monospace",
+              fontSize: 13, fontWeight: 700, letterSpacing: 2,
+              color: t.textMuted, background: "transparent",
+              border: `1.5px solid ${t.border}`,
+              padding: "10px 24px", borderRadius: 6, cursor: "pointer",
+            }}
+          >ESC</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════════════════
 export default function CosmicView({ theme = "dark", onBack }) {
@@ -65,6 +295,10 @@ export default function CosmicView({ theme = "dark", onBack }) {
   const stateRef = useRef(null);
   const fpsRef = useRef(null);
   const infoRef = useRef(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  // Bridge: lets imperative THREE.js handlers call React state setter
+  const selectEventCbRef = useRef(null);
+  selectEventCbRef.current = setSelectedEvent;
 
   const isDark = theme === "dark";
   const layerColors = isDark ? LAYER_COLORS_DARK : LAYER_COLORS_LIGHT;
@@ -110,6 +344,11 @@ export default function CosmicView({ theme = "dark", onBack }) {
       labelSprites: [],
       hoverLabel: null,
       stats: { fps: 0, frames: 0, lastTime: performance.now() },
+      // Click detection
+      pointerDownX: 0, pointerDownY: 0,
+      pointerCount: 0,
+      // Touch pinch
+      touchPinchDist: 0,
     };
     stateRef.current = S;
 
@@ -144,13 +383,9 @@ export default function CosmicView({ theme = "dark", onBack }) {
 
     // ── Instanced Mesh for events ──
     const geo = new THREE.SphereGeometry(1, SPHERE_SEGMENTS, SPHERE_SEGMENTS);
-    const mat = new THREE.MeshStandardMaterial({
-      roughness: 0.4,
-      metalness: 0.15,
-    });
+    const mat = new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.15 });
     const mesh = new THREE.InstancedMesh(geo, mat, events.length);
     mesh.instanceColor = new THREE.InstancedBufferAttribute(colors, 3);
-    // Initialize at origin — worker will provide positions
     const dummy = new THREE.Object3D();
     for (let i = 0; i < events.length; i++) {
       dummy.position.set(0, 0, 0);
@@ -166,26 +401,20 @@ export default function CosmicView({ theme = "dark", onBack }) {
     const lineGeo = new THREE.BufferGeometry();
     const lineMat = new THREE.LineBasicMaterial({
       color: isDark ? 0xc4aa6a : 0x8a7a5a,
-      transparent: true,
-      opacity: CONNECTION_OPACITY,
-      depthWrite: false,
+      transparent: true, opacity: CONNECTION_OPACITY, depthWrite: false,
     });
     const lineMesh = new THREE.LineSegments(lineGeo, lineMat);
     scene.add(lineMesh);
     S.lineMesh = lineMesh;
 
-    // Pre-build link index pairs for fast position updates
+    // Pre-build link index pairs
     const linkIdToIdx = new Map();
-    events.forEach((ev, i) => {
-      if (ev._richId) linkIdToIdx.set(ev._richId, i);
-    });
+    events.forEach((ev, i) => { if (ev._richId) linkIdToIdx.set(ev._richId, i); });
     const linkPairs = [];
     links.forEach(({ source, target }) => {
       const si = linkIdToIdx.get(source);
       const ti = linkIdToIdx.get(target);
-      if (si !== undefined && ti !== undefined) {
-        linkPairs.push(si, ti);
-      }
+      if (si !== undefined && ti !== undefined) linkPairs.push(si, ti);
     });
 
     // ── Ambient stars ──
@@ -229,7 +458,6 @@ export default function CosmicView({ theme = "dark", onBack }) {
         const newPos = new Float32Array(msg.positions);
         S.positions = newPos;
 
-        // Update instanced mesh positions
         for (let i = 0; i < events.length; i++) {
           dummy.position.set(newPos[i * 3], newPos[i * 3 + 1], newPos[i * 3 + 2]);
           dummy.scale.setScalar(scales[i]);
@@ -238,7 +466,6 @@ export default function CosmicView({ theme = "dark", onBack }) {
         }
         mesh.instanceMatrix.needsUpdate = true;
 
-        // Update connection lines
         if (linkPairs.length > 0) {
           const linePositions = new Float32Array(linkPairs.length * 3);
           for (let i = 0; i < linkPairs.length; i++) {
@@ -247,14 +474,10 @@ export default function CosmicView({ theme = "dark", onBack }) {
             linePositions[i * 3 + 1] = newPos[idx * 3 + 1];
             linePositions[i * 3 + 2] = newPos[idx * 3 + 2];
           }
-          lineMesh.geometry.setAttribute(
-            "position",
-            new THREE.BufferAttribute(linePositions, 3)
-          );
+          lineMesh.geometry.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
           lineMesh.geometry.attributes.position.needsUpdate = true;
         }
 
-        // Update info overlay
         if (infoRef.current) {
           const pct = Math.max(0, Math.min(100, (1 - msg.alpha) * 100));
           infoRef.current.textContent = msg.alpha > 0.01
@@ -269,16 +492,11 @@ export default function CosmicView({ theme = "dark", onBack }) {
       }
     };
 
-    // Send events to worker
     worker.postMessage({
       type: "init",
       events: events.map(ev => ({
-        id: ev.id,
-        _richId: ev._richId,
-        year: ev.year,
-        layer: ev.layer,
-        imp: ev.imp,
-        related: ev.related,
+        id: ev.id, _richId: ev._richId,
+        year: ev.year, layer: ev.layer, imp: ev.imp, related: ev.related,
       })),
       eventLinks: links,
     });
@@ -296,25 +514,21 @@ export default function CosmicView({ theme = "dark", onBack }) {
         if (fpsRef.current) fpsRef.current.textContent = `${S.stats.fps} FPS`;
       }
 
-      // Fly-to animation
       if (S.flyTarget) {
         S.spherical.radius += (S.flyTarget.radius - S.spherical.radius) * FLY_SPEED;
         S.spherical.theta += (S.flyTarget.theta - S.spherical.theta) * FLY_SPEED;
         S.spherical.phi += (S.flyTarget.phi - S.spherical.phi) * FLY_SPEED;
         S.lookAt.lerp(S.flyLookAt, FLY_SPEED);
-        if (Math.abs(S.spherical.radius - S.flyTarget.radius) < 0.3) {
-          S.flyTarget = null;
-        }
+        if (Math.abs(S.spherical.radius - S.flyTarget.radius) < 0.3) S.flyTarget = null;
         updateCameraFromSpherical(S);
       }
 
-      // Gentle auto-rotation when idle
       if (!S.isDragging && !S.flyTarget) {
         S.spherical.theta += 0.0003;
         updateCameraFromSpherical(S);
       }
 
-      // Raycasting for hover (every frame for responsiveness)
+      // Raycasting for hover
       S.raycaster.setFromCamera(S.mouse, camera);
       const hits = S.raycaster.intersectObject(mesh);
       if (hits.length > 0) {
@@ -332,9 +546,10 @@ export default function CosmicView({ theme = "dark", onBack }) {
               ${ev.title}
             </div>
             ${ev.desc ? `<div style="font-size:10px;color:${isDark ? "rgba(210,200,180,0.6)" : "rgba(60,52,38,0.6)"};margin-top:4px;line-height:1.4">${ev.desc.slice(0, 120)}${ev.desc.length > 120 ? "..." : ""}</div>` : ""}
+            <div style="font-size:9px;color:${hexCol};margin-top:6px;opacity:0.6;letter-spacing:1px">CLICK TO OPEN · DBL-CLICK TO FLY</div>
           `;
-          labelEl.style.display = "block";
           labelEl.style.borderLeft = `2px solid ${hexCol}44`;
+          labelEl.style.display = "block";
           container.style.cursor = "pointer";
         }
         // Position label near mouse
@@ -357,15 +572,14 @@ export default function CosmicView({ theme = "dark", onBack }) {
 
     // ── Resize ──
     function onResize() {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
+      const w = container.clientWidth, h = container.clientHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     }
     window.addEventListener("resize", onResize);
 
-    // ── Mouse controls ──
+    // ── Mouse / Pointer controls ──
     function onWheel(e) {
       e.preventDefault();
       S.spherical.radius *= 1 + e.deltaY * 0.001;
@@ -374,10 +588,15 @@ export default function CosmicView({ theme = "dark", onBack }) {
     }
 
     function onPointerDown(e) {
-      S.isDragging = true;
-      S.dragStart.set(e.clientX, e.clientY);
-      S.flyTarget = null;
-      container.style.cursor = "grabbing";
+      S.pointerCount++;
+      if (S.pointerCount === 1) {
+        S.isDragging = true;
+        S.dragStart.set(e.clientX, e.clientY);
+        S.pointerDownX = e.clientX;
+        S.pointerDownY = e.clientY;
+        S.flyTarget = null;
+        container.style.cursor = "grabbing";
+      }
     }
 
     function onPointerMove(e) {
@@ -385,7 +604,8 @@ export default function CosmicView({ theme = "dark", onBack }) {
       S.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       S.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
-      if (S.isDragging) {
+      // Only orbit for single pointer (ignore second finger)
+      if (S.isDragging && S.pointerCount === 1) {
         const dx = e.clientX - S.dragStart.x;
         const dy = e.clientY - S.dragStart.y;
         S.spherical.theta -= dx * 0.005;
@@ -395,18 +615,33 @@ export default function CosmicView({ theme = "dark", onBack }) {
       }
     }
 
-    function onPointerUp() {
+    function onPointerUp(e) {
+      S.pointerCount = Math.max(0, S.pointerCount - 1);
+      if (S.pointerCount === 0) {
+        // Detect click: minimal movement from pointerdown
+        const moved = Math.abs(e.clientX - S.pointerDownX) + Math.abs(e.clientY - S.pointerDownY);
+        if (moved < 6 && S.hoveredIndex >= 0) {
+          selectEventCbRef.current?.(events[S.hoveredIndex]);
+        }
+        S.isDragging = false;
+        container.style.cursor = "grab";
+      }
+    }
+
+    function onPointerLeave() {
+      S.pointerCount = 0;
       S.isDragging = false;
       container.style.cursor = "grab";
     }
 
     function onDblClick(e) {
+      // Close modal if open, then fly to the node
+      selectEventCbRef.current?.(null);
       const rect = container.getBoundingClientRect();
       S.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       S.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       S.raycaster.setFromCamera(S.mouse, camera);
       const hits = S.raycaster.intersectObject(mesh);
-
       if (hits.length > 0) {
         const idx = hits[0].instanceId;
         const pos = S.positions;
@@ -420,8 +655,42 @@ export default function CosmicView({ theme = "dark", onBack }) {
     canvas.addEventListener("pointerdown", onPointerDown);
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerup", onPointerUp);
-    canvas.addEventListener("pointerleave", onPointerUp);
+    canvas.addEventListener("pointerleave", onPointerLeave);
     canvas.addEventListener("dblclick", onDblClick);
+
+    // ── Touch: pinch-to-zoom (two fingers) ──
+    // Pointer events already handle single-finger orbit; we add pinch on top.
+    function onTouchStart(e) {
+      if (e.touches.length === 2) {
+        // Disable orbit drag while pinching
+        S.isDragging = false;
+        S.pointerCount = 0;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        S.touchPinchDist = Math.sqrt(dx * dx + dy * dy);
+      }
+    }
+
+    function onTouchMove(e) {
+      if (e.touches.length === 2 && S.touchPinchDist > 0) {
+        e.preventDefault();
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const sc = S.touchPinchDist / dist;
+        S.spherical.radius = Math.max(5, Math.min(300, S.spherical.radius * sc));
+        updateCameraFromSpherical(S);
+        S.touchPinchDist = dist;
+      }
+    }
+
+    function onTouchEnd(e) {
+      if (e.touches.length < 2) S.touchPinchDist = 0;
+    }
+
+    canvas.addEventListener("touchstart", onTouchStart, { passive: true });
+    canvas.addEventListener("touchmove", onTouchMove, { passive: false });
+    canvas.addEventListener("touchend", onTouchEnd, { passive: true });
 
     // ── Cleanup ──
     return () => {
@@ -432,15 +701,16 @@ export default function CosmicView({ theme = "dark", onBack }) {
       canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerup", onPointerUp);
-      canvas.removeEventListener("pointerleave", onPointerUp);
+      canvas.removeEventListener("pointerleave", onPointerLeave);
       canvas.removeEventListener("dblclick", onDblClick);
+      canvas.removeEventListener("touchstart", onTouchStart);
+      canvas.removeEventListener("touchmove", onTouchMove);
+      canvas.removeEventListener("touchend", onTouchEnd);
       renderer.dispose();
       geo.dispose();
       mat.dispose();
       if (container.contains(labelEl)) container.removeChild(labelEl);
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
     };
   }, [events, links, colors, scales, isDark, layerColors]);
 
@@ -449,10 +719,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
       <div ref={containerRef} style={{ width: "100%", height: "100%", cursor: "grab" }} />
 
       {/* HUD: back button */}
-      <div style={{
-        position: "absolute", top: 16, left: 16, zIndex: 10,
-        display: "flex", flexDirection: "column", gap: 8,
-      }}>
+      <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10, display: "flex", flexDirection: "column", gap: 8 }}>
         <button onClick={onBack} style={{
           fontFamily: "'Share Tech Mono', monospace", fontSize: 11, fontWeight: 700,
           padding: "7px 14px", borderRadius: 5, cursor: "pointer", letterSpacing: 1.5,
@@ -473,9 +740,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
         letterSpacing: 1.5,
         background: isDark ? "rgba(13,12,10,0.6)" : "rgba(245,240,232,0.6)",
         padding: "5px 10px", borderRadius: 5, backdropFilter: "blur(8px)",
-      }}>
-        --
-      </div>
+      }}>--</div>
 
       {/* HUD: simulation status */}
       <div ref={infoRef} style={{
@@ -485,9 +750,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
         letterSpacing: 2,
         background: isDark ? "rgba(13,12,10,0.6)" : "rgba(245,240,232,0.6)",
         padding: "5px 14px", borderRadius: 5, backdropFilter: "blur(8px)",
-      }}>
-        INITIALIZING...
-      </div>
+      }}>INITIALIZING...</div>
 
       {/* HUD: controls */}
       <div style={{
@@ -498,7 +761,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
         background: isDark ? "rgba(13,12,10,0.5)" : "rgba(245,240,232,0.5)",
         padding: "5px 14px", borderRadius: 5, backdropFilter: "blur(8px)",
       }}>
-        DRAG TO ORBIT · SCROLL TO ZOOM · DOUBLE-CLICK TO FLY TO EVENT
+        DRAG TO ORBIT · SCROLL/PINCH TO ZOOM · CLICK TO OPEN · DBL-CLICK TO FLY
       </div>
 
       {/* HUD: layer legend */}
@@ -522,6 +785,17 @@ export default function CosmicView({ theme = "dark", onBack }) {
           );
         })}
       </div>
+
+      {/* Event modal */}
+      {selectedEvent && (
+        <CosmicEventModal
+          ev={selectedEvent}
+          events={events}
+          isDark={isDark}
+          onClose={() => setSelectedEvent(null)}
+          onNavigate={setSelectedEvent}
+        />
+      )}
     </div>
   );
 }
