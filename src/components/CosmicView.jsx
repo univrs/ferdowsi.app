@@ -2,6 +2,7 @@
 // GPU instanced rendering + physics simulation running off main thread
 
 import { useRef, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import * as THREE from "three";
 import { EVENTS_FLAT, LAYERS } from "../data/index.js";
 
@@ -337,6 +338,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
       spherical: new THREE.Spherical(120, Math.PI / 2.5, 0.3),
       lookAt: new THREE.Vector3(0, 0, 0),
       hoveredIndex: -1,
+      hoveredEvent: null,
       frameId: null,
       worker: null,
       positions: new Float32Array(events.length * 3),
@@ -533,6 +535,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
       const hits = S.raycaster.intersectObject(mesh);
       if (hits.length > 0) {
         const idx = hits[0].instanceId;
+        S.hoveredEvent = events[idx] || null;
         if (idx !== S.hoveredIndex) {
           S.hoveredIndex = idx;
           const ev = events[idx];
@@ -559,6 +562,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
         labelEl.style.left = `${Math.min(mx + 16, rect.width - 300)}px`;
         labelEl.style.top = `${Math.max(my - 40, 8)}px`;
       } else {
+        S.hoveredEvent = null;
         if (S.hoveredIndex !== -1) {
           S.hoveredIndex = -1;
           labelEl.style.display = "none";
@@ -621,17 +625,11 @@ export default function CosmicView({ theme = "dark", onBack }) {
       }
     }
 
-    // Use the native click event — it already handles drag vs click distinction
-    function onClick(e) {
-      const rect = canvas.getBoundingClientRect();
-      const clickMouse = new THREE.Vector2(
-        ((e.clientX - rect.left) / rect.width) * 2 - 1,
-        -((e.clientY - rect.top) / rect.height) * 2 + 1
-      );
-      S.raycaster.setFromCamera(clickMouse, camera);
-      const hits = S.raycaster.intersectObject(mesh);
-      if (hits.length > 0) {
-        selectEventCbRef.current?.(events[hits[0].instanceId]);
+    // Use hoveredEvent set by animation loop — same raycasting path that
+    // already works (proves tooltip shows). No coordinate math needed.
+    function onClick() {
+      if (S.hoveredEvent) {
+        selectEventCbRef.current?.(S.hoveredEvent);
       }
     }
 
@@ -795,15 +793,16 @@ export default function CosmicView({ theme = "dark", onBack }) {
         })}
       </div>
 
-      {/* Event modal */}
-      {selectedEvent && (
+      {/* Event modal — portalled to document.body to escape any CSS containment */}
+      {selectedEvent && createPortal(
         <CosmicEventModal
           ev={selectedEvent}
           events={events}
           isDark={isDark}
           onClose={() => setSelectedEvent(null)}
           onNavigate={setSelectedEvent}
-        />
+        />,
+        document.body
       )}
     </div>
   );
