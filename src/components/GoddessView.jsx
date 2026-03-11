@@ -651,6 +651,7 @@ export default function GoddessView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [cosmicMode, setCosmicMode] = useState(false);
+  const [cosmicEvent, setCosmicEvent] = useState(null);
   const searchInputRef = useRef(null);
 
   // Fuse.js search index
@@ -931,9 +932,17 @@ html,body{width:100%;height:100%;overflow:hidden;background:${t.bg}}
               <div style={{ fontFamily:"'Share Tech Mono', monospace", fontSize:14, color: t.textMuted, letterSpacing:3 }}>LOADING COSMIC VIEW...</div>
             </div>
           }>
-            <CosmicView theme={theme} onBack={() => setCosmicMode(false)} />
+            <CosmicView theme={theme} onBack={() => setCosmicMode(false)} onSelectEvent={setCosmicEvent} />
           </Suspense>
         </div>
+        {cosmicEvent && (
+          <EventModal
+            ev={cosmicEvent}
+            onClose={() => setCosmicEvent(null)}
+            allEvents={EVENTS}
+            onNavigate={setCosmicEvent}
+          />
+        )}
       </ThemeContext.Provider>
     );
   }

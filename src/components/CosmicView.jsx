@@ -1,8 +1,7 @@
 // CosmicView.jsx — Phase 2: Real events, force-directed layout via Web Worker
 // GPU instanced rendering + physics simulation running off main thread
 
-import { useRef, useEffect, useMemo, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { EVENTS_FLAT, LAYERS } from "../data/index.js";
 
@@ -291,31 +290,14 @@ function CosmicEventModal({ ev, events, isDark, onClose, onNavigate }) {
 // ═══════════════════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════════════════
-export default function CosmicView({ theme = "dark", onBack }) {
+export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
   const containerRef = useRef(null);
   const stateRef = useRef(null);
   const fpsRef = useRef(null);
   const infoRef = useRef(null);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  // Used by imperative dblclick handler to close modal
-  const selectEventCbRef = useRef(null);
-  selectEventCbRef.current = setSelectedEvent;
-
-  // ESC closes modal
-  useEffect(() => {
-    if (!selectedEvent) return;
-    const h = (e) => { if (e.key === "Escape") setSelectedEvent(null); };
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
-  }, [selectedEvent]);
-
-  // Related events for the open modal
-  const selectedEventRelated = useMemo(() => {
-    if (!selectedEvent?.related) return [];
-    return selectedEvent.related
-      .map(rid => EVENTS_FLAT.find(e => e._richId === rid || String(e.id) === rid))
-      .filter(Boolean);
-  }, [selectedEvent]);
+  // Ref so imperative handlers can call the React prop without stale closure
+  const onSelectEventRef = useRef(null);
+  onSelectEventRef.current = onSelectEvent;
 
   const isDark = theme === "dark";
   const layerColors = isDark ? LAYER_COLORS_DARK : LAYER_COLORS_LIGHT;
@@ -650,7 +632,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
           const hits = clickRay.intersectObject(mesh);
           if (hits.length > 0) {
             const ev = events[hits[0].instanceId];
-            if (ev) selectEventCbRef.current?.(ev);
+            if (ev) onSelectEventRef.current?.(ev);
           }
         }
       }
@@ -664,7 +646,7 @@ export default function CosmicView({ theme = "dark", onBack }) {
 
     function onDblClick(e) {
       // Close modal if open (via ref since we're in imperative scope), then fly
-      selectEventCbRef.current?.(null);
+      onSelectEventRef.current?.(null);
       const rect = container.getBoundingClientRect();
       S.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       S.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
@@ -814,119 +796,10 @@ export default function CosmicView({ theme = "dark", onBack }) {
         })}
       </div>
 
-      {/* Event card — portalled to document.body, no separate component */}
-      {selectedEvent && createPortal((() => {
-        const lc = (isDark ? CSS_COLORS_DARK : CSS_COLORS_LIGHT)[selectedEvent.layer]
-          || { color: "#9a8a7a", accent: "#6a5a4a" };
-        const layerLabel = LAYERS.find(l => l.id === selectedEvent.layer)?.label || selectedEvent.layer;
-        const badge = CONFIDENCE_BADGE[selectedEvent.confidence] || null;
-        const isMob = window.innerWidth < 768;
-        return (
-          <div
-            onClick={() => setSelectedEvent(null)}
-            style={{
-              position: "fixed", inset: 0, zIndex: 9999,
-              background: isDark ? "rgba(10,9,7,0.9)" : "rgba(245,240,232,0.9)",
-              backdropFilter: "blur(10px)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: "'Share Tech Mono', monospace",
-            }}
-          >
-            <div
-              onClick={e => e.stopPropagation()}
-              style={{
-                width: 640, maxWidth: "95vw", maxHeight: "88vh", overflowY: "auto",
-                background: isDark ? "linear-gradient(135deg,#16100a,#1e1610)" : "linear-gradient(135deg,#fffaf2,#f5eee2)",
-                border: `1px solid ${lc.accent}44`, borderTop: `3px solid ${lc.accent}`,
-                borderRadius: isMob ? 10 : 14,
-                padding: isMob ? "22px 16px" : "36px 40px",
-                boxShadow: `0 40px 120px rgba(0,0,0,0.6)`,
-              }}
-            >
-              {/* Header */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, marginBottom: 22 }}>
-                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: lc.color, background: `${lc.accent}18`, border: `1px solid ${lc.accent}33`, padding: "5px 14px", borderRadius: 5, letterSpacing: 2 }}>
-                    {layerLabel}
-                  </span>
-                  {badge && <span style={{ fontSize: 11, color: badge.color, background: `${badge.color}18`, border: `1px solid ${badge.color}33`, padding: "3px 10px", borderRadius: 4 }}>{badge.label}</span>}
-                </div>
-                <span style={{ fontSize: 13, color: isDark ? "rgba(210,200,180,0.55)" : "rgba(60,52,38,0.55)" }}>
-                  {formatYear(selectedEvent.year)}
-                </span>
-              </div>
-              {/* Title */}
-              <h2 style={{ fontFamily: "'Cinzel',serif", fontSize: isMob ? 20 : 26, fontWeight: 900, color: isDark ? "#e8e0d4" : "#2a2418", marginBottom: 14, lineHeight: 1.3 }}>
-                {selectedEvent.title}
-              </h2>
-              <div style={{ height: 2, background: `linear-gradient(90deg,${lc.accent}55,transparent)`, marginBottom: 20, borderRadius: 1 }} />
-              {/* Wikidata image */}
-              {selectedEvent.wikidata?.image && (
-                <div style={{ marginBottom: 16, borderRadius: 8, overflow: "hidden", maxHeight: 220 }}>
-                  <img src={selectedEvent.wikidata.image} alt={selectedEvent.title}
-                    style={{ width: "100%", height: 220, objectFit: "cover", display: "block" }}
-                    onError={e => { e.target.style.display = "none"; }} />
-                </div>
-              )}
-              {/* Body */}
-              <p style={{ fontFamily: "'Lora',serif", fontSize: 16, color: isDark ? "#e8e0d4" : "#2a2418", lineHeight: 1.9, opacity: 0.85, marginBottom: 18 }}>
-                {selectedEvent.body || selectedEvent.desc}
-              </p>
-              {/* Tags */}
-              {selectedEvent.tags?.length > 0 && (
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
-                  {selectedEvent.tags.map(tag => (
-                    <span key={tag} style={{ fontSize: 11, color: lc.accent, background: `${lc.accent}12`, border: `1px solid ${lc.accent}28`, padding: "4px 12px", borderRadius: 5, letterSpacing: 1.5 }}>
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {/* Related events */}
-              {selectedEventRelated.length > 0 && (
-                <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: isDark ? "rgba(210,200,180,0.45)" : "rgba(60,52,38,0.45)", marginBottom: 8, textTransform: "uppercase" }}>Related Events</div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-                    {selectedEventRelated.map(rel => {
-                      const rLc = (isDark ? CSS_COLORS_DARK : CSS_COLORS_LIGHT)[rel.layer] || { color: "#9a8a7a", accent: "#6a5a4a" };
-                      return (
-                        <button key={rel._richId || rel.id} onClick={() => setSelectedEvent(rel)}
-                          style={{ fontFamily: "'Lora',serif", fontSize: 13, color: isDark ? "#e8e0d4" : "#2a2418", textAlign: "left", background: "transparent", border: `1px solid ${isDark ? "rgba(180,160,120,0.12)" : "rgba(80,70,50,0.15)"}`, padding: "8px 12px", borderRadius: 7, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
-                          <span style={{ width: 7, height: 7, borderRadius: "50%", background: rLc.color, flexShrink: 0 }} />
-                          <span style={{ flex: 1 }}>{rel.title}</span>
-                          <span style={{ fontSize: 10, opacity: 0.5, flexShrink: 0 }}>{formatYear(rel.year)}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-              {/* Sources */}
-              {selectedEvent.sources?.length > 0 && (
-                <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: isDark ? "rgba(210,200,180,0.45)" : "rgba(60,52,38,0.45)", marginBottom: 8, textTransform: "uppercase" }}>Sources</div>
-                  {selectedEvent.sources.map((src, i) => (
-                    <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
-                      style={{ display: "block", fontSize: 13, color: lc.color, textDecoration: "none", padding: "4px 8px", marginBottom: 2 }}>
-                      {src.label} ↗
-                    </a>
-                  ))}
-                </div>
-              )}
-              {/* Close */}
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 8 }}>
-                <button onClick={() => setSelectedEvent(null)}
-                  style={{ fontFamily: "'Share Tech Mono',monospace", fontSize: 12, letterSpacing: 2, color: isDark ? "rgba(210,200,180,0.5)" : "rgba(60,52,38,0.5)", background: "transparent", border: `1px solid ${isDark ? "rgba(180,160,120,0.2)" : "rgba(80,70,50,0.2)"}`, padding: "8px 22px", borderRadius: 5, cursor: "pointer" }}>
-                  CLOSE
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-      })(), document.body)}
     </div>
   );
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // HELPERS
