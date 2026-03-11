@@ -400,8 +400,8 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
     // ── Connection lines ──
     const lineGeo = new THREE.BufferGeometry();
     const lineMat = new THREE.LineBasicMaterial({
-      color: isDark ? 0xc4aa6a : 0x8a7a5a,
-      transparent: true, opacity: CONNECTION_OPACITY, depthWrite: false,
+      vertexColors: true,
+      transparent: true, opacity: 1.0, depthWrite: false,
     });
     const lineMesh = new THREE.LineSegments(lineGeo, lineMat);
     scene.add(lineMesh);
@@ -416,6 +416,33 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
       const ti = linkIdToIdx.get(target);
       if (si !== undefined && ti !== undefined) linkPairs.push(si, ti);
     });
+
+    // Persistent edge color buffer (2 vertices × 3 floats per link)
+    const numEdges = linkPairs.length / 2;
+    const edgeColBuf = new Float32Array(linkPairs.length * 3);
+    const BASE_ER = isDark ? 0.16 : 0.26, BASE_EG = isDark ? 0.13 : 0.21, BASE_EB = isDark ? 0.08 : 0.14;
+    for (let i = 0; i < linkPairs.length; i++) {
+      edgeColBuf[i * 3] = BASE_ER; edgeColBuf[i * 3 + 1] = BASE_EG; edgeColBuf[i * 3 + 2] = BASE_EB;
+    }
+    S.edgeColBuf = edgeColBuf;
+    S.numEdges = numEdges;
+
+    // ── Signal dots — travel along highlighted edges ──
+    const MAX_SIG = 128;
+    const sigPosBuf = new Float32Array(MAX_SIG * 3);
+    const sigColBuf = new Float32Array(MAX_SIG * 3);
+    const sigGeo = new THREE.BufferGeometry();
+    sigGeo.setAttribute("position", new THREE.BufferAttribute(sigPosBuf, 3));
+    sigGeo.setAttribute("color",    new THREE.BufferAttribute(sigColBuf,  3));
+    sigGeo.setDrawRange(0, 0);
+    const sigMat = new THREE.PointsMaterial({
+      size: 3.0, vertexColors: true, transparent: true, opacity: 0.95,
+      sizeAttenuation: true, depthWrite: false,
+    });
+    const sigPoints = new THREE.Points(sigGeo, sigMat);
+    scene.add(sigPoints);
+    S.sigPosBuf = sigPosBuf; S.sigColBuf = sigColBuf; S.sigGeo = sigGeo;
+    S.hoverTime = 0;
 
     // ── Ambient stars ──
     const starCount = 2000;
@@ -476,6 +503,10 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
           }
           lineMesh.geometry.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
           lineMesh.geometry.attributes.position.needsUpdate = true;
+          // Attach color buffer once (persists across position updates)
+          if (!lineMesh.geometry.attributes.color) {
+            lineMesh.geometry.setAttribute("color", new THREE.BufferAttribute(S.edgeColBuf, 3));
+          }
         }
 
         if (infoRef.current) {
@@ -565,6 +596,53 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
           S.hoveredIndex = -1;
           labelEl.style.display = "none";
           container.style.cursor = S.isDragging ? "grabbing" : "grab";
+        }
+      }
+
+      // ── Edge highlight + signal dots ──
+      if (lineMesh.geometry.attributes.color && S.numEdges > 0) {
+        S.hoverTime += 0.022;
+        const hovIdx = S.hoveredIndex;
+        const pos = S.positions;
+        const ecb = S.edgeColBuf;
+        const spb = S.sigPosBuf; const scb = S.sigColBuf;
+        const pulse = 0.55 + 0.45 * Math.sin(S.hoverTime * Math.PI * 2.5);
+        let sigCount = 0;
+
+        for (let e = 0; e < S.numEdges; e++) {
+          const si = linkPairs[e * 2], ti = linkPairs[e * 2 + 1];
+          const isConn = hovIdx >= 0 && (si === hovIdx || ti === hovIdx);
+          const vi0 = e * 6, vi1 = e * 6 + 3; // vertex color offsets
+
+          if (isConn) {
+            const srcI = si === hovIdx ? si : ti;
+            const tgtI = si === hovIdx ? ti : si;
+            const col = layerColors[events[srcI]?.layer] || new THREE.Color(0.6, 0.6, 0.4);
+            // Source vertex: bright; target vertex: dimmer — creates gradient away from node
+            ecb[vi0]   = col.r * pulse;       ecb[vi0+1] = col.g * pulse;       ecb[vi0+2] = col.b * pulse;
+            ecb[vi1]   = col.r * pulse * 0.4; ecb[vi1+1] = col.g * pulse * 0.4; ecb[vi1+2] = col.b * pulse * 0.4;
+            // Signal dot traveling from source to target
+            if (sigCount < 128) {
+              const t = (S.hoverTime * 1.4) % 1.0;
+              spb[sigCount*3]   = pos[srcI*3]   + (pos[tgtI*3]   - pos[srcI*3])   * t;
+              spb[sigCount*3+1] = pos[srcI*3+1] + (pos[tgtI*3+1] - pos[srcI*3+1]) * t;
+              spb[sigCount*3+2] = pos[srcI*3+2] + (pos[tgtI*3+2] - pos[srcI*3+2]) * t;
+              const fade = Math.sin(t * Math.PI); // bright in middle, fade at ends
+              scb[sigCount*3] = col.r + (1-col.r)*0.6*fade;
+              scb[sigCount*3+1] = col.g + (1-col.g)*0.5*fade;
+              scb[sigCount*3+2] = col.b + (1-col.b)*0.8*fade;
+              sigCount++;
+            }
+          } else {
+            ecb[vi0]=BASE_ER; ecb[vi0+1]=BASE_EG; ecb[vi0+2]=BASE_EB;
+            ecb[vi1]=BASE_ER; ecb[vi1+1]=BASE_EG; ecb[vi1+2]=BASE_EB;
+          }
+        }
+        lineMesh.geometry.attributes.color.needsUpdate = true;
+        S.sigGeo.setDrawRange(0, sigCount);
+        if (sigCount > 0) {
+          S.sigGeo.attributes.position.needsUpdate = true;
+          S.sigGeo.attributes.color.needsUpdate = true;
         }
       }
 
