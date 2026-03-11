@@ -528,11 +528,11 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
         updateCameraFromSpherical(S);
       }
 
-      // Raycasting for hover
+      // Sphere-based hover — works for small nodes at any camera distance
       S.raycaster.setFromCamera(S.mouse, camera);
-      const hits = S.raycaster.intersectObject(mesh);
-      if (hits.length > 0) {
-        const idx = hits[0].instanceId;
+      const hoverIdx = sphereRaycast(S.raycaster.ray, S.positions, scales, events.length);
+      if (hoverIdx >= 0) {
+        const idx = hoverIdx;
         S.hoveredEvent = events[idx] || null;
         if (idx !== S.hoveredIndex) {
           S.hoveredIndex = idx;
@@ -564,7 +564,7 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
         if (S.hoveredIndex !== -1) {
           S.hoveredIndex = -1;
           labelEl.style.display = "none";
-          container.style.cursor = "grab";
+          container.style.cursor = S.isDragging ? "grabbing" : "grab";
         }
       }
 
@@ -627,16 +627,10 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
         const my = -((e.clientY - rect.top) / rect.height) * 2 + 1;
         const clickRay = new THREE.Raycaster();
         clickRay.setFromCamera(new THREE.Vector2(mx, my), camera);
-        const hits = clickRay.intersectObject(mesh);
+        const hitIdx = sphereRaycast(clickRay.ray, S.positions, scales, events.length);
 
-        // DEBUG: show what's happening directly in the DOM
-        if (infoRef.current) {
-          infoRef.current.textContent = `UP wasDrag:${wasDrag} hits:${hits.length} cb:${!!onSelectEventRef.current}`;
-          infoRef.current.style.color = hits.length > 0 ? "#6aff6a" : "#ff6a6a";
-        }
-
-        if (!wasDrag && hits.length > 0) {
-          const ev = events[hits[0].instanceId];
+        if (!wasDrag && hitIdx >= 0) {
+          const ev = events[hitIdx];
           if (ev) onSelectEventRef.current?.(ev);
         }
       }
@@ -655,12 +649,11 @@ export default function CosmicView({ theme = "dark", onBack, onSelectEvent }) {
       S.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       S.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       S.raycaster.setFromCamera(S.mouse, camera);
-      const hits = S.raycaster.intersectObject(mesh);
-      if (hits.length > 0) {
-        const idx = hits[0].instanceId;
+      const flyIdx = sphereRaycast(S.raycaster.ray, S.positions, scales, events.length);
+      if (flyIdx >= 0) {
         const pos = S.positions;
-        const target = new THREE.Vector3(pos[idx * 3], pos[idx * 3 + 1], pos[idx * 3 + 2]);
-        flyToPoint(S, target, 8 + scales[idx] * 15);
+        const target = new THREE.Vector3(pos[flyIdx * 3], pos[flyIdx * 3 + 1], pos[flyIdx * 3 + 2]);
+        flyToPoint(S, target, 8 + scales[flyIdx] * 15);
       }
     }
 
@@ -818,6 +811,26 @@ function flyToPoint(S, target, distance) {
   const dir = new THREE.Vector3().copy(S.camera.position).sub(target).normalize();
   S.flyLookAt = target.clone();
   S.flyTarget = new THREE.Spherical().setFromVector3(dir.multiplyScalar(distance));
+}
+
+// Sphere-based raycast — replaces triangle intersection for tiny nodes.
+// Finds the closest node whose sphere (visual scale + HIT_PAD world units) the ray passes through.
+const _sSphere = new THREE.Sphere();
+const _sTarget = new THREE.Vector3();
+const HIT_PAD = 2.5; // world-unit padding — makes nodes much easier to click/hover
+
+function sphereRaycast(ray, positions, scales, count) {
+  let bestDist = Infinity;
+  let bestIdx = -1;
+  for (let i = 0; i < count; i++) {
+    _sSphere.center.set(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+    _sSphere.radius = scales[i] + HIT_PAD;
+    if (ray.intersectSphere(_sSphere, _sTarget)) {
+      const d = ray.origin.distanceToSquared(_sTarget);
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    }
+  }
+  return bestIdx;
 }
 
 function formatYear(y) {
